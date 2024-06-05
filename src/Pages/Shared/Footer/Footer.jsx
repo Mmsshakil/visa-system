@@ -29,7 +29,7 @@ const Footer = () => {
                     </div>
                 </nav>
             </div>
-            <p className='footer-center p-4 bg-slate-300 text-base-content'>Copyright © 2024 - All right reserved by Canada Government</p>
+            <p className='footer-center p-4 bg-slate-300 text-base-content'>Copyright © 2024 - All right reserved by Government of Canada</p>
         </footer>
     );
 };
