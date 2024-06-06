@@ -15,7 +15,7 @@ import { Carousel } from 'react-responsive-carousel';
 
 const Banner = () => {
     return (
-        <Carousel width="100%" height="700px" className=''>
+        <Carousel width="100%" height="700px">
             <div>
                 <img src={bannerPic1} />
             </div>
