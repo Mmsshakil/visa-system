@@ -1,11 +1,13 @@
+import { Link } from 'react-router-dom';
 import flag from '../../../assets/flag.jpg'
 
 const Navbar = () => {
 
     const navOptions = <>
-        <li><a>Home</a></li>
-        <li><a>About</a></li>
-        <li><a>Registration</a></li>
+
+        <li><Link to="/">Home</Link></li>
+        <li> <Link to="/about">About</Link></li>
+        <li><Link to="/signUp">Registration</Link></li>
     </>
 
     return (
@@ -30,7 +32,8 @@ const Navbar = () => {
                 </ul>
             </div>
             <div className="navbar-end">
-                <a className="btn btn-outline btn-error">Login</a>
+                {/* <a className="btn btn-outline btn-error">Login</a> */}
+                <Link className="btn btn-outline btn-error" to="/login">Login</Link>
             </div>
         </div>
     );

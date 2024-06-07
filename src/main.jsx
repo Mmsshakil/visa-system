@@ -6,6 +6,7 @@ import { router } from './Routes/Routes.jsx'
 import {
   RouterProvider,
 } from "react-router-dom";
+import AuthProvider from './providers/AuthProvider.jsx';
 
 // const router = createBrowserRouter([
 //   {
@@ -16,8 +17,10 @@ import {
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <div className="conatainer mx-auto max-w-7xl">
-      <RouterProvider router={router} />
-    </div>
+    <AuthProvider>
+      <div className="conatainer mx-auto max-w-7xl">
+        <RouterProvider router={router} />
+      </div>
+    </AuthProvider>
   </React.StrictMode>,
 )
