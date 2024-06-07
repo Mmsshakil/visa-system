@@ -2,23 +2,52 @@ import { Link } from 'react-router-dom';
 import flag from '../../../assets/flag.jpg'
 import { useContext } from 'react';
 import { AuthContext } from '../../../providers/AuthProvider';
+import Swal from 'sweetalert2';
 
 const Navbar = () => {
 
-    const { user } = useContext(AuthContext);
+    const { user, logOut } = useContext(AuthContext);
 
+    const handleLogout = () => {
+
+        Swal.fire({
+            title: "Are you sure?",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Yes, Logout"
+        }).then((result) => {
+            if (result.isConfirmed) {
+                logOut()
+                    .then(() => {
+                        console.log('logout done');
+                        Swal.fire({
+                            title: "Logout Success!",
+                            icon: "success"
+                        });
+                    })
+            }
+        });
+
+
+
+    }
 
     const navOptions = <>
 
         <li><Link to="/">Home</Link></li>
         <li> <Link to="/about">About</Link></li>
 
-        {user === 'null' ?
-            <li><Link to="/signUp">Registration</Link></li>
-            :
+        {user ?
             <li><Link to="/jobs">Jobs</Link></li>
+            :
+
+            <li><Link to="/signUp">Registration</Link></li>
+
         }
     </>
+
 
     return (
         <div className="navbar bg-base-100 mx-auto max-w-7xl font-semibold ">
@@ -42,10 +71,10 @@ const Navbar = () => {
                 </ul>
             </div>
             <div className="navbar-end">
-                {user === 'null' ?
-                    <Link className="btn btn-outline btn-error" to="/login">Login</Link>
+                {user ?
+                    <button onClick={handleLogout} className="btn btn-error">Logout</button>
                     :
-                    <button className="btn btn-error">Logout</button>
+                    <Link className="btn btn-outline btn-error" to="/login">Login</Link>
                 }
 
             </div>
