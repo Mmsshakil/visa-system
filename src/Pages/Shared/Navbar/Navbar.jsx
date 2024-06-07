@@ -1,13 +1,23 @@
 import { Link } from 'react-router-dom';
 import flag from '../../../assets/flag.jpg'
+import { useContext } from 'react';
+import { AuthContext } from '../../../providers/AuthProvider';
 
 const Navbar = () => {
+
+    const { user } = useContext(AuthContext);
+
 
     const navOptions = <>
 
         <li><Link to="/">Home</Link></li>
         <li> <Link to="/about">About</Link></li>
-        <li><Link to="/signUp">Registration</Link></li>
+
+        {user === 'null' ?
+            <li><Link to="/signUp">Registration</Link></li>
+            :
+            <li><Link to="/jobs">Jobs</Link></li>
+        }
     </>
 
     return (
@@ -32,8 +42,12 @@ const Navbar = () => {
                 </ul>
             </div>
             <div className="navbar-end">
-                {/* <a className="btn btn-outline btn-error">Login</a> */}
-                <Link className="btn btn-outline btn-error" to="/login">Login</Link>
+                {user === 'null' ?
+                    <Link className="btn btn-outline btn-error" to="/login">Login</Link>
+                    :
+                    <button className="btn btn-error">Logout</button>
+                }
+
             </div>
         </div>
     );
