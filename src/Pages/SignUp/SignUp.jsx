@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import { useForm } from "react-hook-form";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../providers/AuthProvider";
 import Swal from "sweetalert2";
 
@@ -8,6 +8,10 @@ import Swal from "sweetalert2";
 
 const SignUp = () => {
 
+    // these lines for navigation after login
+    const navigate = useNavigate();
+    const location = useLocation();
+    // console.log(location);
 
     const {
         register,
@@ -16,7 +20,7 @@ const SignUp = () => {
         formState: { errors },
     } = useForm();
 
-    const { createUser } = useContext(AuthContext);
+    const { createUser, updateUserProfile } = useContext(AuthContext);
 
     const onSubmit = (data) => {
         console.log(data);
@@ -24,13 +28,32 @@ const SignUp = () => {
             .then(result => {
                 const loggedUser = result.user;
                 console.log(loggedUser);
+
+                updateUserProfile(data.name)
+                    .then(() => {
+                        console.log('name also added');
+                        
+                        Swal.fire({
+                            position: "top-end",
+                            icon: "success",
+                            title: "Your registration successful",
+                            showConfirmButton: false,
+                            timer: 1500
+                        });
+
+                        navigate('/');
+                    })
+
+            })
+            .catch(error => {
+                console.log(error.message);
+
                 Swal.fire({
-                    position: "top-end",
-                    icon: "success",
-                    title: "Your registration successful",
-                    showConfirmButton: false,
-                    timer: 1500
+                    icon: "error",
+                    title: "Oops...",
+                    text: "Already have an account! Please Login"
                 });
+                navigate(location?.state ? location.state : '/login');
             })
     }
 
