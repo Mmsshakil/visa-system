@@ -1,10 +1,12 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { AuthContext } from "../../providers/AuthProvider";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
+import { BiHide, BiShow } from "react-icons/bi";
 
 const Login = () => {
 
+    const [showPassword, setShowPassword] = useState(false);
 
     const { signIn } = useContext(AuthContext);
     // these lines for navigation after login
@@ -39,6 +41,14 @@ const Login = () => {
                 // these lines for navigation after login
                 navigate(from, { replace: true });
             })
+            .catch(error => {
+                console.log(error.message);
+                Swal.fire({
+                    icon: "error",
+                    title: "Login Faild",
+                    text: "Please check your mail and password"
+                });
+            })
 
     }
 
@@ -61,7 +71,22 @@ const Login = () => {
                             <label className="label">
                                 <span className="label-text font-semibold">Password</span>
                             </label>
-                            <input type="password" name="password" placeholder="Enter your password" className="input input-bordered" required />
+                            <div className=" relative flex w-full">
+                                <input
+                                    type={showPassword ? "text" : "password"}
+                                    name="password" placeholder="Enter your password" className="input input-bordered w-full" required />
+
+                                <span
+                                    onClick={() => setShowPassword(!showPassword)}
+                                    className="absolute right-2 top-[15px] text-xl">
+                                    {
+                                        showPassword ? <BiHide /> : <BiShow />
+                                    }
+                                </span>
+
+                            </div>
+
+
                             <label className="label">
                                 <a href="#" className="label-text-alt link link-hover">Forgot password?</a>
                             </label>
