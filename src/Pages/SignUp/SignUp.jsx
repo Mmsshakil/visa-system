@@ -24,6 +24,7 @@ const SignUp = () => {
     const {
         register,
         handleSubmit,
+        getValues,
         formState: { errors },
     } = useForm();
 
@@ -210,7 +211,7 @@ const SignUp = () => {
                                 <label className="label">
                                     <span className="label-text font-semibold">NID Number</span>
                                 </label>
-                                <input type="text" name="nid" {...register("nid")} placeholder="Enter NID number" className="input input-bordered" required />
+                                <input type="number" name="nid" {...register("nid")} placeholder="Enter NID number" className="input input-bordered" required />
                             </div>
                         </div>
 
@@ -287,23 +288,14 @@ const SignUp = () => {
                                         name="confirmPassword" {...register("confirmPassword", {
                                             minLength: 6,
                                             maxLength: 25,
-                                            pattern: /(?=.*[A-Z])(?=.*[!@#$&*])(?=.*[0-9])(?=.*[a-z])/
-                                        })} placeholder="Confirm password" className="input input-bordered w-full" required />
+                                            pattern: /(?=.*[A-Z])(?=.*[!@#$&*])(?=.*[0-9])(?=.*[a-z])/,
+                                            validate: value => value === getValues('password')
+                                        },
+                                        )} placeholder="Confirm password" className="input input-bordered w-full" required />
 
-                                    <span
-                                        onClick={() => setShowPassword(!showPassword)}
-                                        className="absolute right-2 top-[15px] text-xl">
-                                        {
-                                            showPassword ? <BiHide /> : <BiShow />
-                                        }
-                                    </span>
                                 </div>
 
-                                {errors.password?.type === 'minLength' && <span className="text-sm text-red-500">Password must be 6 characters</span>}
-
-                                {errors.password?.type === 'maxLength' && <span className="text-sm text-red-500">Password must be less than 25 characters</span>}
-
-                                {errors.password?.type === 'pattern' && <span className="text-sm text-red-500">Password must be one upper, lower case and number character</span>}
+                                {errors.confirmPassword?.type === 'validate' && <span className="text-sm text-red-500">Password does not match</span>}
 
                             </div>
 
