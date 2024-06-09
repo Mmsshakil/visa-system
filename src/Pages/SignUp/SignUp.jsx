@@ -145,8 +145,8 @@ const SignUp = () => {
 
                                 <select defaultValue="default" className="input input-bordered text-slate-400" {...register("gender", { required: true })}>
                                     <option disabled value="default">Select your gender</option>
-                                    <option className="text-black" value="male">Male</option>
-                                    <option className="text-black" value="female">Female</option>
+                                    <option className="text-black" value="Male">Male</option>
+                                    <option className="text-black" value="Female">Female</option>
                                 </select>
 
                                 {/* <input type="text" name="gender" {...register("gender")} placeholder="Select your gender" className="input input-bordered" required /> */}

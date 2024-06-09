@@ -8,6 +8,7 @@ import SignUp from "../Pages/SignUp/SignUp";
 import Jobs from "../Pages/Jobs/Jobs";
 import PrivateRoute from "./PrivateRoute";
 import Profile from "../Pages/Profile/Profile";
+import EcaForm from "../Pages/EcaForm/EcaForm";
 
 export const router = createBrowserRouter([
     {
@@ -33,6 +34,10 @@ export const router = createBrowserRouter([
             {
                 path: '/profile',
                 element: <PrivateRoute><Profile></Profile></PrivateRoute>
+            },
+            {
+                path: '/ecaForm',
+                element: <PrivateRoute><EcaForm></EcaForm></PrivateRoute>
             }
         ]
     },

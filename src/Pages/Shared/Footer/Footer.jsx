@@ -6,11 +6,10 @@ const Footer = () => {
     return (
 
         <footer >
-            <div className="footer p-10 bg-white text-black">
+            <div className="footer p-10 bg-white text-black mt-5">
                 <aside>
                     <img src={flag} className='w-20'></img>
                     <p className='font-bold' >Immigration, Refugees and Citizenship Canada (IRCC)</p>
-                    <p>Consulate General of Bangladesh</p>
                     <p>Atria- II, 2235 Sheppard Ave E Suite# 1505, Toronto, ON M2J 5B5, Canada</p>
                 </aside>
                 <nav>
