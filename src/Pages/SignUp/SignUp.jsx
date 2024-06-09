@@ -111,7 +111,7 @@ const SignUp = () => {
 
     return (
         <div className="p-5 md:p-0">
-            <div className="hero-content gap-5 md:gap-16 lg:gap-32 flex-col lg:flex-row">
+            <div className="hero-content gap-5 md:gap-8 lg:gap-32 flex-col lg:flex-row">
                 <div className="text-center lg:text-left">
                     <h1 className="text-5xl font-bold text-red-500">Registration now!</h1>
                     <p className="py-6">Immigration Refugees and Citizenship Canada (IRCC) Portal</p>
