@@ -5,6 +5,9 @@ import { useForm } from "react-hook-form";
 
 const EcaForm = () => {
 
+    const imagebb_key = import.meta.env.VITE_imagebb_key;
+    const imagebb_api = `https://api.imgbb.com/1/upload?key=${imagebb_key}`;
+
     const {
         register,
         handleSubmit,
@@ -38,14 +41,59 @@ const EcaForm = () => {
 
     // console.log(userData[0]);
     const { _id, name, photoUrl, fatherName, gender, nid, passport, country, phone, email } = userData[0];
+    console.log(_id);
 
 
     // this part for update and insert new data for the user
 
 
 
-    const onSubmit = (data) => {
+    const onSubmit = async (data) => {
         console.log(data);
+
+        // now first of all upload the image on imgbb site
+
+        // nid photo upload
+        const nidimageFile = { image: data.nidPhoto[0] };
+        const nidRes = await axiosPublic.post(imagebb_api, nidimageFile, {
+            headers: {
+                'Content-Type': 'multipart/form-data'
+            }
+        });
+        console.log(nidRes.data.data.display_url);
+
+        // passport photo upload
+        const passportimageFile = { image: data.passportPhoto[0] };
+        const passportRes = await axiosPublic.post(imagebb_api, passportimageFile, {
+            headers: {
+                'Content-Type': 'multipart/form-data'
+            }
+        });
+        console.log(passportRes.data.data.display_url);
+
+
+        // certificate photo upload
+        const certificatimageFile = { image: data.certificatPhoto[0] };
+        const certificatRes = await axiosPublic.post(imagebb_api, certificatimageFile, {
+            headers: {
+                'Content-Type': 'multipart/form-data'
+            }
+        });
+        console.log(certificatRes.data.data.display_url);
+
+
+        // ielts photo upload
+        const ieltsimageFile = { image: data.ieltsPhoto[0] };
+        const ieltsRes = await axiosPublic.post(imagebb_api, ieltsimageFile, {
+            headers: {
+                'Content-Type': 'multipart/form-data'
+            }
+        });
+        console.log(ieltsRes.data.data.display_url);
+
+
+
+
     }
 
 

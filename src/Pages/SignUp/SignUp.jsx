@@ -36,6 +36,7 @@ const SignUp = () => {
 
     const onSubmit = async (data) => {
         console.log(data);
+        
         // image uploaded in the imagebb site
         const imageFile = { image: data.profilePhoto[0] };
         const res = await axiosPublic.post(imagebb_api, imageFile, {
