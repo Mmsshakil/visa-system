@@ -18,7 +18,7 @@ const Main = () => {
                     <a href="https://wa.me/+8801786829816?text=Hello How can I help you?" target="_blank">
                         <div className="flex gap-1 justify-center items-center">
                             <img src={image} className="w-6 lg:w-10" alt="aaaa" />
-                            <h1 className="text-base lg:text-xl text-red-500 font-semibold">Support</h1>
+                            <h1 className="text-base lg:text-xl text-red-500 font-semibold">HelpLine</h1>
                         </div>
                     </a >
                 </div >

@@ -54,7 +54,7 @@ const Navbar = () => {
 
 
     return (
-        <div className="navbar bg-base-100 mx-auto max-w-7xl font-semibold ">
+        <div className="navbar py-1 bg-base-100 mx-auto max-w-7xl font-semibold ">
             <div className="navbar-start">
                 <div className="dropdown">
                     <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -66,7 +66,10 @@ const Navbar = () => {
                     </ul>
                 </div>
                 {/* <a className="btn btn-ghost text-xl">daisy</a> */}
-                <img src={flag} alt="canada flag" className='w-12' />
+                <div className='flex gap-5'>
+                    <img src={flag} alt="canada flag" className='w-12 md:w-20' />
+                    <h1 className='text-xs md:text-base'>Government <br />of Canada</h1>
+                </div>
 
             </div>
             <div className="navbar-center hidden lg:flex">
