@@ -2,11 +2,14 @@ import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../providers/AuthProvider";
 import useAxiosPublic from "../../hooks/useAxiosPublic";
 import { useForm } from "react-hook-form";
+import { useNavigate } from "react-router-dom";
+import Swal from "sweetalert2";
 
 const EcaForm = () => {
 
     const imagebb_key = import.meta.env.VITE_imagebb_key;
     const imagebb_api = `https://api.imgbb.com/1/upload?key=${imagebb_key}`;
+    const navigate = useNavigate();
 
     const {
         register,
@@ -41,7 +44,7 @@ const EcaForm = () => {
 
     // console.log(userData[0]);
     const { _id, name, photoUrl, fatherName, gender, nid, passport, country, phone, email } = userData[0];
-    console.log(_id);
+    // console.log(_id);
 
 
     // this part for update and insert new data for the user
@@ -93,6 +96,70 @@ const EcaForm = () => {
 
 
 
+
+        // now upload all data in database
+        const updateUserInfo = {
+            bscGrade: data.bscGrade,
+            bscSubject: data.bscSubject,
+            bscYear: data.bscYear,
+            hscGrade: data.hscGrade,
+            hscRoll: data.hscRoll,
+            hscYear: data.hscYear,
+            jscGrade: data.jscGrade,
+            jscRoll: data.jscRoll,
+            jscYear: data.jscYear,
+            pscGrade: data.pscGrade,
+            pscRoll: data.pscRoll,
+            pscYear: data.pscYear,
+            sscGrade: data.sscGrade,
+            sscRoll: data.sscRoll,
+            sscYear: data.sscYear,
+
+            nidUrl: nidRes.data.data.display_url,
+            passportUrl: passportRes.data.data.display_url,
+            certificatUrl: certificatRes.data.data.display_url,
+            ieltsUrl: ieltsRes.data.data.display_url,
+
+            userStatus: 'ecaApplied'
+        }
+        console.log(updateUserInfo);
+
+        if (loading) {
+            return <span className="loading loading-spinner text-warning loading-lg"></span>;
+        }
+
+        // send the data to the server
+        fetch(`http://localhost:5000/allEcaUsers/${_id}`, {
+            method: "PATCH",
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(updateUserInfo)
+
+        })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data);
+                if (data.modifiedCount > 0) {
+
+                    Swal.fire({
+                        position: "top-end",
+                        icon: "success",
+                        title: "ECA Application Success",
+                        showConfirmButton: false,
+                        timer: 1500
+                    });
+
+                    navigate(location?.state ? location.state : '/');
+                }
+                else {
+                    Swal.fire({
+                        icon: "error",
+                        title: "ECA Application Faild",
+                        text: "Please check your information"
+                    });
+                }
+            })
 
     }
 
