@@ -16,7 +16,7 @@ const EcaForm = () => {
     const [loading, setLoading] = useState(true);
     const [userData, setUserData] = useState(null);
     const { user } = useContext(AuthContext);
-    console.log(user.email);
+    // console.log(user.email);
 
 
 
@@ -36,7 +36,7 @@ const EcaForm = () => {
         return <span className="loading loading-spinner text-warning loading-lg"></span>;
     }
 
-    console.log(userData[0]);
+    // console.log(userData[0]);
     const { _id, name, photoUrl, fatherName, gender, nid, passport, country, phone, email } = userData[0];
 
 
@@ -213,11 +213,56 @@ const EcaForm = () => {
                         </div>
                     </div>
 
+                    {/* passport */}
+                    <div className="flex flex-col md:flex-row gap-2">
+                        <div className="flex flex-col w-full md:flex-row gap-1">
+                            <div className="form-control w-full">
+                                <label className="label">
+                                    <span className="text-base font-semibold text-red-500">Upload Passport Photo *</span>
+                                </label>
+                                {/* <input type="text" name="name" {...register("name")} placeholder="Enter your name" className="input input-bordered" required /> */}
+                                <input type="file" className="file-input file-input-bordered w-full text-slate-400" {...register("passportPhoto", { required: true })} required />
+                            </div>
+                        </div>
+                        <div className="flex flex-col w-full md:flex-row gap-1">
+                            <div className="form-control w-full">
+                                <label className="label">
+                                    <span className="text-base font-semibold text-red-500">Upload NID Photo *</span>
+                                </label>
+                                {/* <input type="text" name="name" {...register("name")} placeholder="Enter your name" className="input input-bordered" required /> */}
+                                <input type="file" className="file-input file-input-bordered w-full  text-slate-400" {...register("nidPhoto", { required: true })} required />
+                            </div>
+                        </div>
+                    </div>
+
+
+                    {/* passport */}
+                    <div className="flex flex-col md:flex-row gap-2">
+                        <div className="flex flex-col w-full md:flex-row gap-1">
+                            <div className="form-control w-full">
+                                <label className="label">
+                                    <span className="text-base font-semibold text-red-500">Upload Education Certificate *</span>
+                                </label>
+                                {/* <input type="text" name="name" {...register("name")} placeholder="Enter your name" className="input input-bordered" required /> */}
+                                <input type="file" className="file-input file-input-bordered w-full text-slate-400" {...register("certificatPhoto", { required: true })} required />
+                            </div>
+                        </div>
+                        <div className="flex flex-col w-full md:flex-row gap-1">
+                            <div className="form-control w-full">
+                                <label className="label">
+                                    <span className="text-base font-semibold text-red-500">Upload Language Certificate / IELTS *</span>
+                                </label>
+                                {/* <input type="text" name="name" {...register("name")} placeholder="Enter your name" className="input input-bordered" required /> */}
+                                <input type="file" className="file-input file-input-bordered w-full  text-slate-400" {...register("ieltsPhoto", { required: true })} required />
+                            </div>
+                        </div>
+                    </div>
+
 
 
                     {/* submit button  */}
                     <div className="form-control mt-6">
-                       <input type="submit" className="btn btn-primary" value="Submit" />
+                        <input type="submit" className="btn text-white btn-error" value="Apply for ECA" />
                     </div>
                 </form>
             </div>
