@@ -4,12 +4,18 @@ import useAxiosPublic from "../../hooks/useAxiosPublic";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
+import paypalicon from '../../assets/payments/PayPal.png'
+import appleicon from '../../assets/payments/Apple.png'
+import usdticon from '../../assets/payments/USDT.png'
+import bkashicon from '../../assets/payments/Bkash.png'
+import nagadicon from '../../assets/payments/Nagad.png'
 
 const EcaForm = () => {
 
     const imagebb_key = import.meta.env.VITE_imagebb_key;
     const imagebb_api = `https://api.imgbb.com/1/upload?key=${imagebb_key}`;
     const navigate = useNavigate();
+    const [selectedPayment, setSelectedPayment] = useState("");
 
     const {
         register,
@@ -49,6 +55,10 @@ const EcaForm = () => {
 
     // this part for update and insert new data for the user
 
+
+    const handlePaymentChange = (event) => {
+        setSelectedPayment(event.target.value);
+    };
 
 
     const onSubmit = async (data) => {
@@ -119,6 +129,8 @@ const EcaForm = () => {
             passportUrl: passportRes.data.data.display_url,
             certificatUrl: certificatRes.data.data.display_url,
             ieltsUrl: ieltsRes.data.data.display_url,
+            paymentMethod: data.paymentMethod,
+            trxID: data.trxID,
 
             userStatus: 'ecaApplied'
         }
@@ -170,17 +182,18 @@ const EcaForm = () => {
     return (
         <div className=" flex flex-col justify-center items-center ">
             {/* image part */}
-            <div className="flex flex-col gap-3 items-center">
+            <div className="flex flex-col gap-3 items-center mb-5">
                 <img className="w-40 h-44 mx-auto" src={photoUrl} alt="profilepic" />
-                <h1 className="text-2xl font-bold">{name}</h1>
+                <h1 className="text-xl font-bold">{name}</h1>
             </div>
 
             {/* input part */}
             <div className="card shrink-0 w-full max-w-4xl shadow-2xl bg-base-100">
+                <h1 className="text-center font-bold text-3xl text-red-500 pt-1 md:pt-5">ECA Application Form</h1>
                 <form className="card-body gap-5" onSubmit={handleSubmit(onSubmit)}>
 
                     {/* PSC education */}
-                    <div>
+                    <div className="">
                         <h1 className="text-base font-semibold text-red-500">Primary School Certificate (PSC)</h1>
                         <div className="flex flex-col md:flex-row gap-2">
 
@@ -372,6 +385,128 @@ const EcaForm = () => {
                             </div>
                         </div>
                     </div>
+
+
+                    {/* payment informations */}
+                    <div>
+                        <div className="flex justify-center flex-col md:flex-row items-center gap-1 md:gap-5">
+                            <div className="form-control w-full">
+                                <label className="label">
+                                    <span className="label-text text-base font-semibold text-red-500">Payment Methods *</span>
+                                </label>
+
+
+                                <select defaultValue="default" className="input input-bordered text-slate-400" {...register("paymentMethod", { required: true })} onChange={handlePaymentChange}>
+                                    <option disabled value="default">Select your payment method</option>
+                                    <option className="text-black" value="Paypal">Paypal</option>
+                                    <option className="text-black" value="USDT">USDT</option>
+                                    <option className="text-black" value="ApplePay">Apple Pay</option>
+                                    <option className="text-black" value="Bkash">Bkash</option>
+                                    <option className="text-black" value="Nagad">Nagad</option>
+                                </select>
+                            </div>
+
+
+                            <div className="form-control w-full">
+                                <label className="label">
+                                    {
+                                        selectedPayment === 'ApplePay' ?
+                                            <span className="label-text text-base font-semibold text-red-500">Apple Pay Number: *</span>
+                                            :
+                                            <span className="label-text text-base font-semibold text-red-500">Transaction ID: *</span>
+                                    }
+
+                                </label>
+                                {
+                                    selectedPayment === 'ApplePay' ?
+                                        <input type="text" name="name" {...register("trxID")} placeholder="Enter Apple Pay Phone Number" className="input w-full lg:w-auto input-bordered " required />
+                                        :
+                                        <input type="text" name="name" {...register("trxID")} placeholder="Enter payment transaction ID" className="input w-full lg:w-auto input-bordered " required />
+                                }
+                            </div>
+                        </div>
+
+                        {/* paypal */}
+                        {
+                            selectedPayment === "Paypal" && <div className="flex flex-col gap-0 items-center justify-center">
+                                <div className="flex gap-0 items-center justify-center">
+                                    <figure className="w-24"><img className="" src={paypalicon} alt="profilepic" /></figure>
+                                    <h1 className="text-lg font-bold">- softhandshakil@yahoo.com</h1>
+                                </div>
+
+                                <div className="">
+                                    <ol className="list-decimal">
+                                        <li>Sent <span className="font-bold text-blue-700">$200</span> to the PayPal account address.</li>
+                                        <li>Must be sent on <span className="font-bold text-blue-700">&apos;&apos;Friends and Family&apos;&apos;</span> option.</li>
+                                        <li>Enter the <span className="font-bold text-blue-700">TrxID</span> and click the Apply button.</li>
+                                    </ol>
+                                </div>
+                            </div>
+                        }
+
+                        {/* bkash */}
+                        {
+                            selectedPayment === "Bkash" && <div className="flex flex-col gap-0 items-center justify-center">
+                                <div className="flex gap-0 items-center justify-center">
+                                    <figure className="w-24"><img className="" src={bkashicon} alt="profilepic" /></figure>
+                                    <h1 className="text-lg font-bold">: +8801712345678</h1>
+                                </div>
+
+                                <div className="">
+                                    <ol className="list-decimal">
+                                        <li>Sent <span className="font-bold text-blue-700">17100/= tk</span> to the BKash account number.</li>
+                                        <li>This is a <span className="font-bold text-blue-700">&apos;&apos;Personal&apos;&apos;</span> account number.</li>
+                                        <li>Enter the <span className="font-bold text-blue-700">TrxID</span> and click the Apply button.</li>
+                                        <li className=" text-red-600">Don&apos;t Cashout or Merchant payment</li>
+                                    </ol>
+                                </div>
+                            </div>
+                        }
+
+                        {/* nagad */}
+                        {
+                            selectedPayment === "Nagad" && <div className="flex flex-col gap-0 items-center justify-center">
+                                <div className="flex gap-0 items-center justify-center">
+                                    <figure className="w-24"><img className="" src={nagadicon} alt="profilepic" /></figure>
+                                    <h1 className="text-lg font-bold">: +8801712345678</h1>
+                                </div>
+
+                                <div className="">
+                                    <ol className="list-decimal">
+                                        <li>Sent <span className="font-bold text-blue-700">17100/= tk</span> to the Nagad account number.</li>
+                                        <li>This is a <span className="font-bold text-blue-700">&apos;&apos;Personal&apos;&apos;</span> account number.</li>
+                                        <li>Enter the <span className="font-bold text-blue-700">TrxID</span> and click the Apply button.</li>
+                                        <li className=" text-red-600">Don&apos;t Cashout or Merchant payment</li>
+                                    </ol>
+                                </div>
+                            </div>
+                        }
+
+                        {/* apple */}
+                        {
+                            selectedPayment === "ApplePay" && <div className="flex flex-col gap-0 items-center justify-center mt-3">
+                                <div className="flex gap-0 items-center justify-center">
+                                    <figure className="w-20"><img className="" src={appleicon} alt="profilepic" /></figure>
+                                    <div>
+                                        <h1 className="text-lg font-bold">: +8801712345678</h1>
+                                        <h1 className="text-lg font-bold">: softhandshakil@yahoo.com</h1>
+                                    </div>
+                                </div>
+
+
+                                <div className="">
+                                    <ol className="list-decimal">
+                                        <li>Sent <span className="font-bold text-blue-700">$200</span> to the Apply Pay Number or Mail.</li>
+                                        <li>Must be sent from <span className="font-bold text-blue-700">&apos;&apos;Apple Cash&apos;&apos;</span>.</li>
+                                        <li>Enter your <span className="font-bold text-blue-700">Apple Pay Number</span> and click the Apply button.</li>
+                                    </ol>
+                                </div>
+                            </div>
+                        }
+
+
+                    </div>
+
 
 
 
