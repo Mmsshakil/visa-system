@@ -175,7 +175,7 @@ const LmiaForm = () => {
                         <div className="flex flex-col md:flex-row gap-2">
                             <div className="form-control w-full">
                                 <label className="label">
-                                    <span className="label-text font-semibold">Full Name</span>
+                                    <span className="label-text font-semibold">Your Full Name </span>
                                 </label>
                                 <input type="" placeholder={name} className="input w-full font-bold lg:w-auto input-bordered rounded-none" disabled />
                             </div>
@@ -201,7 +201,7 @@ const LmiaForm = () => {
                         <div className="flex flex-col md:flex-row gap-2">
                             <div className="form-control w-full">
                                 <label className="label">
-                                    <span className="label-text font-semibold">Mother Name</span>
+                                    <span className="label-text font-semibold">Mother Name <span className="text-lg text-red-600 font-bold">*</span></span>
                                 </label>
                                 <input type="text" {...register("motherName")} placeholder="Enter your mother name" className="input w-full lg:w-auto input-bordered rounded-none" required />
                             </div>
@@ -209,14 +209,14 @@ const LmiaForm = () => {
 
                             <div className="form-control w-full">
                                 <label className="label">
-                                    <span className="label-text font-semibold">Date of Birth</span>
+                                    <span className="label-text font-semibold">Date of Birth <span className="text-lg text-red-600 font-bold">*</span></span>
                                 </label>
                                 <input type="date" {...register("birthDay")} placeholder="Enter your mother name" className="input w-full lg:w-auto input-bordered rounded-none" required />
                             </div>
 
                             <div className="form-control w-full">
                                 <label className="label">
-                                    <span className="label-text font-semibold">Marital Status</span>
+                                    <span className="label-text font-semibold">Marital Status <span className="text-lg text-red-600 font-bold">*</span></span>
                                 </label>
                                 <select defaultValue="default" className="input input-bordered text-slate-400 rounded-none" {...register("maritalStatus", { required: true })}>
                                     <option disabled value="default">Select Marital Status</option>
@@ -233,7 +233,7 @@ const LmiaForm = () => {
 
                             <div className="form-control w-full">
                                 <label className="label">
-                                    <span className="label-text font-semibold">Blood Group</span>
+                                    <span className="label-text font-semibold">Blood Group <span className="text-lg text-red-600 font-bold">*</span></span>
                                 </label>
                                 <select defaultValue="default" className="input input-bordered text-slate-400 rounded-none" {...register("bloodGroup", { required: true })}>
                                     <option disabled value="default">Select Blood Group</option>
@@ -251,7 +251,7 @@ const LmiaForm = () => {
 
                             <div className="form-control w-full">
                                 <label className="label">
-                                    <span className="label-text font-semibold">Job Experience (Year)</span>
+                                    <span className="label-text font-semibold">Job Experience (Year) <span className="text-lg text-red-600 font-bold">*</span></span>
                                 </label>
                                 <input type="number" {...register("jobExperience")} placeholder="Enter experience year" className="input w-full lg:w-auto input-bordered rounded-none" required />
                             </div>
@@ -263,7 +263,7 @@ const LmiaForm = () => {
 
                         {/* present */}
                         <div>
-                            <h1 className="font-semibold pt-4 pb-2">Present Address Details</h1>
+                            <h1 className="font-semibold pt-4 pb-2">Present Address Details <span className="text-lg text-red-600 font-bold">*</span></h1>
                             <div className="flex flex-col md:flex-row gap-2">
 
                                 <div className="flex justify-center gap-1 items-center w-full">
@@ -326,7 +326,7 @@ const LmiaForm = () => {
 
                         {/* parmanet */}
                         <div>
-                            <h1 className="font-semibold pt-4 pb-2">Permanent Address Details</h1>
+                            <h1 className="font-semibold pt-4 pb-2">Permanent Address Details <span className="text-lg text-red-600 font-bold">*</span></h1>
                             <div className="flex flex-col md:flex-row gap-2">
 
                                 <div className="flex justify-center gap-1 items-center w-full">
@@ -401,7 +401,7 @@ const LmiaForm = () => {
                     <div className="flex flex-col md:flex-row gap-2">
                         <div className="form-control w-full">
                             <label className="label">
-                                <span className="label-text font-semibold">Company</span>
+                                <span className="label-text font-semibold">Company <span className="text-lg text-red-600 font-bold">*</span></span>
                             </label>
                             <select defaultValue="default" className="input input-bordered text-slate-400 rounded-none" {...register("companyName", { required: true })}>
                                 <option disabled value="default">Company</option>
@@ -418,7 +418,7 @@ const LmiaForm = () => {
                         {/* jobs */}
                         <div className="form-control w-full">
                             <label className="label">
-                                <span className="label-text font-semibold">Position</span>
+                                <span className="label-text font-semibold">Position <span className="text-lg text-red-600 font-bold">*</span></span>
                             </label>
                             <select defaultValue="default" className="input input-bordered text-slate-400 rounded-none" {...register("jobTitle", { required: true })}>
                                 <option disabled value="default">Select job</option>
@@ -441,7 +441,7 @@ const LmiaForm = () => {
                         <div className="flex flex-col w-full md:flex-row gap-1">
                             <div className="form-control w-full">
                                 <label className="label">
-                                    <span className="text-base font-semibold">Upload Your CV *</span>
+                                    <span className="text-base font-semibold">Upload Your CV <span className="text-lg text-red-600 font-bold">*</span></span>
                                 </label>
                                 {/* <input type="text" name="name" {...register("name")} placeholder="Enter your name" className="input input-bordered" required /> */}
                                 <input type="file" className="file-input file-input-bordered w-full text-slate-400 rounded-none" {...register("cvPhoto", { required: true })} required />
@@ -450,7 +450,7 @@ const LmiaForm = () => {
                         <div className="flex flex-col w-full md:flex-row gap-1">
                             <div className="form-control w-full">
                                 <label className="label">
-                                    <span className="text-base font-semibold">Upload Cover Letter *</span>
+                                    <span className="text-base font-semibold">Upload Cover Letter <span className="text-lg text-red-600 font-bold">*</span></span>
                                 </label>
                                 {/* <input type="text" name="name" {...register("name")} placeholder="Enter your name" className="input input-bordered" required /> */}
                                 <input type="file" className="file-input file-input-bordered w-full  text-slate-400 rounded-none" {...register("coverPhoto", { required: true })} required />

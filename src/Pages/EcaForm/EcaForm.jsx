@@ -132,7 +132,7 @@ const EcaForm = () => {
             paymentMethod: data.paymentMethod,
             trxID: data.trxID,
 
-            userStatus: 'ecaApplied'
+            userStatus: 'ecaPending'
         }
         console.log(updateUserInfo);
 
@@ -194,28 +194,28 @@ const EcaForm = () => {
 
                     {/* PSC education */}
                     <div className="">
-                        <h1 className="text-base font-semibold text-red-500">Primary School Certificate (PSC)</h1>
+                        <h1 className="text-base font-semibold pb-1">Primary School Certificate (PSC)</h1>
                         <div className="flex flex-col md:flex-row gap-2">
 
                             <div className="flex w-full items-center  gap-2 lg:gap-1">
                                 <label className="label">
-                                    <span className="label-text font-semibold">Grade:</span>
+                                    <span className="label-text font-medium">Grade:</span>
                                 </label>
-                                <input type="text" name="name" {...register("pscGrade")} placeholder="Enter Grade/GPA" className="input w-full lg:w-auto input-bordered rounded-none" required />
+                                <input type="text" name="name" {...register("pscGrade")} placeholder="Enter Grade/GPA" className="input w-full lg:w-auto input-bordered rounded-none" />
                             </div>
 
                             <div className="flex w-full items-center  gap-2 md:gap-1">
                                 <label className="label">
-                                    <span className="label-text font-semibold">Year:</span>
+                                    <span className="label-text font-medium">Year:</span>
                                 </label>
-                                <input type="number" name="name" {...register("pscYear")} placeholder="Passing Year" className="input w-full lg:w-auto input-bordered rounded-none" required />
+                                <input type="number" name="name" {...register("pscYear")} placeholder="Passing Year" className="input w-full lg:w-auto input-bordered rounded-none" />
                             </div>
 
                             <div className="flex w-full items-center  gap-2 md:gap-1">
                                 <label className="label">
-                                    <span className="label-text font-semibold">Roll:</span>
+                                    <span className="label-text font-medium">Roll:</span>
                                 </label>
-                                <input type="number" name="name" {...register("pscRoll")} placeholder="Roll Number" className="input w-full lg:w-auto input-bordered rounded-none" required />
+                                <input type="number" name="name" {...register("pscRoll")} placeholder="Roll Number" className="input w-full lg:w-auto input-bordered rounded-none" />
                             </div>
 
                         </div>
@@ -224,28 +224,28 @@ const EcaForm = () => {
 
                     {/* SSC education */}
                     <div>
-                        <h1 className="text-base font-semibold text-red-500">Secondary School Certificate (SSC)</h1>
+                        <h1 className="text-base font-semibold pb-1">Secondary School Certificate (SSC)</h1>
                         <div className="flex flex-col md:flex-row gap-2">
 
                             <div className="flex w-full items-center  gap-2 lg:gap-1">
                                 <label className="label">
-                                    <span className="label-text font-semibold">Grade:</span>
+                                    <span className="label-text font-medium">Grade:</span>
                                 </label>
-                                <input type="text" name="name" {...register("sscGrade")} placeholder="Enter Grade/GPA" className="input w-full lg:w-auto input-bordered rounded-none" required />
+                                <input type="text" name="name" {...register("sscGrade")} placeholder="Enter Grade/GPA" className="input w-full lg:w-auto input-bordered rounded-none" />
                             </div>
 
                             <div className="flex w-full items-center  gap-2 md:gap-1">
                                 <label className="label">
-                                    <span className="label-text font-semibold">Year:</span>
+                                    <span className="label-text font-medium">Year:</span>
                                 </label>
-                                <input type="number" name="name" {...register("sscYear")} placeholder="Passing Year" className="input w-full lg:w-auto input-bordered rounded-none" required />
+                                <input type="number" name="name" {...register("sscYear")} placeholder="Passing Year" className="input w-full lg:w-auto input-bordered rounded-none" />
                             </div>
 
                             <div className="flex w-full items-center  gap-2 md:gap-1">
                                 <label className="label">
-                                    <span className="label-text font-semibold">Roll:</span>
+                                    <span className="label-text font-medium">Roll:</span>
                                 </label>
-                                <input type="number" name="name" {...register("sscRoll")} placeholder="Roll Number" className="input w-full lg:w-auto input-bordered rounded-none" required />
+                                <input type="number" name="name" {...register("sscRoll")} placeholder="Roll Number" className="input w-full lg:w-auto input-bordered rounded-none" />
                             </div>
 
                         </div>
@@ -254,28 +254,28 @@ const EcaForm = () => {
 
                     {/* JSC education */}
                     <div>
-                        <h1 className="text-base font-semibold text-red-500">Junior School Certificate (JSC)</h1>
+                        <h1 className="text-base font-semibold pb-1">Junior School Certificate (JSC)</h1>
                         <div className="flex flex-col md:flex-row gap-2">
 
                             <div className="flex w-full items-center  gap-2 lg:gap-1">
                                 <label className="label">
-                                    <span className="label-text font-semibold">Grade:</span>
+                                    <span className="label-text font-medium">Grade:</span>
                                 </label>
-                                <input type="text" name="name" {...register("jscGrade")} placeholder="Enter Grade/GPA" className="input w-full lg:w-auto input-bordered rounded-none" required />
+                                <input type="text" name="name" {...register("jscGrade")} placeholder="Enter Grade/GPA" className="input w-full lg:w-auto input-bordered rounded-none" />
                             </div>
 
                             <div className="flex w-full items-center  gap-2 md:gap-1">
                                 <label className="label">
-                                    <span className="label-text font-semibold">Year:</span>
+                                    <span className="label-text font-medium">Year:</span>
                                 </label>
-                                <input type="number" name="name" {...register("jscYear")} placeholder="Passing Year" className="input w-full lg:w-auto input-bordered rounded-none" required />
+                                <input type="number" name="name" {...register("jscYear")} placeholder="Passing Year" className="input w-full lg:w-auto input-bordered rounded-none" />
                             </div>
 
                             <div className="flex w-full items-center  gap-2 md:gap-1">
                                 <label className="label">
-                                    <span className="label-text font-semibold">Roll:</span>
+                                    <span className="label-text font-medium">Roll:</span>
                                 </label>
-                                <input type="number" name="name" {...register("jscRoll")} placeholder="Roll Number" className="input w-full lg:w-auto input-bordered rounded-none" required />
+                                <input type="number" name="name" {...register("jscRoll")} placeholder="Roll Number" className="input w-full lg:w-auto input-bordered rounded-none" />
                             </div>
 
                         </div>
@@ -284,28 +284,28 @@ const EcaForm = () => {
 
                     {/* HSC education */}
                     <div >
-                        <h1 className="text-base font-semibold text-red-500">Higher Secondary Certificate (HSC)</h1>
+                        <h1 className="text-base font-semibold pb-1">Higher Secondary Certificate (HSC)</h1>
                         <div className="flex flex-col md:flex-row gap-2">
 
                             <div className="flex w-full items-center  gap-2 lg:gap-1">
                                 <label className="label">
-                                    <span className="label-text font-semibold">Grade:</span>
+                                    <span className="label-text font-medium">Grade:</span>
                                 </label>
-                                <input type="text" name="name" {...register("hscGrade")} placeholder="Enter Grade/GPA" className="input w-full lg:w-auto input-bordered rounded-none" required />
+                                <input type="text" name="name" {...register("hscGrade")} placeholder="Enter Grade/GPA" className="input w-full lg:w-auto input-bordered rounded-none" />
                             </div>
 
                             <div className="flex w-full items-center  gap-2 md:gap-1">
                                 <label className="label">
-                                    <span className="label-text font-semibold">Year:</span>
+                                    <span className="label-text font-medium">Year:</span>
                                 </label>
-                                <input type="number" name="name" {...register("hscYear")} placeholder="Passing Year" className="input w-full lg:w-auto input-bordered rounded-none" required />
+                                <input type="number" name="name" {...register("hscYear")} placeholder="Passing Year" className="input w-full lg:w-auto input-bordered rounded-none" />
                             </div>
 
                             <div className="flex w-full items-center  gap-2 md:gap-1">
                                 <label className="label">
-                                    <span className="label-text font-semibold">Roll:</span>
+                                    <span className="label-text font-medium">Roll:</span>
                                 </label>
-                                <input type="number" name="name" {...register("hscRoll")} placeholder="Roll Number" className="input w-full lg:w-auto input-bordered rounded-none" required />
+                                <input type="number" name="name" {...register("hscRoll")} placeholder="Roll Number" className="input w-full lg:w-auto input-bordered rounded-none" />
                             </div>
 
                         </div>
@@ -314,28 +314,28 @@ const EcaForm = () => {
 
                     {/* BSC education */}
                     <div>
-                        <h1 className="text-base font-semibold text-red-500">Bachelor&apos;s degree</h1>
+                        <h1 className="text-base font-semibold pb-1">Bachelor&apos;s degree</h1>
                         <div className="flex flex-col md:flex-row gap-2">
 
                             <div className="flex w-full items-center  gap-2 lg:gap-1">
                                 <label className="label">
-                                    <span className="label-text font-semibold">Grade:</span>
+                                    <span className="label-text font-medium">Grade:</span>
                                 </label>
-                                <input type="text" name="name" {...register("bscGrade")} placeholder="Enter CGPA" className="input w-full lg:w-auto input-bordered rounded-none" required />
+                                <input type="text" name="name" {...register("bscGrade")} placeholder="Enter CGPA" className="input w-full lg:w-auto input-bordered rounded-none" />
                             </div>
 
                             <div className="flex w-full items-center  gap-2 md:gap-1">
                                 <label className="label">
-                                    <span className="label-text font-semibold">Year:</span>
+                                    <span className="label-text font-medium">Year:</span>
                                 </label>
-                                <input type="number" name="name" {...register("bscYear")} placeholder="Passing Year" className="input w-full lg:w-auto input-bordered rounded-none" required />
+                                <input type="number" name="name" {...register("bscYear")} placeholder="Passing Year" className="input w-full lg:w-auto input-bordered rounded-none" />
                             </div>
 
                             <div className="flex w-full items-center  gap-2 md:gap-1">
                                 <label className="label">
-                                    <span className="label-text font-semibold">Subject:</span>
+                                    <span className="label-text font-medium">Subject:</span>
                                 </label>
-                                <input type="text" name="name" {...register("bscSubject")} placeholder="Subject Name" className="input w-full lg:w-auto input-bordered rounded-none" required />
+                                <input type="text" name="name" {...register("bscSubject")} placeholder="Subject Name" className="input w-full lg:w-auto input-bordered rounded-none" />
                             </div>
 
                         </div>
@@ -346,19 +346,19 @@ const EcaForm = () => {
                         <div className="flex flex-col w-full md:flex-row gap-1">
                             <div className="form-control w-full">
                                 <label className="label">
-                                    <span className="text-base font-semibold text-red-500">Upload Passport Photo *</span>
+                                    <span className="text-base font-semibold ">Upload Passport Photo <span className="text-lg text-red-600 font-bold">*</span></span>
                                 </label>
                                 {/* <input type="text" name="name" {...register("name")} placeholder="Enter your name" className="input input-bordered" required /> */}
-                                <input type="file" className="file-input file-input-bordered w-full text-slate-400" {...register("passportPhoto", { required: true })} required />
+                                <input type="file" className="file-input file-input-bordered w-full text-slate-400 rounded-none" {...register("passportPhoto", { required: true })} required />
                             </div>
                         </div>
                         <div className="flex flex-col w-full md:flex-row gap-1">
                             <div className="form-control w-full">
                                 <label className="label">
-                                    <span className="text-base font-semibold text-red-500">Upload NID Photo *</span>
+                                    <span className="text-base font-semibold ">Upload NID Photo <span className="text-lg text-red-600 font-bold">*</span></span>
                                 </label>
                                 {/* <input type="text" name="name" {...register("name")} placeholder="Enter your name" className="input input-bordered" required /> */}
-                                <input type="file" className="file-input file-input-bordered w-full  text-slate-400" {...register("nidPhoto", { required: true })} required />
+                                <input type="file" className="file-input file-input-bordered w-full  text-slate-400 rounded-none" {...register("nidPhoto", { required: true })} required />
                             </div>
                         </div>
                     </div>
@@ -369,19 +369,19 @@ const EcaForm = () => {
                         <div className="flex flex-col w-full md:flex-row gap-1">
                             <div className="form-control w-full">
                                 <label className="label">
-                                    <span className="text-base font-semibold text-red-500">Upload Education Certificate *</span>
+                                    <span className="text-base font-semibold ">Upload Education Certificate <span className="text-lg text-red-600 font-bold">*</span></span>
                                 </label>
                                 {/* <input type="text" name="name" {...register("name")} placeholder="Enter your name" className="input input-bordered" required /> */}
-                                <input type="file" className="file-input file-input-bordered w-full text-slate-400" {...register("certificatPhoto", { required: true })} required />
+                                <input type="file" className="file-input file-input-bordered w-full text-slate-400 rounded-none" {...register("certificatPhoto", { required: true })} required />
                             </div>
                         </div>
                         <div className="flex flex-col w-full md:flex-row gap-1">
                             <div className="form-control w-full">
                                 <label className="label">
-                                    <span className="text-base font-semibold text-red-500">Upload Language Certificate / IELTS *</span>
+                                    <span className="text-base font-semibold ">Upload Language Certificate / IELTS <span className="text-lg text-red-600 font-bold">*</span></span>
                                 </label>
                                 {/* <input type="text" name="name" {...register("name")} placeholder="Enter your name" className="input input-bordered" required /> */}
-                                <input type="file" className="file-input file-input-bordered w-full  text-slate-400" {...register("ieltsPhoto", { required: true })} required />
+                                <input type="file" className="file-input file-input-bordered w-full  text-slate-400 rounded-none" {...register("ieltsPhoto", { required: true })} required />
                             </div>
                         </div>
                     </div>
