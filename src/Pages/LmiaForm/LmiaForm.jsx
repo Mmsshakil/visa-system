@@ -7,10 +7,13 @@ import bkashicon from '../../assets/payments/Bkash.png'
 import nagadicon from '../../assets/payments/Nagad.png'
 import useAxiosPublic from "../../hooks/useAxiosPublic";
 import { AuthContext } from "../../providers/AuthProvider";
+import Swal from "sweetalert2";
+import { useNavigate } from "react-router-dom";
 
 const LmiaForm = () => {
     const imagebb_key = import.meta.env.VITE_imagebb_key;
     const imagebb_api = `https://api.imgbb.com/1/upload?key=${imagebb_key}`;
+    const navigate = useNavigate();
 
     const [selectedPayment, setSelectedPayment] = useState("");
     const {
@@ -59,17 +62,96 @@ const LmiaForm = () => {
 
 
 
-    const onSubmit = async(data) => {
+    const onSubmit = async (data) => {
         console.log(data);
 
         // image uploaded in the imagebb site
-        const imageFile = { image: data.cvPhoto[0] };
-        const res = await axiosPublic.post(imagebb_api, imageFile, {
+        // cv image
+        const cvImageFile = { image: data.cvPhoto[0] };
+        const cvRes = await axiosPublic.post(imagebb_api, cvImageFile, {
             headers: {
                 'Content-Type': 'multipart/form-data'
             }
         });
-        console.log(res.data);
+        console.log(cvRes.data);
+
+
+        // cover image
+        const coverImageFile = { image: data.coverPhoto[0] };
+        const coverRes = await axiosPublic.post(imagebb_api, coverImageFile, {
+            headers: {
+                'Content-Type': 'multipart/form-data'
+            }
+        });
+        console.log(coverRes.data);
+
+
+
+
+        // now upload all data in database
+        const updateUserInfo = {
+            birthDay: data.birthDay,
+            bloodGroup: data.bloodGroup,
+            companyName: data.companyName,
+            jobExperience: data.jobExperience,
+            jobTitle: data.jobTitle,
+            lmiaPaymentMethod: data.lmiaPaymentMethod,
+            lmiaTrxID: data.lmiaTrxID,
+            maritalStatus: data.maritalStatus,
+            motherName: data.motherName,
+            parmanentAddre: data.parmanentAddre,
+            parmanentCity: data.parmanentCity,
+            permanentCountry: data.permanentCountry,
+            presentAddre: data.presentAddre,
+            presentCity: data.presentCity,
+            presentCountry: data.presentCountry,
+
+            coverPhoto: coverRes.data.data.display_url,
+            cvPhoto: cvRes.data.data.display_url,
+
+
+            userStatus: 'lmiaPending'
+        }
+        console.log(updateUserInfo);
+
+        if (loading) {
+            return <span className="loading loading-spinner text-warning loading-lg"></span>;
+        }
+
+        // send the data to the server
+        fetch(`http://localhost:5000/alllmiaUsers/${_id}`, {
+            method: "PATCH",
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(updateUserInfo)
+
+        })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data);
+                if (data.modifiedCount > 0) {
+
+                    Swal.fire({
+                        position: "top-end",
+                        icon: "success",
+                        title: "ECA Application Success",
+                        showConfirmButton: false,
+                        timer: 1500
+                    });
+
+                    navigate(location?.state ? location.state : '/');
+                }
+                else {
+                    Swal.fire({
+                        icon: "error",
+                        title: "ECA Application Faild",
+                        text: "Please check your information"
+                    });
+                }
+            })
+
+
     }
 
 
@@ -321,7 +403,7 @@ const LmiaForm = () => {
                             <label className="label">
                                 <span className="label-text font-semibold">Company</span>
                             </label>
-                            <select defaultValue="default" className="input input-bordered text-slate-400 rounded-none" {...register("company", { required: true })}>
+                            <select defaultValue="default" className="input input-bordered text-slate-400 rounded-none" {...register("companyName", { required: true })}>
                                 <option disabled value="default">Company</option>
                                 <option className="text-black" value="Bombardier Inc">Bombardier Inc</option>
                                 <option className="text-black" value="Tim Hortons">Tim Hortons</option>
@@ -338,7 +420,7 @@ const LmiaForm = () => {
                             <label className="label">
                                 <span className="label-text font-semibold">Position</span>
                             </label>
-                            <select defaultValue="default" className="input input-bordered text-slate-400 rounded-none" {...register("jobs", { required: true })}>
+                            <select defaultValue="default" className="input input-bordered text-slate-400 rounded-none" {...register("jobTitle", { required: true })}>
                                 <option disabled value="default">Select job</option>
                                 <option className="text-black" value="Delivery Driver">Delivery Driver</option>
                                 <option className="text-black" value="Warehouse Worker">Warehouse Worker</option>
@@ -503,7 +585,7 @@ const LmiaForm = () => {
 
                     {/* submit button  */}
                     <div className="form-control mt-6">
-                        <input type="submit" className="btn text-white btn-error" value="Apply for ECA" />
+                        <input type="submit" className="btn text-white btn-error" value="Apply for LMIA" />
                     </div>
                 </form>
             </div>
