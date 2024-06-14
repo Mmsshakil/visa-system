@@ -11,6 +11,7 @@ import Profile from "../Pages/Profile/Profile";
 import EcaForm from "../Pages/EcaForm/EcaForm";
 import LmiaForm from "../Pages/LmiaForm/LmiaForm";
 import VisaForm from "../Pages/VisaForm/VisaForm";
+import Dashboard from "../Pages/Dashboard/Dashboard";
 
 export const router = createBrowserRouter([
     {
@@ -48,6 +49,10 @@ export const router = createBrowserRouter([
             {
                 path: '/visaform',
                 element: <PrivateRoute><VisaForm></VisaForm></PrivateRoute>
+            },
+            {
+                path: '/dashboard',
+                element: <PrivateRoute><Dashboard></Dashboard></PrivateRoute>
             }
         ]
     },

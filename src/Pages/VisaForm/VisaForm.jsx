@@ -7,6 +7,8 @@ import appleicon from '../../assets/payments/Apple.png'
 import usdticon from '../../assets/payments/USDT.png'
 import bkashicon from '../../assets/payments/Bkash.png'
 import nagadicon from '../../assets/payments/Nagad.png'
+import Swal from "sweetalert2";
+import { useNavigate } from "react-router-dom";
 
 const VisaForm = () => {
 
@@ -23,6 +25,7 @@ const VisaForm = () => {
     const [selectedPayment, setSelectedPayment] = useState("");
     const imagebb_key = import.meta.env.VITE_imagebb_key;
     const imagebb_api = `https://api.imgbb.com/1/upload?key=${imagebb_key}`;
+    const navigate = useNavigate();
 
     // this part for load data my login user mail
     useEffect(() => {
@@ -49,7 +52,7 @@ const VisaForm = () => {
     const onSubmit = async (data) => {
         console.log(data);
 
-              // image uploaded in the imagebb site
+        // image uploaded in the imagebb site
         // cv image
         const ecaImageFile = { image: data.visaFormEca[0] };
         const ecaRes = await axiosPublic.post(imagebb_api, ecaImageFile, {
@@ -68,6 +71,56 @@ const VisaForm = () => {
             }
         });
         console.log(lmiaRes.data);
+
+
+        // now upload all data in database
+        const updateUserInfo = {
+            visaPaymentMethod: data.visaPaymentMethod,
+            visaTrxID: data.visaTrxID,
+            visaFormEca: ecaRes.data.data.display_url,
+            visaFormLmia: lmiaRes.data.data.display_url,
+
+            userStatus: 'visaPending'
+        }
+        console.log(updateUserInfo);
+
+        if (loading) {
+            return <span className="loading loading-spinner text-warning loading-lg"></span>;
+        }
+
+
+        // send the data to the server
+        fetch(`http://localhost:5000/allVisaUsers/${_id}`, {
+            method: "PATCH",
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(updateUserInfo)
+
+        })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data);
+                if (data.modifiedCount > 0) {
+
+                    Swal.fire({
+                        position: "top-end",
+                        icon: "success",
+                        title: "Visa Application Success",
+                        showConfirmButton: false,
+                        timer: 1500
+                    });
+
+                    navigate(location?.state ? location.state : '/');
+                }
+                else {
+                    Swal.fire({
+                        icon: "error",
+                        title: "Visa Application Faild",
+                        text: "Please check your information"
+                    });
+                }
+            })
 
 
 
@@ -417,7 +470,7 @@ const VisaForm = () => {
 
                     {/* submit button  */}
                     <div className="form-control mt-6">
-                        <input type="submit" className="btn text-white btn-error" value="Apply for LMIA" />
+                        <input type="submit" className="btn text-white btn-error" value="Apply for Visa" />
                     </div>
                 </form>
             </div>
