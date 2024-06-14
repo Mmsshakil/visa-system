@@ -1,10 +1,22 @@
 import { useQuery } from "@tanstack/react-query";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
+import { useForm } from "react-hook-form";
 
 const Dashboard = () => {
 
 
     const axiosSecure = useAxiosSecure();
+
+    const {
+        register,
+        handleSubmit,
+        watch,
+        formState: { errors },
+    } = useForm();
+
+
+
+
     const { isPending, error, data: allusers = [], refetch } = useQuery({
         queryKey: ['allusers'],
         queryFn: async () => {
@@ -26,6 +38,25 @@ const Dashboard = () => {
     }
 
 
+    const onSubmitEca = async (data, user) => {
+        console.log(user);
+        console.log(data);
+
+    }
+    const onSubmitLmia = async (data) => {
+        console.log(data);
+
+    }
+    const onSubmitVisa = async (data) => {
+        console.log(data);
+
+    }
+
+
+
+
+
+
 
 
     return (
@@ -39,11 +70,11 @@ const Dashboard = () => {
                         <th>Mail</th>
                         <th>Status</th>
 
-                        <th>ECA Approve</th>
+                        <th>ECA Details</th>
 
-                        <th>LMIA Approve</th>
+                        <th>LMIA Details</th>
 
-                        <th>VISA Approve</th>
+                        <th>VISA Details</th>
 
                     </tr>
                 </thead>
@@ -71,36 +102,24 @@ const Dashboard = () => {
                             {/* ECA */}
 
 
-                            <td>
-                                <form className="flex flex-col gap-1" action="">
-                                    <input type="file" className="file-input file-input-bordered file-input-xs w-full max-w-xs" />
-
-                                    <button className="btn btn-info">ECA Approve</button>
-                                </form>
-
+                            <td className="">
+                                <p>{user?.paymentMethod}</p>
+                                <p>{user?.trxID}</p>
                             </td>
 
 
                             {/* LMIA */}
 
-                            <td>
-                                <form className="flex flex-col gap-1" action="">
-                                    <input type="file" className="file-input file-input-bordered file-input-xs w-full max-w-xs" />
-
-                                    <button className="btn btn-success">LMIA Approve</button>
-                                </form>
-
+                            <td className="">
+                                <p>{user?.lmiaPaymentMethod}</p>
+                                <p>{user?.lmiaTrxID}</p>
                             </td>
 
                             {/* VISA */}
 
-                            <td>
-                                <form className="flex flex-col gap-1" action="">
-                                    <input type="file" className="file-input file-input-bordered file-input-xs w-full max-w-xs" />
-
-                                    <button className="btn btn-warning">Visa Approve</button>
-                                </form>
-
+                            <td className="">
+                                <p>{user?.visaPaymentMethod}</p>
+                                <p>{user?.visaTrxID}</p>
                             </td>
 
 
