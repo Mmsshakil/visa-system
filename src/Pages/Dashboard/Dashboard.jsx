@@ -30,7 +30,7 @@ const Dashboard = () => {
 
     return (
         <div className="overflow-x-auto">
-            <table className="table">
+            <table className="table table-pin-rows table-pin-cols">
                 {/* head */}
                 <thead>
                     <tr>
@@ -40,16 +40,10 @@ const Dashboard = () => {
                         <th>Status</th>
 
                         <th>ECA Approve</th>
-                        <th>ECA Upload</th>
-                        <th>ECA Submit</th>
 
                         <th>LMIA Approve</th>
-                        <th>LMIA Upload</th>
-                        <th>LMIA Submit</th>
 
                         <th>VISA Approve</th>
-                        <th>VISA Upload</th>
-                        <th>VISA Submit</th>
 
                     </tr>
                 </thead>
@@ -57,7 +51,7 @@ const Dashboard = () => {
 
                     {
 
-                        allusers.map((user, index) => <tr key={user._id}>
+                        allusers.map((user, index) => <tr className="text-sm" key={user._id}>
                             <td>
                                 {index + 1}
                             </td>
@@ -65,6 +59,50 @@ const Dashboard = () => {
                             <td>
                                 {user.name}
                             </td>
+
+                            <td>
+                                {user.email}
+                            </td>
+
+                            <td className="font-semibold text-red-500">
+                                {user?.userStatus}
+                            </td>
+
+                            {/* ECA */}
+
+
+                            <td>
+                                <form className="flex flex-col gap-1" action="">
+                                    <input type="file" className="file-input file-input-bordered file-input-xs w-full max-w-xs" />
+
+                                    <button className="btn btn-info">ECA Approve</button>
+                                </form>
+
+                            </td>
+
+
+                            {/* LMIA */}
+
+                            <td>
+                                <form className="flex flex-col gap-1" action="">
+                                    <input type="file" className="file-input file-input-bordered file-input-xs w-full max-w-xs" />
+
+                                    <button className="btn btn-success">LMIA Approve</button>
+                                </form>
+
+                            </td>
+
+                            {/* VISA */}
+
+                            <td>
+                                <form className="flex flex-col gap-1" action="">
+                                    <input type="file" className="file-input file-input-bordered file-input-xs w-full max-w-xs" />
+
+                                    <button className="btn btn-warning">Visa Approve</button>
+                                </form>
+
+                            </td>
+
 
                         </tr>
                         )
