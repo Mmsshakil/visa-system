@@ -12,6 +12,7 @@ import EcaForm from "../Pages/EcaForm/EcaForm";
 import LmiaForm from "../Pages/LmiaForm/LmiaForm";
 import VisaForm from "../Pages/VisaForm/VisaForm";
 import Dashboard from "../Pages/Dashboard/Dashboard";
+import UserDetails from "../Pages/UserDetails/UserDetails";
 
 export const router = createBrowserRouter([
     {
@@ -53,6 +54,11 @@ export const router = createBrowserRouter([
             {
                 path: '/dashboard',
                 element: <PrivateRoute><Dashboard></Dashboard></PrivateRoute>
+            },
+            {
+                path: '/userDetails/:id',
+                element: <PrivateRoute><UserDetails></UserDetails></PrivateRoute>,
+                loader: ({ params }) => fetch(`http://localhost:5000/userDetails/${params.id}`)
             }
         ]
     },

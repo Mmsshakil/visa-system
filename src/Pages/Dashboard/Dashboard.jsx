@@ -1,21 +1,11 @@
 import { useQuery } from "@tanstack/react-query";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
-import { useForm } from "react-hook-form";
+import { Link } from "react-router-dom";
 
 const Dashboard = () => {
 
 
     const axiosSecure = useAxiosSecure();
-
-    const {
-        register,
-        handleSubmit,
-        watch,
-        formState: { errors },
-    } = useForm();
-
-
-
 
     const { isPending, error, data: allusers = [], refetch } = useQuery({
         queryKey: ['allusers'],
@@ -36,27 +26,6 @@ const Dashboard = () => {
             <span className="loading loading-bars loading-lg text-error"></span>
         </div>
     }
-
-
-    const onSubmitEca = async (data, user) => {
-        console.log(user);
-        console.log(data);
-
-    }
-    const onSubmitLmia = async (data) => {
-        console.log(data);
-
-    }
-    const onSubmitVisa = async (data) => {
-        console.log(data);
-
-    }
-
-
-
-
-
-
 
 
     return (
@@ -88,7 +57,10 @@ const Dashboard = () => {
                             </td>
 
                             <td>
-                                {user.name}
+
+                                <Link to={`/userDetails/${user?._id}`}>
+                                    <button className="btn btn-outline btn-info">{user.name}</button>
+                                </Link>
                             </td>
 
                             <td>
