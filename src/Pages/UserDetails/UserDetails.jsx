@@ -1,16 +1,18 @@
 import { useForm } from "react-hook-form";
 import { Link, useLoaderData, useLocation, useNavigate } from "react-router-dom";
+import useAxiosPublic from "../../hooks/useAxiosPublic";
+import { useState } from "react";
+import Swal from "sweetalert2";
 
 const UserDetails = () => {
 
     const navigate = useNavigate();
     const location = useLocation();
-    // const {
-    //     register,
-    //     handleSubmit,
-    //     watch,
-    //     formState: { errors },
-    // } = useForm();
+    const axiosPublic = useAxiosPublic();
+    const [loading, setLoading] = useState(true);
+    const imagebb_key = import.meta.env.VITE_imagebb_key;
+    const imagebb_api = `https://api.imgbb.com/1/upload?key=${imagebb_key}`;
+
 
     const {
         register: registerEca,
@@ -24,16 +26,62 @@ const UserDetails = () => {
     const { _id, name, photoUrl, fatherName, motherName, gender, bloodGroup, maritalStatus, nid, passport, country, phone, email, birthDay, presentCountry, presentCity, presentAddre, permanentCountry, parmanentCity, parmanentAddre, companyName, jobExperience, jobTitle, userStatus, paymentMethod, trxID, lmiaPaymentMethod, lmiaTrxID, visaPaymentMethod, visaTrxID } = user;
 
 
-    // const onSubmit = (data) => {
-    //     console.log(data);
-
-    // }
-
-
+    // control ECA------------------------------------------
     const onSubmitEca = async (data) => {
         console.log(data);
-        // Add further processing logic here
+
+        const adminEcaImageFile = { image: data.adminEcaphoto[0] };
+        const adminEcaRes = await axiosPublic.post(imagebb_api, adminEcaImageFile, {
+            headers: {
+                'Content-Type': 'multipart/form-data'
+            }
+        });
+        console.log(adminEcaRes.data);
+
+        // now upload all data in database
+        const updateUserInfo = {
+            adminEcaPhoto: adminEcaRes.data.data.display_url
+            // userStatus: 'ecaComplete'
+        }
+        console.log(updateUserInfo);
+
+        // send the data to the server
+        fetch(`http://localhost:5000/updateEca/${_id}`, {
+            method: "PATCH",
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(updateUserInfo)
+
+        })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data);
+                if (data.modifiedCount > 0) {
+
+                    Swal.fire({
+                        position: "top-end",
+                        icon: "success",
+                        title: "ECA Complete",
+                        showConfirmButton: false,
+                        timer: 1500
+                    });
+
+
+                }
+                else {
+                    Swal.fire({
+                        icon: "error",
+                        title: "ECA Faild",
+                        text: "Please check your information"
+                    });
+                }
+            })
+
+
+
     };
+    // -------------------------------------------------------
 
     return (
         <div className="hero-content gap-10 md:gap-16 lg:gap-32 flex-col lg:flex-row mt-1 md:mt-5">
