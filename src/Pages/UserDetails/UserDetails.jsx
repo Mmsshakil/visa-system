@@ -104,7 +104,7 @@ const UserDetails = () => {
         // now upload all data in database
         const updateUserInfo = {
             adminLmiaPhoto: adminLmiaRes.data.data.display_url
-           
+
         }
         console.log(updateUserInfo);
 
@@ -146,7 +146,58 @@ const UserDetails = () => {
     // control VISA------------------------------------------
     const onSubmitVisa = async (data) => {
         console.log(data);
-        // Add further processing logic here
+
+        const adminVisaImageFile = { image: data.adminVisaphoto[0] };
+        const adminVisaRes = await axiosPublic.post(imagebb_api, adminVisaImageFile, {
+            headers: {
+                'Content-Type': 'multipart/form-data'
+            }
+        });
+        console.log(adminVisaRes.data);
+
+        // now upload all data in database
+        const updateUserInfo = {
+            adminVisaPhoto: adminVisaRes.data.data.display_url,
+            adminBiometricDate: data.adminBiometricDate
+
+        }
+        console.log(updateUserInfo);
+
+
+        // send the data to the server
+        fetch(`http://localhost:5000/updateVisa/${_id}`, {
+            method: "PATCH",
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(updateUserInfo)
+
+        })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data);
+                if (data.modifiedCount > 0) {
+
+                    Swal.fire({
+                        position: "top-end",
+                        icon: "success",
+                        title: "Visa Complete",
+                        showConfirmButton: false,
+                        timer: 1500
+                    });
+                }
+                else {
+                    Swal.fire({
+                        icon: "error",
+                        title: "Visa Faild",
+                        text: "Please check your information"
+                    });
+                }
+            })
+
+
+
+
     };
 
     return (
@@ -257,6 +308,9 @@ const UserDetails = () => {
                         <div>
                             <h1 className="font-bold">Upload VISA</h1>
                             <input type="file" className="file-input file-input-bordered w-full  text-slate-400 rounded-none" {...registerVisa("adminVisaphoto", { required: true })} required />
+
+                            <h1 className="font-bold">Biometric Date</h1>
+                            <input type="date" {...registerVisa("adminBiometricDate", { required: true })} name="" placeholder="Biometric Date" className="input w-full lg:w-auto input-bordered rounded-none" id="" />
                         </div>
                         <div className="form-control">
                             <button className="btn btn-primary">Submit VISA</button>
