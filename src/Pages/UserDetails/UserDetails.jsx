@@ -20,6 +20,18 @@ const UserDetails = () => {
         formState: { errors: errorsEca },
     } = useForm();
 
+    const {
+        register: registerLmia,
+        handleSubmit: handleSubmitLmia,
+        formState: { errors: errorsLmia },
+    } = useForm();
+
+    const {
+        register: registerVisa,
+        handleSubmit: handleSubmitVisa,
+        formState: { errors: errorsVisa },
+    } = useForm();
+
 
 
     const user = useLoaderData();
@@ -66,8 +78,6 @@ const UserDetails = () => {
                         showConfirmButton: false,
                         timer: 1500
                     });
-
-
                 }
                 else {
                     Swal.fire({
@@ -77,11 +87,67 @@ const UserDetails = () => {
                     });
                 }
             })
-
-
-
     };
     // -------------------------------------------------------
+    // control LMIA------------------------------------------
+    const onSubmitLmia = async (data) => {
+        console.log(data);
+
+        const adminLmiaImageFile = { image: data.adminLmiaphoto[0] };
+        const adminLmiaRes = await axiosPublic.post(imagebb_api, adminLmiaImageFile, {
+            headers: {
+                'Content-Type': 'multipart/form-data'
+            }
+        });
+        console.log(adminLmiaRes.data);
+
+        // now upload all data in database
+        const updateUserInfo = {
+            adminLmiaPhoto: adminLmiaRes.data.data.display_url
+           
+        }
+        console.log(updateUserInfo);
+
+        // send the data to the server
+        fetch(`http://localhost:5000/updateLmia/${_id}`, {
+            method: "PATCH",
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(updateUserInfo)
+
+        })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data);
+                if (data.modifiedCount > 0) {
+
+                    Swal.fire({
+                        position: "top-end",
+                        icon: "success",
+                        title: "LMIA Complete",
+                        showConfirmButton: false,
+                        timer: 1500
+                    });
+                }
+                else {
+                    Swal.fire({
+                        icon: "error",
+                        title: "LMIA Faild",
+                        text: "Please check your information"
+                    });
+                }
+            })
+
+    };
+
+
+    // -------------------------------------------------------
+    // control VISA------------------------------------------
+    const onSubmitVisa = async (data) => {
+        console.log(data);
+        // Add further processing logic here
+    };
 
     return (
         <div className="hero-content gap-10 md:gap-16 lg:gap-32 flex-col lg:flex-row mt-1 md:mt-5">
@@ -162,7 +228,7 @@ const UserDetails = () => {
 
 
                     {/* ECA part */}
-                    <form className="card-body w-full shadow-2xl bg-base-100">
+                    <form className="card-body w-full shadow-2xl bg-base-100" onSubmit={handleSubmitLmia(onSubmitLmia)}>
 
                         <label className="label">
                             <span className="font-bold text-lg text-blue-600">LMIA details</span>
@@ -171,7 +237,7 @@ const UserDetails = () => {
                         <h1><span className="font-semibold">Trxid/Number:</span> {lmiaTrxID}</h1>
                         <div>
                             <h1 className="font-bold">Upload LMIA</h1>
-                            <input type="file" className="file-input file-input-bordered w-full  text-slate-400 rounded-none" required />
+                            <input type="file" className="file-input file-input-bordered w-full  text-slate-400 rounded-none" {...registerLmia("adminLmiaphoto", { required: true })} required />
                         </div>
                         <div className="form-control">
                             <button className="btn btn-primary">Submit LMIA</button>
@@ -181,7 +247,7 @@ const UserDetails = () => {
 
 
                     {/* VISA part */}
-                    <form className="card-body w-full shadow-2xl bg-base-100">
+                    <form className="card-body w-full shadow-2xl bg-base-100" onSubmit={handleSubmitVisa(onSubmitVisa)}>
 
                         <label className="label">
                             <span className="font-bold text-lg text-blue-600">VISA details</span>
@@ -190,7 +256,7 @@ const UserDetails = () => {
                         <h1><span className="font-semibold">Trxid/Number:</span> {visaTrxID}</h1>
                         <div>
                             <h1 className="font-bold">Upload VISA</h1>
-                            <input type="file" className="file-input file-input-bordered w-full  text-slate-400 rounded-none" required />
+                            <input type="file" className="file-input file-input-bordered w-full  text-slate-400 rounded-none" {...registerVisa("adminVisaphoto", { required: true })} required />
                         </div>
                         <div className="form-control">
                             <button className="btn btn-primary">Submit VISA</button>
