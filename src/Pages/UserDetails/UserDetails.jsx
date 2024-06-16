@@ -158,7 +158,8 @@ const UserDetails = () => {
         // now upload all data in database
         const updateUserInfo = {
             adminVisaPhoto: adminVisaRes.data.data.display_url,
-            adminBiometricDate: data.adminBiometricDate
+            // adminBiometricDate: data.adminBiometricDate
+            biometric: data.biometric
 
         }
         console.log(updateUserInfo);
@@ -310,7 +311,9 @@ const UserDetails = () => {
                             <input type="file" className="file-input file-input-bordered w-full  text-slate-400 rounded-none" {...registerVisa("adminVisaphoto", { required: true })} required />
 
                             <h1 className="font-bold">Biometric Date</h1>
-                            <input type="date" {...registerVisa("adminBiometricDate", { required: true })} name="" placeholder="Biometric Date" className="input w-full lg:w-auto input-bordered rounded-none" id="" />
+                            {/* <input type="date" {...registerVisa("adminBiometricDate")} name="" placeholder="Biometric Date" className="input w-full lg:w-auto input-bordered rounded-none" required /> */}
+
+                            <input type="date" {...registerVisa("biometric")} placeholder="Enter Biometric Date" className="input w-full lg:w-auto input-bordered rounded-none" required />
                         </div>
                         <div className="form-control">
                             <button className="btn btn-primary">Submit VISA</button>

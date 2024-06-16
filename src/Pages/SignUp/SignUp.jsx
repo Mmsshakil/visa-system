@@ -58,7 +58,8 @@ const SignUp = () => {
             nid: data.nid,
             password: data.password,
             confirmPassword: data.confirmPassword,
-            photoUrl: res.data.data.display_url
+            photoUrl: res.data.data.display_url,
+            userStatus: "general"
         }
         console.log(userInfo);
 
