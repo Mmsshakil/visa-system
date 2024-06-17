@@ -13,6 +13,7 @@ import LmiaForm from "../Pages/LmiaForm/LmiaForm";
 import VisaForm from "../Pages/VisaForm/VisaForm";
 import Dashboard from "../Pages/Dashboard/Dashboard";
 import UserDetails from "../Pages/UserDetails/UserDetails";
+import SearchPassport from "../Pages/SearchPassport/SearchPassport";
 
 export const router = createBrowserRouter([
     {
@@ -59,6 +60,10 @@ export const router = createBrowserRouter([
                 path: '/userDetails/:id',
                 element: <PrivateRoute><UserDetails></UserDetails></PrivateRoute>,
                 loader: ({ params }) => fetch(`http://localhost:5000/userDetails/${params.id}`)
+            },
+            {
+                path: '/searchPassport',
+                element: <SearchPassport></SearchPassport>
             }
         ]
     },
