@@ -19,26 +19,34 @@ const SearchPassport = () => {
     const [loading, setLoading] = useState(true);
     const [userData, setUserData] = useState(null);
 
-    const [passport, setPassport] = useState(null);
+    // const [passport, setPassport] = useState(null);
 
 
 
     const onSubmit = (data) => {
-        console.log(data);
-        setPassport(data.passportNumber);
-        console.log(passport);
+        // console.log(data);
+        // setPassport(data.passportNumber);
+        // console.log(passport);
 
-        axiosPublic.get(`/searchPassport/${passport}`)
+        axiosPublic.get(`/searchPassport/${data.passportNumber}`)
             .then(response => {
                 setUserData(response.data);
                 setLoading(false);
             })
+            .catch(error => {
+                console.log(error);
+                // setPassport(null);
+                setUserData(null);
+            })
 
-        console.log(passport);
+        if (loading) {
+            return <span className="loading loading-spinner text-warning loading-lg"></span>;
+        }
+
+        // console.log(passport);
         console.log(userData);
-        // if (loading) {
-        //     return <span className="loading loading-spinner text-warning loading-lg"></span>;
-        // }
+
+
 
 
     }
