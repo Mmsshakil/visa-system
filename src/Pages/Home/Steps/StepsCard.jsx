@@ -18,7 +18,7 @@ const StepsCard = () => {
                 <div className="bg-neutral h-auto md:h-60 p-5 text-neutral-content flex items-center text-center justify-center  rounded-lg ">
                     <div className=" items-center text-center">
                         <h2 className="font-medium md:font-bold  mb-2">2nd - Educational Credentials Assessment(ECA)</h2>
-                        <p className='text-sm'>The documents that you need to provide when you’re applying to immigrate to Canada depend on the program you’re applying to. However, a common document that is required for most federal economic immigration streams, including Express Entry, is an Educational Credential Assessment or ECA. The cost is about <span className='text-red-500'>CAN$200 </span>plus the cost to have it delivered.</p>
+                        <p className='text-sm'>The documents that you need to provide when you’re applying to immigrate to Canada depend on the program you’re applying to. However, a common document that is required for most federal economic immigration streams, including Express Entry, is an Educational Credential Assessment or ECA. The cost is about <span className='text-red-500'>CAN$200 </span> and it takes 48 hours for approval.</p>
                     </div>
                 </div>
 
@@ -46,14 +46,27 @@ const StepsCard = () => {
                 <div className="bg-neutral h-auto md:h-60 p-5 text-neutral-content flex items-center text-center justify-center  rounded-lg ">
                     <div className=" items-center text-center">
                         <h2 className="font-medium md:font-bold  mb-2">6th - Labour Market Impact Assessment (LMIA)</h2>
-                        <p className='text-sm'>A Labour Market Impact Assessment (LMIA) is a document that an employer in Canada may need to get before hiring a foreign worker. A positive LMIA will show that there is a need for a foreign worker to fill the job. It will also show that no Canadian worker or permanent resident is available to do the job. A positive LMIA is sometimes called a confirmation letter.</p>
+                        <p className='text-sm'>A Labour Market Impact Assessment (LMIA) is a document that an employer in Canada may need to get before hiring a foreign worker. A positive LMIA is sometimes called a confirmation letter. The LMIA application fee is <span className='text-red-500'>CAN$350 </span>. After applying for LMIA, we will verify it and approve it within 72 hours, depending on the documents.</p>
                     </div>
                 </div>
 
                 <div className="bg-neutral h-auto md:h-60 p-5 text-neutral-content flex items-center text-center justify-center  rounded-lg ">
                     <div className=" items-center text-center">
                         <h2 className="font-medium md:font-bold  mb-2">7th - Work Permit Visa</h2>
-                        <p className='text-sm'>Once an employer gets the LMIA, the worker can apply for a work permit. To apply, a worker needs to fill out the application form carefully and completely and pay the work permit fee of <span className='text-red-500'>CAN$465 </span>, the open work permit holder fee of <span className='text-red-500'>CAN$100 </span>, and the restore status of worker fee of <span className='text-red-500'>CAN$384 </span>, totaling <span className='text-red-500'>CAN$949 </span>. It can take between 5-36 weeks to process depending on specific circumstances.</p>
+                        <p className='text-sm'>Once an employer gets the LMIA, the worker can apply for a work permit. To apply, a worker needs to fill out the application form carefully and completely and pay the work permit fee of <span className='text-red-500'>CAN$465 </span>, the open work permit holder fee of <span className='text-red-500'>CAN$100 </span>, and the restore status of worker fee of <span className='text-red-500'>CAN$384 </span>, totaling <span className='text-red-500'>CAN$949 </span>. You will receive a biometric verification date. The processing time can take between 5 and 10 weeks, depending on specific circumstances.</p>
+                    </div>
+                </div>
+                <div className="bg-neutral h-auto md:h-60 p-5 text-neutral-content flex items-center text-center justify-center  rounded-lg ">
+                    <div className=" items-center text-center">
+                        <h2 className="font-medium md:font-bold  mb-2">8th - Biometrics</h2>
+                        <p className='text-sm'>Biometrics include your fingerprints and photo. We collect your biometrics to confirm your identity and to help assess your application. Please bring all necessary documents on your biometric submission date, such as your passport, national identification card, ECA certificate, LMIA certificate, and education certificates. The biometric submission cost is CAN$85. Please pay this amount to your agent before the biometric date.</p>
+                    </div>
+                </div>
+
+                <div className="bg-neutral h-auto md:h-60 p-5 text-neutral-content flex items-center text-center justify-center  rounded-lg ">
+                    <div className=" items-center text-center">
+                        <h2 className="font-medium md:font-bold  mb-2">9th - <span className="text-xl text-red-600">Congratulations</span></h2>
+                        <p className='text-sm'>After your biometric submission, we will verify your biometrics and all your documents. This process takes a maximum of 7 working days. After that, you will receive your passport with your <span className="text-white font-bold">Canada Work Permit Visa</span>. You can then buy a ticket and start a new journey in Canada. You are most welcome in Canada.</p>
                     </div>
                 </div>
 

@@ -4,6 +4,7 @@ import canadaSearch from "../../assets/Banners/canadasearch.jpg"
 import { useState } from "react";
 import useAxiosPublic from "../../hooks/useAxiosPublic";
 import approve from "../../assets/icons/approve.png"
+import { Link } from "react-router-dom";
 
 const SearchPassport = () => {
 
@@ -62,7 +63,7 @@ const SearchPassport = () => {
                 <div className="hero-content text-center text-neutral-content">
                     <div className="max-w-md">
                         <h1 className="mb-5 text-2xl font-bold text-white">Search Passport Number</h1>
-                        <p className="mb-5 text-white">Please search using your passport number to view your details and all associated documents.</p>
+                        <p className="mb-5 text-white">Search using your passport number to view your details and all associated documents.</p>
                         <form onSubmit={handleSubmit(onSubmit)} className="flex gap-0">
                             <input style={{ color: 'black', fontWeight: "bold" }} type="text" {...register("passportNumber")} placeholder="Enter Passport Number" className="input input-bordered w-full max-w-xs rounded-r-none" required />
                             <input className="btn btn-info font-semibold text-lg rounded-l-none" type="submit" value="Search" />
@@ -106,36 +107,75 @@ const SearchPassport = () => {
                                     </tr>
                                     <tr>
                                         <td className="font-bold">Job Title</td>
-                                        <td>{userData[0]?.jobTitle}</td>
+                                        {
+                                            userData[0]?.jobTitle ? <>
+                                                <td>{userData[0]?.jobTitle}</td>
+                                            </> : <>
+                                                <td>N/A</td>
+                                            </>
+                                        }
+
                                     </tr>
                                     <tr>
                                         <td className="font-bold">Company</td>
-                                        <td>{userData[0]?.companyName}</td>
+                                        {
+                                            userData[0]?.companyName ? <>
+                                                <td>{userData[0]?.companyName}</td>
+                                            </> : <>
+                                                <td>N/A</td>
+                                            </>
+                                        }
                                     </tr>
                                     <tr>
                                         <td className="font-bold">Father&apos;s Name</td>
                                         <td>{userData[0]?.fatherName}</td>
                                     </tr>
-                                    <tr>
-                                        <td className="font-bold">Mother&apos;s Name</td>
-                                        <td>{userData[0]?.motherName}</td>
-                                    </tr>
+
                                 </tbody>
                             </table>
-
-
-
-                            
-
                         </div>
                     </div>
 
+                    <h1 className="text-center text-2xl font-bold my-4 text-red-600">Documents</h1>
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-5 justify-center items-center mx-auto text-center font-semibold text-blue-600">
 
+                        {
+                            userData[0]?.adminEcaPhoto ? <>
+                                <img className="border-2 border-black p-2" src={userData[0]?.adminEcaPhoto} alt="ECA Verification" />
+                            </> : <>
+                                <h1>1. Please Apply for ECA Certificate</h1>
+                            </>
+                        }
 
+                        {
+                            userData[0]?.cvPhoto ? <>
+                                <img className="border-2 border-black p-2" src={userData[0]?.cvPhoto} alt="" />
+                            </> : <>
+                                <h1>2. Upload Your CV for Job Offer</h1>
+                            </>
+                        }
+
+                        {
+                            userData[0]?.adminLmiaPhoto ? <>
+                                <img className="border-2 border-black p-2" src={userData[0]?.adminLmiaPhoto} alt="" />
+                            </> : <>
+                                <h1>3. Apply for Job Offer / LMIA</h1>
+                            </>
+                        }
+
+                        {
+                            userData[0]?.adminVisaPhoto ? <>
+                                <img className="border-2 border-black p-2" src={userData[0]?.adminVisaPhoto} alt="" />
+                            </> : <>
+                                <h1>4. Finally Apply for Visa</h1>
+                            </>
+                        }
+
+                    </div>
 
 
                 </> : <>
-                    <h1>data not available</h1>
+                    {/* <Link className="text-red-600" to='/login'>Register</Link> */}
                 </>
             }
 

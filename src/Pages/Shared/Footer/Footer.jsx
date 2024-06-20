@@ -6,26 +6,15 @@ const Footer = () => {
     return (
 
         <footer >
-            <div className="footer p-10 bg-white text-black mt-5">
+            <div className="footer p-10 bg-white text-black mt-5 justify-center items-center gap-5 md:gap-20">
                 <aside>
                     <img src={flag} className='w-20'></img>
                     <p className='font-bold' >Immigration, Refugees and Citizenship Canada (IRCC)</p>
-                    <p>Atria- II, 2235 Sheppard Ave E Suite# 1505, Toronto, ON M2J 5B5, Canada</p>
+                    <p>325 Milner Ave 2nd Floor, Scarborough, ON M1B 5N1, Canada</p>
                 </aside>
                 <nav>
-                    <h6 className="text-2xl font-semibold">Contact</h6>
-                    <div className="grid grid-flow-col gap-4">
-                        <div className='flex gap-1 justify-center items-center '>
-                            <FaWhatsapp className='text-2xl text-green-600'></FaWhatsapp>
-                            <p className='font-bold'>+12345786487, +12345786487</p>
-                        </div>
-                    </div>
-                    <div className="grid grid-flow-col gap-4">
-                        <div className='flex gap-1 justify-center items-center '>
-                            <p className='text-xl font-bold'>imo</p>
-                            <p className='font-bold'>+12345786487, +12345786487</p>
-                        </div>
-                    </div>
+
+                    <div className='w-full'><iframe width="300" height="300" src="https://maps.google.com/maps?width=100%25&amp;height=350&amp;hl=en&amp;q=325%20Milner%20Ave,%20Scarborough,%20ON%20M1B%205N1,%20Canada+(Immigration,%20Refugees%20and%20Citizenship%20Canada%20(IRCC))&amp;t=&amp;z=14&amp;ie=UTF8&amp;iwloc=B&amp;output=embed"><a href="https://www.gps.ie/">gps vehicle tracker</a></iframe></div>
                 </nav>
             </div>
             <p className='footer-center p-4 bg-slate-300 text-base-content'>Copyright © 2024 - All right reserved by Government of Canada</p>
