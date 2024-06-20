@@ -14,6 +14,7 @@ import VisaForm from "../Pages/VisaForm/VisaForm";
 import Dashboard from "../Pages/Dashboard/Dashboard";
 import UserDetails from "../Pages/UserDetails/UserDetails";
 import SearchPassport from "../Pages/SearchPassport/SearchPassport";
+import About from "../Pages/About/About";
 
 export const router = createBrowserRouter([
     {
@@ -51,6 +52,10 @@ export const router = createBrowserRouter([
             {
                 path: '/visaform',
                 element: <PrivateRoute><VisaForm></VisaForm></PrivateRoute>
+            },
+            {
+                path: '/about',
+                element: <About></About>
             },
             {
                 path: '/dashboard',
