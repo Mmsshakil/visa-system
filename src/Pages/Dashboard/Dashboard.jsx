@@ -1,11 +1,21 @@
 import { useQuery } from "@tanstack/react-query";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import useAxiosPublic from "../../hooks/useAxiosPublic";
+import { useContext, useEffect, useState } from "react";
+import { AuthContext } from "../../providers/AuthProvider";
 
 const Dashboard = () => {
 
 
     const axiosSecure = useAxiosSecure();
+
+    const axiosPublic = useAxiosPublic();
+    const [loading, setLoading] = useState(true);
+    const [userData, setUserData] = useState(null);
+    const { user } = useContext(AuthContext);
+    const navigate = useNavigate();
+    console.log(user.email);
 
     const { isPending, error, data: allusers = [], refetch } = useQuery({
         queryKey: ['allusers'],
@@ -14,6 +24,28 @@ const Dashboard = () => {
             return res.data;
         }
     })
+
+
+
+    useEffect(() => {
+        // Fetch user data
+        axiosPublic.get(`/allusers/${user.email}`)
+            .then(response => {
+                setUserData(response.data);
+                setLoading(false);
+            })
+
+    }, []);
+
+    if (loading) {
+        return <span className="loading loading-spinner text-warning loading-lg"></span>;
+    }
+    // const {  } = userData;
+    console.log(userData[0].role);
+    if (userData[0]?.role !== 'admin') {
+        return <span className="loading loading-spinner text-warning loading-lg"></span>;
+    }
+
 
     if (isPending) {
         return <div className="flex justify-center items-center h-[60vh]">
@@ -29,79 +61,92 @@ const Dashboard = () => {
 
 
     return (
-        <div className="overflow-x-auto">
-            <table className="table table-pin-rows table-pin-cols">
-                {/* head */}
-                <thead>
-                    <tr>
-                        <th></th>
-                        <th>Name</th>
-                        <th>Mail</th>
-                        <th>Status</th>
+        <>
 
-                        <th>ECA Details</th>
+            {
+                userData[0]?.role === "admin" ? <>
+                    <div className="overflow-x-auto">
+                        <table className="table table-pin-rows table-pin-cols">
+                            {/* head */}
+                            <thead>
+                                <tr>
+                                    <th></th>
+                                    <th>Name</th>
+                                    <th>Mail</th>
+                                    <th>Status</th>
 
-                        <th>LMIA Details</th>
+                                    <th>ECA Details</th>
 
-                        <th>VISA Details</th>
+                                    <th>LMIA Details</th>
 
-                    </tr>
-                </thead>
-                <tbody>
+                                    <th>VISA Details</th>
 
-                    {
+                                </tr>
+                            </thead>
+                            <tbody>
 
-                        allusers.map((user, index) => <tr className="text-sm" key={user._id}>
-                            <td>
-                                {index + 1}
-                            </td>
+                                {
 
-                            <td>
+                                    allusers.map((user, index) => <tr className="text-sm" key={user._id}>
+                                        <td>
+                                            {index + 1}
+                                        </td>
 
-                                <Link to={`/userDetails/${user?._id}`}>
-                                    <button className="btn btn-outline btn-info">{user.name}</button>
-                                </Link>
-                            </td>
+                                        <td>
 
-                            <td>
-                                {user.email}
-                            </td>
+                                            <Link to={`/userDetails/${user?._id}`}>
+                                                <button className="btn btn-outline btn-info">{user.name}</button>
+                                            </Link>
+                                        </td>
 
-                            <td className="font-semibold text-red-500">
-                                {user?.userStatus}
-                            </td>
+                                        <td>
+                                            {user.email}
+                                        </td>
 
-                            {/* ECA */}
+                                        <td className="font-semibold text-red-500">
+                                            {user?.userStatus}
+                                        </td>
 
-
-                            <td className="">
-                                <p>{user?.paymentMethod}</p>
-                                <p>{user?.trxID}</p>
-                            </td>
+                                        {/* ECA */}
 
 
-                            {/* LMIA */}
-
-                            <td className="">
-                                <p>{user?.lmiaPaymentMethod}</p>
-                                <p>{user?.lmiaTrxID}</p>
-                            </td>
-
-                            {/* VISA */}
-
-                            <td className="">
-                                <p>{user?.visaPaymentMethod}</p>
-                                <p>{user?.visaTrxID}</p>
-                            </td>
+                                        <td className="">
+                                            <p>{user?.paymentMethod}</p>
+                                            <p>{user?.trxID}</p>
+                                        </td>
 
 
-                        </tr>
-                        )
-                    }
+                                        {/* LMIA */}
 
-                </tbody>
-            </table>
-        </div>
+                                        <td className="">
+                                            <p>{user?.lmiaPaymentMethod}</p>
+                                            <p>{user?.lmiaTrxID}</p>
+                                        </td>
+
+                                        {/* VISA */}
+
+                                        <td className="">
+                                            <p>{user?.visaPaymentMethod}</p>
+                                            <p>{user?.visaTrxID}</p>
+                                        </td>
+
+
+                                    </tr>
+                                    )
+                                }
+
+                            </tbody>
+                        </table>
+                    </div>
+                </> : <>
+                    <h1 className="text-center text-6xl font-bold text-red-600">Invalid User</h1>
+
+                </>
+            }
+
+        </>
+
+
     );
 };
 
