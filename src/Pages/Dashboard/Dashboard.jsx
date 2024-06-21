@@ -87,7 +87,7 @@ const Dashboard = () => {
 
                                 {
 
-                                    allusers.map((user, index) => <tr className="text-sm" key={user._id}>
+                                    allusers?.map((user, index) => <tr className="text-sm" key={user._id}>
                                         <td>
                                             {index + 1}
                                         </td>
