@@ -68,8 +68,13 @@ const Navbar = () => {
                 </div>
                 {/* <a className="btn btn-ghost text-xl">daisy</a> */}
                 <div className='flex gap-5'>
-                    <img src={flag} alt="canada flag" className='w-12 md:w-20' />
-                    <h1 className='text-xs md:text-base'>Government <br />of Canada</h1>
+                    <Link to="/">
+                        <img src={flag} alt="canada flag" className='w-12 md:w-20' />
+                    </Link>
+                    <Link to="/">
+                        <h1 className='text-xs md:text-base'>Government <br />of Canada</h1>
+                    </Link>
+
                 </div>
 
             </div>

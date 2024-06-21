@@ -9,6 +9,8 @@ import useAxiosPublic from "../../hooks/useAxiosPublic";
 import { AuthContext } from "../../providers/AuthProvider";
 import Swal from "sweetalert2";
 import { useNavigate } from "react-router-dom";
+import useAxiosSecure from "../../hooks/useAxiosSecure";
+import { useQuery } from "@tanstack/react-query";
 
 const LmiaForm = () => {
     const imagebb_key = import.meta.env.VITE_imagebb_key;
@@ -30,6 +32,20 @@ const LmiaForm = () => {
     const { user } = useContext(AuthContext);
     // console.log(user.email);
 
+    // ------------------------ for company name and job title------------------------------------
+    const axiosSecure = useAxiosSecure();
+
+    const { isPending, error, data: jobs = [], refetch } = useQuery({
+        queryKey: ['jobs'],
+        queryFn: async () => {
+            const res = await axiosSecure.get('/jobs');
+            return res.data;
+        }
+    })
+
+
+
+    // ------------------------------------------------------------
 
 
 
@@ -48,6 +64,20 @@ const LmiaForm = () => {
         return <span className="loading loading-spinner text-warning loading-lg"></span>;
     }
 
+    if (isPending) {
+        return <div className="flex justify-center items-center h-[60vh]">
+            <span className="loading loading-bars loading-lg text-error"></span>
+        </div>
+    }
+
+    if (error) {
+        return <div className="flex justify-center items-center h-[60vh]">
+            <span className="loading loading-bars loading-lg text-error"></span>
+        </div>
+    }
+
+    console.log(jobs);
+
     // console.log(userData[0]);
     const { _id, name, photoUrl, fatherName, gender, nid, passport, country, phone, email } = userData[0];
     // console.log(_id);
@@ -59,6 +89,7 @@ const LmiaForm = () => {
     const handlePaymentChange = (event) => {
         setSelectedPayment(event.target.value);
     };
+
 
 
 
@@ -405,12 +436,12 @@ const LmiaForm = () => {
                             </label>
                             <select defaultValue="default" className="input input-bordered text-slate-400 rounded-none" {...register("companyName", { required: true })}>
                                 <option disabled value="default">Company</option>
-                                <option className="text-black" value="Bombardier Inc">Bombardier Inc</option>
-                                <option className="text-black" value="Tim Hortons">Tim Hortons</option>
-                                <option className="text-black" value="BCE Inc. (Bell Canada)">BCE Inc. (Bell Canada)</option>
-                                <option className="text-black" value="Royal Bank of Canada">Royal Bank of Canada</option>
-                                <option className="text-black" value="Shopify">Shopify</option>
-                                <option className="text-black" value="Loblaw Companies Limited">Loblaw Companies Limited</option>
+
+                                {
+                                    jobs?.map((job) => <option key={job?._id} className="text-black" value={job?.company_name}>{job?.company_name}</option>)
+                                }
+
+                                {/*  <option className="text-black" value="Bombardier Inc">Bombardier Inc</option>*/}
                             </select>
                         </div>
 
@@ -422,14 +453,13 @@ const LmiaForm = () => {
                             </label>
                             <select defaultValue="default" className="input input-bordered text-slate-400 rounded-none" {...register("jobTitle", { required: true })}>
                                 <option disabled value="default">Select job</option>
-                                <option className="text-black" value="Delivery Driver">Delivery Driver</option>
-                                <option className="text-black" value="Warehouse Worker">Warehouse Worker</option>
-                                <option className="text-black" value="Security Guard">Security Guard</option>
-                                <option className="text-black" value="Shipping Clerk">Shipping Clerk</option>
-                                <option className="text-black" value="Mailroom Clerk">Mailroom Clerk</option>
-                                <option className="text-black" value="Forklift Operator">Forklift Operator</option>
-                                <option className="text-black" value="Warehouse Worker">Warehouse Worker</option>
-                                <option className="text-black" value="File Clerk">File Clerk</option>
+
+                                {
+                                    jobs?.map((job) => <option key={job?._id} className="text-black" value={job?.job_title}>{job?.job_title}</option>)
+                                }
+
+
+                                {/* <option className="text-black" value="Delivery Driver">Delivery Driver</option> */}
                             </select>
                         </div>
                     </div>
