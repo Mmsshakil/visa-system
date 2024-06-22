@@ -6,6 +6,7 @@ import Swal from "sweetalert2";
 import { BiHide, BiShow } from "react-icons/bi";
 import useAxiosPublic from "../../hooks/useAxiosPublic";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
+import { useQuery } from "@tanstack/react-query";
 
 
 
@@ -19,6 +20,7 @@ const SignUp = () => {
     // these lines for navigation after login
     const navigate = useNavigate();
     const location = useLocation();
+    const { createUser, updateUserProfile } = useContext(AuthContext);
     // console.log(location);
 
     const {
@@ -28,7 +30,30 @@ const SignUp = () => {
         formState: { errors },
     } = useForm();
 
-    const { createUser, updateUserProfile } = useContext(AuthContext);
+
+
+    const { isPending, error, data: countries = [], refetch } = useQuery({
+        queryKey: ['countries'],
+        queryFn: async () => {
+            const res = await axiosSecure.get('/countries');
+            return res.data;
+        }
+    })
+
+    if (isPending) {
+        return <div className="flex justify-center items-center h-[60vh]">
+            <span className="loading loading-bars loading-lg text-error"></span>
+        </div>
+    }
+
+    if (error) {
+        return <div className="flex justify-center items-center h-[60vh]">
+            <span className="loading loading-bars loading-lg text-error"></span>
+        </div>
+    }
+    console.log(countries);
+
+
 
 
 
@@ -36,7 +61,7 @@ const SignUp = () => {
 
     const onSubmit = async (data) => {
         console.log(data);
-        
+
         // image uploaded in the imagebb site
         const imageFile = { image: data.profilePhoto[0] };
         const res = await axiosPublic.post(imagebb_api, imageFile, {
@@ -155,7 +180,7 @@ const SignUp = () => {
 
 
                             </div>
-                            <div className="form-control w-full">
+                            <div className="form-control w-full md:w-56">
                                 <label className="label">
                                     <span className="label-text font-semibold">Country</span>
                                 </label>
@@ -163,36 +188,12 @@ const SignUp = () => {
 
                                 <select defaultValue="default" className="input input-bordered text-slate-400" {...register("country", { required: true })}>
                                     <option disabled value="default">Select your country</option>
-                                    <option className="text-black" value="Afghanistan">Afghanistan</option>
-                                    <option className="text-black" value="Albania">Albania</option>
-                                    <option className="text-black" value="Argentina">Argentina</option>
-                                    <option className="text-black" value="Australia">Australia</option>
-                                    <option className="text-black" value="Azerbaijan">Azerbaijan</option>
-                                    <option className="text-black" value="Bahamas">Bahamas</option>
-                                    <option className="text-black" value="Bangladesh">Bangladesh</option>
-                                    <option className="text-black" value="Bhutan">Bhutan</option>
-                                    <option className="text-black" value="Bahrain">Bahrain</option>
-                                    <option className="text-black" value="Brazil">Brazil</option>
-                                    <option className="text-black" value="Burkina Faso">Burkina Faso</option>
-                                    <option className="text-black" value="Cambodia">Cambodia</option>
-                                    <option className="text-black" value="Canada">Canada</option>
-                                    <option className="text-black" value="Colombia">Colombia</option>
-                                    <option className="text-black" value="Cyprus">Cyprus</option>
-                                    <option className="text-black" value="Denmark">Denmark</option>
-                                    <option className="text-black" value="Egypt">Egypt</option>
-                                    <option className="text-black" value="Ethiopia">Ethiopia</option>
-                                    <option className="text-black" value="Finland">Finland</option>
-                                    <option className="text-black" value="India">India</option>
-                                    <option className="text-black" value="Kenya">Kenya</option>
-                                    <option className="text-black" value="Lebanon">Lebanon</option>
-                                    <option className="text-black" value="Malaysia">Malaysia</option>
-                                    <option className="text-black" value="Maldives">Maldives</option>
-                                    <option className="text-black" value="Nepal">Nepal</option>
-                                    <option className="text-black" value="Thailand">Thailand</option>
-                                    <option className="text-black" value="United Arab Emirates">United Arab Emirates</option>
-                                    <option className="text-black" value="United Kingdom">United Kingdom</option>
-                                    <option className="text-black" value="United States of America">United States of America</option>
-                                    <option className="text-black" value="Zimbabwe">Zimbabwe</option>
+
+                                    {
+                                        countries?.map((country) =>
+                                            <option key={country?._id} className="text-black" value={country?.name}>{country?.name}</option>
+                                        )
+                                    }
 
 
                                 </select>
