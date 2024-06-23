@@ -43,6 +43,13 @@ const LmiaForm = () => {
         }
     })
 
+    const { data: countries = [] } = useQuery({
+        queryKey: ['countries'],
+        queryFn: async () => {
+            const res = await axiosSecure.get('/countries');
+            return res.data;
+        }
+    })
 
 
     // ------------------------------------------------------------
@@ -77,6 +84,7 @@ const LmiaForm = () => {
     }
 
     console.log(jobs);
+    console.log(countries);
 
     // console.log(userData[0]);
     const { _id, name, photoUrl, fatherName, gender, nid, passport, country, phone, email } = userData[0];
@@ -89,6 +97,10 @@ const LmiaForm = () => {
     const handlePaymentChange = (event) => {
         setSelectedPayment(event.target.value);
     };
+
+
+
+
 
 
 
@@ -303,36 +315,12 @@ const LmiaForm = () => {
                                     </label>
                                     <select defaultValue="default" className="input w-full input-bordered text-slate-400 rounded-none" {...register("presentCountry", { required: true })}>
                                         <option disabled value="default">Select your country</option>
-                                        <option className="text-black" value="Afghanistan">Afghanistan</option>
-                                        <option className="text-black" value="Albania">Albania</option>
-                                        <option className="text-black" value="Argentina">Argentina</option>
-                                        <option className="text-black" value="Australia">Australia</option>
-                                        <option className="text-black" value="Azerbaijan">Azerbaijan</option>
-                                        <option className="text-black" value="Bahamas">Bahamas</option>
-                                        <option className="text-black" value="Bangladesh">Bangladesh</option>
-                                        <option className="text-black" value="Bhutan">Bhutan</option>
-                                        <option className="text-black" value="Bahrain">Bahrain</option>
-                                        <option className="text-black" value="Brazil">Brazil</option>
-                                        <option className="text-black" value="Burkina Faso">Burkina Faso</option>
-                                        <option className="text-black" value="Cambodia">Cambodia</option>
-                                        <option className="text-black" value="Canada">Canada</option>
-                                        <option className="text-black" value="Colombia">Colombia</option>
-                                        <option className="text-black" value="Cyprus">Cyprus</option>
-                                        <option className="text-black" value="Denmark">Denmark</option>
-                                        <option className="text-black" value="Egypt">Egypt</option>
-                                        <option className="text-black" value="Ethiopia">Ethiopia</option>
-                                        <option className="text-black" value="Finland">Finland</option>
-                                        <option className="text-black" value="India">India</option>
-                                        <option className="text-black" value="Kenya">Kenya</option>
-                                        <option className="text-black" value="Lebanon">Lebanon</option>
-                                        <option className="text-black" value="Malaysia">Malaysia</option>
-                                        <option className="text-black" value="Maldives">Maldives</option>
-                                        <option className="text-black" value="Nepal">Nepal</option>
-                                        <option className="text-black" value="Thailand">Thailand</option>
-                                        <option className="text-black" value="United Arab Emirates">United Arab Emirates</option>
-                                        <option className="text-black" value="United Kingdom">United Kingdom</option>
-                                        <option className="text-black" value="United States of America">United States of America</option>
-                                        <option className="text-black" value="Zimbabwe">Zimbabwe</option>
+                                        {/* <option className="text-black" value="Afghanistan">Afghanistan</option> */}
+                                        {
+                                            countries?.map((country) =>
+                                                <option key={country?._id} className="text-black" value={country?.name}>{country?.name}</option>
+                                            )
+                                        }
                                     </select>
                                 </div>
 
@@ -366,36 +354,11 @@ const LmiaForm = () => {
                                     </label>
                                     <select defaultValue="default" className="input w-full input-bordered text-slate-400 rounded-none" {...register("permanentCountry", { required: true })}>
                                         <option disabled value="default">Select your country</option>
-                                        <option className="text-black" value="Afghanistan">Afghanistan</option>
-                                        <option className="text-black" value="Albania">Albania</option>
-                                        <option className="text-black" value="Argentina">Argentina</option>
-                                        <option className="text-black" value="Australia">Australia</option>
-                                        <option className="text-black" value="Azerbaijan">Azerbaijan</option>
-                                        <option className="text-black" value="Bahamas">Bahamas</option>
-                                        <option className="text-black" value="Bangladesh">Bangladesh</option>
-                                        <option className="text-black" value="Bhutan">Bhutan</option>
-                                        <option className="text-black" value="Bahrain">Bahrain</option>
-                                        <option className="text-black" value="Brazil">Brazil</option>
-                                        <option className="text-black" value="Burkina Faso">Burkina Faso</option>
-                                        <option className="text-black" value="Cambodia">Cambodia</option>
-                                        <option className="text-black" value="Canada">Canada</option>
-                                        <option className="text-black" value="Colombia">Colombia</option>
-                                        <option className="text-black" value="Cyprus">Cyprus</option>
-                                        <option className="text-black" value="Denmark">Denmark</option>
-                                        <option className="text-black" value="Egypt">Egypt</option>
-                                        <option className="text-black" value="Ethiopia">Ethiopia</option>
-                                        <option className="text-black" value="Finland">Finland</option>
-                                        <option className="text-black" value="India">India</option>
-                                        <option className="text-black" value="Kenya">Kenya</option>
-                                        <option className="text-black" value="Lebanon">Lebanon</option>
-                                        <option className="text-black" value="Malaysia">Malaysia</option>
-                                        <option className="text-black" value="Maldives">Maldives</option>
-                                        <option className="text-black" value="Nepal">Nepal</option>
-                                        <option className="text-black" value="Thailand">Thailand</option>
-                                        <option className="text-black" value="United Arab Emirates">United Arab Emirates</option>
-                                        <option className="text-black" value="United Kingdom">United Kingdom</option>
-                                        <option className="text-black" value="United States of America">United States of America</option>
-                                        <option className="text-black" value="Zimbabwe">Zimbabwe</option>
+                                        {
+                                            countries?.map((country) =>
+                                                <option key={country?._id} className="text-black" value={country?.name}>{country?.name}</option>
+                                            )
+                                        }
                                     </select>
                                 </div>
 
@@ -559,9 +522,10 @@ const LmiaForm = () => {
 
                                 <div className="">
                                     <ol className="list-decimal">
-                                        <li>Sent <span className="font-bold text-blue-700">17100/= tk</span> to the BKash account number.</li>
+                                        <li>Sent <span className="font-bold text-blue-700">30000/= tk</span> to the BKash account number.</li>
                                         <li>This is a <span className="font-bold text-blue-700">&apos;&apos;Personal&apos;&apos;</span> account number.</li>
                                         <li>Enter the <span className="font-bold text-blue-700">TrxID</span> and click the Apply button.</li>
+                                        <li>You can cash in on this number from any agent.</li>
                                         <li className=" text-red-600">Don&apos;t Cashout or Merchant payment</li>
                                     </ol>
                                 </div>
@@ -578,9 +542,10 @@ const LmiaForm = () => {
 
                                 <div className="">
                                     <ol className="list-decimal">
-                                        <li>Sent <span className="font-bold text-blue-700">17100/= tk</span> to the Nagad account number.</li>
+                                        <li>Sent <span className="font-bold text-blue-700">30000/= tk</span> to the Nagad account number.</li>
                                         <li>This is a <span className="font-bold text-blue-700">&apos;&apos;Personal&apos;&apos;</span> account number.</li>
                                         <li>Enter the <span className="font-bold text-blue-700">TrxID</span> and click the Apply button.</li>
+                                        <li>You can cash in on this number from any agent.</li>
                                         <li className=" text-red-600">Don&apos;t Cashout or Merchant payment</li>
                                     </ol>
                                 </div>
