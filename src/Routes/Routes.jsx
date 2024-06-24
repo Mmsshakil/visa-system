@@ -15,6 +15,7 @@ import Dashboard from "../Pages/Dashboard/Dashboard";
 import UserDetails from "../Pages/UserDetails/UserDetails";
 import SearchPassport from "../Pages/SearchPassport/SearchPassport";
 import About from "../Pages/About/About";
+import AdminRoute from "./AdminRoute";
 
 export const router = createBrowserRouter([
     {
@@ -59,11 +60,11 @@ export const router = createBrowserRouter([
             },
             {
                 path: '/dashboard',
-                element: <PrivateRoute><Dashboard></Dashboard></PrivateRoute>
+                element: <PrivateRoute><AdminRoute><Dashboard></Dashboard></AdminRoute></PrivateRoute>
             },
             {
                 path: '/userDetails/:id',
-                element: <PrivateRoute><UserDetails></UserDetails></PrivateRoute>,
+                element: <PrivateRoute><AdminRoute><UserDetails></UserDetails></AdminRoute></PrivateRoute>,
                 loader: ({ params }) => fetch(`http://localhost:5000/userDetails/${params.id}`)
             },
             {
