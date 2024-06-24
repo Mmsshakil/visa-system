@@ -15,7 +15,7 @@ const Dashboard = () => {
     const [userData, setUserData] = useState(null);
     const { user } = useContext(AuthContext);
     const navigate = useNavigate();
-    console.log(user.email);
+    // console.log(user.email);
 
     const { isPending, error, data: allusers = [], refetch } = useQuery({
         queryKey: ['allusers'],
@@ -41,7 +41,7 @@ const Dashboard = () => {
         return <span className="loading loading-spinner text-warning loading-lg"></span>;
     }
     // const {  } = userData;
-    console.log(userData[0].role);
+    // console.log(userData[0].role);
     if (userData[0]?.role !== 'admin') {
         return <span className="loading loading-spinner text-warning loading-lg"></span>;
     }
