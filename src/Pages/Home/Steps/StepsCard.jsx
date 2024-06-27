@@ -70,6 +70,7 @@ const StepsCard = () => {
                             <h2 className="font-medium md:font-bold mb-2">{step.title}</h2>
                             <p className='text-sm'>{step.content}</p>
                         </div>
+
                     </motion.div>
                 ))}
             </div>
@@ -86,10 +87,10 @@ const StepsCard = () => {
                             animate={{ opacity: 1, y: 0 }}
                             exit={{ opacity: 0, y: 50 }}
                         >
-                            <h2 className="font-medium md:font-bold mb-2">
+                            <h2 className="font-medium md:font-bold mb-2 text-red-600">
                                 {steps.find(step => step.id === selectedId).title}
                             </h2>
-                            <p className='text-sm'>
+                            <p className='text-sm font-bold'>
                                 {steps.find(step => step.id === selectedId).content}
                             </p>
                             <motion.button
