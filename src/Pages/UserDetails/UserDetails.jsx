@@ -40,7 +40,7 @@ const UserDetails = () => {
 
     // control ECA------------------------------------------
     const onSubmitEca = async (data) => {
-        console.log(data);
+        // console.log(data);
 
         const adminEcaImageFile = { image: data.adminEcaphoto[0] };
         const adminEcaRes = await axiosPublic.post(imagebb_api, adminEcaImageFile, {
@@ -48,17 +48,17 @@ const UserDetails = () => {
                 'Content-Type': 'multipart/form-data'
             }
         });
-        console.log(adminEcaRes.data);
+        // console.log(adminEcaRes.data);
 
         // now upload all data in database
         const updateUserInfo = {
             adminEcaPhoto: adminEcaRes.data.data.display_url
             // userStatus: 'ecaComplete'
         }
-        console.log(updateUserInfo);
+        // console.log(updateUserInfo);
 
         // send the data to the server
-        fetch(`http://localhost:5000/updateEca/${_id}`, {
+        fetch(`https://first.canadaworkvisa.info/updateEca/${_id}`, {
             method: "PATCH",
             headers: {
                 'content-type': 'application/json'
@@ -68,7 +68,7 @@ const UserDetails = () => {
         })
             .then(res => res.json())
             .then(data => {
-                console.log(data);
+                // console.log(data);
                 if (data.modifiedCount > 0) {
 
                     Swal.fire({
@@ -91,7 +91,7 @@ const UserDetails = () => {
     // -------------------------------------------------------
     // control LMIA------------------------------------------
     const onSubmitLmia = async (data) => {
-        console.log(data);
+        // console.log(data);
 
         const adminLmiaImageFile = { image: data.adminLmiaphoto[0] };
         const adminLmiaRes = await axiosPublic.post(imagebb_api, adminLmiaImageFile, {
@@ -99,17 +99,17 @@ const UserDetails = () => {
                 'Content-Type': 'multipart/form-data'
             }
         });
-        console.log(adminLmiaRes.data);
+        // console.log(adminLmiaRes.data);
 
         // now upload all data in database
         const updateUserInfo = {
             adminLmiaPhoto: adminLmiaRes.data.data.display_url
 
         }
-        console.log(updateUserInfo);
+        // console.log(updateUserInfo);
 
         // send the data to the server
-        fetch(`http://localhost:5000/updateLmia/${_id}`, {
+        fetch(`https://first.canadaworkvisa.info/updateLmia/${_id}`, {
             method: "PATCH",
             headers: {
                 'content-type': 'application/json'
@@ -119,7 +119,7 @@ const UserDetails = () => {
         })
             .then(res => res.json())
             .then(data => {
-                console.log(data);
+                // console.log(data);
                 if (data.modifiedCount > 0) {
 
                     Swal.fire({
@@ -145,7 +145,7 @@ const UserDetails = () => {
     // -------------------------------------------------------
     // control VISA------------------------------------------
     const onSubmitVisa = async (data) => {
-        console.log(data);
+        // console.log(data);
 
         const adminVisaImageFile = { image: data.adminVisaphoto[0] };
         const adminVisaRes = await axiosPublic.post(imagebb_api, adminVisaImageFile, {
@@ -153,7 +153,7 @@ const UserDetails = () => {
                 'Content-Type': 'multipart/form-data'
             }
         });
-        console.log(adminVisaRes.data);
+        // console.log(adminVisaRes.data);
 
         // now upload all data in database
         const updateUserInfo = {
@@ -162,11 +162,11 @@ const UserDetails = () => {
             biometric: data.biometric
 
         }
-        console.log(updateUserInfo);
+        // console.log(updateUserInfo);
 
 
         // send the data to the server
-        fetch(`http://localhost:5000/updateVisa/${_id}`, {
+        fetch(`https://first.canadaworkvisa.info/updateVisa/${_id}`, {
             method: "PATCH",
             headers: {
                 'content-type': 'application/json'
@@ -176,7 +176,7 @@ const UserDetails = () => {
         })
             .then(res => res.json())
             .then(data => {
-                console.log(data);
+                // console.log(data);
                 if (data.modifiedCount > 0) {
 
                     Swal.fire({

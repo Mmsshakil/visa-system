@@ -51,7 +51,7 @@ const SignUp = () => {
             <span className="loading loading-bars loading-lg text-error"></span>
         </div>
     }
-    console.log(countries);
+    // console.log(countries);
 
 
 
@@ -60,7 +60,7 @@ const SignUp = () => {
 
 
     const onSubmit = async (data) => {
-        console.log(data);
+        // console.log(data);
 
         // image uploaded in the imagebb site
         const imageFile = { image: data.profilePhoto[0] };
@@ -69,7 +69,7 @@ const SignUp = () => {
                 'Content-Type': 'multipart/form-data'
             }
         });
-        console.log(res.data);
+        // console.log(res.data);
         // console.log(res.data.data.display_url);
 
         const userInfo = {
@@ -86,7 +86,7 @@ const SignUp = () => {
             photoUrl: res.data.data.display_url,
             userStatus: "general"
         }
-        console.log(userInfo);
+        // console.log(userInfo);
 
 
 
@@ -95,16 +95,16 @@ const SignUp = () => {
             createUser(data.email, data.password)
                 .then(result => {
                     const loggedUser = result.user;
-                    console.log(loggedUser);
+                    // console.log(loggedUser);
 
                     updateUserProfile(data.name, res.data.data.display_url)
                         .then(() => {
-                            console.log('name also added');
+                            // console.log('name also added');
 
                             axiosPublic.post('/users', userInfo)
                                 .then(res => {
                                     if (res.data.insertedId) {
-                                        console.log('user added to the database');
+                                        // console.log('user added to the database');
 
                                         Swal.fire({
                                             position: "top-end",
@@ -123,7 +123,7 @@ const SignUp = () => {
 
 
                 .catch(error => {
-                    console.log(error.message);
+                    // console.log(error.message);
 
                     Swal.fire({
                         icon: "error",
@@ -150,7 +150,7 @@ const SignUp = () => {
                         <div className="flex flex-col md:flex-row gap-1">
                             <div className="form-control w-full">
                                 <label className="label">
-                                    <span className="label-text font-semibold">Name</span>
+                                    <span className="label-text font-semibold">Full Name</span>
                                 </label>
                                 <input type="text" name="name" {...register("name")} placeholder="Enter your name" className="input input-bordered" required />
                             </div>

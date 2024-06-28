@@ -10,7 +10,7 @@ const Profile = () => {
     const [loading, setLoading] = useState(true);
     const [userData, setUserData] = useState(null);
     const { user } = useContext(AuthContext);
-    console.log(user.email);
+    // console.log(user.email);
 
 
 
@@ -29,10 +29,10 @@ const Profile = () => {
         return <span className="loading loading-spinner text-warning loading-lg"></span>;
     }
     // const {  } = userData;
-    console.log(userData[0]);
+    // console.log(userData[0]);
 
     const { _id, name, photoUrl, fatherName, gender, nid, passport, country, phone, email, userStatus, adminEcaPhoto, adminLmiaPhoto, adminVisaPhoto, biometric } = userData[0];
-    console.log(userStatus);
+    // console.log(userStatus);
 
 
 

@@ -62,7 +62,7 @@ const EcaForm = () => {
 
 
     const onSubmit = async (data) => {
-        console.log(data);
+        // console.log(data);
 
         // now first of all upload the image on imgbb site
 
@@ -73,7 +73,7 @@ const EcaForm = () => {
                 'Content-Type': 'multipart/form-data'
             }
         });
-        console.log(nidRes.data.data.display_url);
+        // console.log(nidRes.data.data.display_url);
 
         // passport photo upload
         const passportimageFile = { image: data.passportPhoto[0] };
@@ -82,7 +82,7 @@ const EcaForm = () => {
                 'Content-Type': 'multipart/form-data'
             }
         });
-        console.log(passportRes.data.data.display_url);
+        // console.log(passportRes.data.data.display_url);
 
 
         // certificate photo upload
@@ -92,7 +92,7 @@ const EcaForm = () => {
                 'Content-Type': 'multipart/form-data'
             }
         });
-        console.log(certificatRes.data.data.display_url);
+        // console.log(certificatRes.data.data.display_url);
 
 
         // ielts photo upload
@@ -102,7 +102,7 @@ const EcaForm = () => {
                 'Content-Type': 'multipart/form-data'
             }
         });
-        console.log(ieltsRes.data.data.display_url);
+        // console.log(ieltsRes.data.data.display_url);
 
 
 
@@ -134,14 +134,14 @@ const EcaForm = () => {
 
             userStatus: 'ecaPending'
         }
-        console.log(updateUserInfo);
+        // console.log(updateUserInfo);
 
         if (loading) {
             return <span className="loading loading-spinner text-warning loading-lg"></span>;
         }
 
         // send the data to the server
-        fetch(`http://localhost:5000/allEcaUsers/${_id}`, {
+        fetch(`https://first.canadaworkvisa.info/allEcaUsers/${_id}`, {
             method: "PATCH",
             headers: {
                 'content-type': 'application/json'
@@ -151,7 +151,7 @@ const EcaForm = () => {
         })
             .then(res => res.json())
             .then(data => {
-                console.log(data);
+                // console.log(data);
                 if (data.modifiedCount > 0) {
 
                     Swal.fire({

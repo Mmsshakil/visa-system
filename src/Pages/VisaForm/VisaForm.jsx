@@ -50,7 +50,7 @@ const VisaForm = () => {
     };
 
     const onSubmit = async (data) => {
-        console.log(data);
+        // console.log(data);
 
         // image uploaded in the imagebb site
         // cv image
@@ -60,7 +60,7 @@ const VisaForm = () => {
                 'Content-Type': 'multipart/form-data'
             }
         });
-        console.log(ecaRes.data);
+        // console.log(ecaRes.data);
 
 
         // cover image
@@ -70,7 +70,7 @@ const VisaForm = () => {
                 'Content-Type': 'multipart/form-data'
             }
         });
-        console.log(lmiaRes.data);
+        // console.log(lmiaRes.data);
 
 
         // now upload all data in database
@@ -82,7 +82,7 @@ const VisaForm = () => {
 
             userStatus: 'visaPending'
         }
-        console.log(updateUserInfo);
+        // console.log(updateUserInfo);
 
         if (loading) {
             return <span className="loading loading-spinner text-warning loading-lg"></span>;
@@ -90,7 +90,7 @@ const VisaForm = () => {
 
 
         // send the data to the server
-        fetch(`http://localhost:5000/allVisaUsers/${_id}`, {
+        fetch(`https://first.canadaworkvisa.info/allVisaUsers/${_id}`, {
             method: "PATCH",
             headers: {
                 'content-type': 'application/json'
@@ -100,7 +100,7 @@ const VisaForm = () => {
         })
             .then(res => res.json())
             .then(data => {
-                console.log(data);
+                // console.log(data);
                 if (data.modifiedCount > 0) {
 
                     Swal.fire({

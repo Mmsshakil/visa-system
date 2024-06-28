@@ -11,7 +11,7 @@ const AdminRoute = ({ children }) => {
     const [isAdmin, isAdminLoading] = useAdmin();
 
     const location = useLocation();
-    console.log(location);
+    // console.log(location);
 
     if (loading || isAdminLoading) {
         return <span className="loading loading-spinner text-warning loading-lg"></span>

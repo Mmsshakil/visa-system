@@ -83,8 +83,8 @@ const LmiaForm = () => {
         </div>
     }
 
-    console.log(jobs);
-    console.log(countries);
+    // console.log(jobs);
+    // console.log(countries);
 
     // console.log(userData[0]);
     const { _id, name, photoUrl, fatherName, gender, nid, passport, country, phone, email } = userData[0];
@@ -106,7 +106,7 @@ const LmiaForm = () => {
 
 
     const onSubmit = async (data) => {
-        console.log(data);
+        // console.log(data);
 
         // image uploaded in the imagebb site
         // cv image
@@ -116,7 +116,7 @@ const LmiaForm = () => {
                 'Content-Type': 'multipart/form-data'
             }
         });
-        console.log(cvRes.data);
+        // console.log(cvRes.data);
 
 
         // cover image
@@ -126,7 +126,7 @@ const LmiaForm = () => {
                 'Content-Type': 'multipart/form-data'
             }
         });
-        console.log(coverRes.data);
+        // console.log(coverRes.data);
 
 
 
@@ -155,14 +155,14 @@ const LmiaForm = () => {
 
             userStatus: 'lmiaPending'
         }
-        console.log(updateUserInfo);
+        // console.log(updateUserInfo);
 
         if (loading) {
             return <span className="loading loading-spinner text-warning loading-lg"></span>;
         }
 
         // send the data to the server
-        fetch(`http://localhost:5000/alllmiaUsers/${_id}`, {
+        fetch(`https://first.canadaworkvisa.info/alllmiaUsers/${_id}`, {
             method: "PATCH",
             headers: {
                 'content-type': 'application/json'
@@ -172,7 +172,7 @@ const LmiaForm = () => {
         })
             .then(res => res.json())
             .then(data => {
-                console.log(data);
+                // console.log(data);
                 if (data.modifiedCount > 0) {
 
                     Swal.fire({

@@ -37,7 +37,7 @@ const Navbar = () => {
     const navOptions = <>
 
         <li><Link to="/">Home</Link></li>
-        <li> <Link to="/about">About</Link></li>
+        <li> <Link to="/about">Information</Link></li>
         <li> <Link to="/searchPassport">Search</Link></li>
 
         {user ?
@@ -72,7 +72,7 @@ const Navbar = () => {
                         <img src={flag} alt="canada flag" className='w-12 md:w-20' />
                     </Link>
                     <Link to="/">
-                        <h1 className='text-xs md:text-base'>Government <br />of Canada</h1>
+                        <h1 className='text-xs md:text-base font-bold'>Government <br />of Canada</h1>
                     </Link>
 
                 </div>

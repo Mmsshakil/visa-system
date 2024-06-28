@@ -29,17 +29,17 @@ const SearchPassport = () => {
         axiosPublic.get(`/searchPassport/${data.passportNumber}`)
             .then(response => {
                 if (!response.data || response.data.length === 0) {
-                    console.log('Error: No data found');
+                    // console.log('Error: No data found');
                     setUserData(null);
                 } else {
                     setUserData(response.data);
-                    console.log('data found');
+                    // console.log('data found');
 
                 }
                 setLoading(false);
             })
             .catch(error => {
-                console.log(error);
+                // console.log(error);
                 // setPassport(null);
                 setUserData(null);
                 setLoading(false);
@@ -50,7 +50,7 @@ const SearchPassport = () => {
         }
 
         // console.log(passport);
-        console.log(userData);
+        // console.log(userData);
 
 
 

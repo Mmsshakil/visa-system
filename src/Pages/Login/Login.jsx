@@ -23,12 +23,12 @@ const Login = () => {
         const form = e.target;
         const email = form.email.value;
         const password = form.password.value;
-        console.log(email, password);
+        // console.log(email, password);
 
         signIn(email, password)
             .then(result => {
                 const user = result.user;
-                console.log(user);
+                // console.log(user);
 
                 Swal.fire({
                     position: "top-end",
@@ -42,7 +42,7 @@ const Login = () => {
                 navigate(from, { replace: true });
             })
             .catch(error => {
-                console.log(error.message);
+                // console.log(error.message);
                 Swal.fire({
                     icon: "error",
                     title: "Login Faild",

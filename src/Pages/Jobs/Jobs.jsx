@@ -34,7 +34,7 @@ const Jobs = () => {
                 <h1 className="font-bold text-2xl text-red-600 mb-3 text-center">Employment Details</h1>
                 <div className="font-semibold text-left flex flex-col gap-2">
                     <h1>1. Below is the job position currently available.</h1>
-                    <h1>2. The company will provide health insurance, travel tax, and a block sum of $13,310 CAD.</h1>
+                    <h1>2. The company will provide health insurance, travel tax, and a block sum of $5,310 CAD.</h1>
                     <h1>3. The company will cover your food and living expenses.</h1>
                     <h1>4. You are required to work 8 hours per day.</h1>
                     <h1>5. You will have either Saturday or Sunday off every week.</h1>
