@@ -43,7 +43,7 @@ const Jobs = () => {
                 </div>
             </div>
 
-            <h1 className="font-bold text-2xl text-red-600 mb-3 text-center">Available Positions</h1>
+            <h1 className="font-bold text-2xl text-red-600 mb-3 text-center">Job Bank</h1>
             <div className="grid grid-cols-1 md:grid-cols-2 justify-center items-center gap-5 mx-auto">
 
                 {

@@ -59,7 +59,7 @@ const Profile = () => {
                     </div>
 
 
-                    <div className="flex flex-col  gap-1">
+                    <div className="flex flex-col text-sm md:text-base gap-1">
 
                         {
                             userStatus === 'general' && <>
@@ -87,7 +87,7 @@ const Profile = () => {
                                         <p className="font-semibold">ECA Verification : <span className="text-blue-600">Approved</span></p>
                                         <BsPatchCheckFill className="text-blue-600"></BsPatchCheckFill>
                                     </div>
-                                    <Link className="btn btn-error btn-sm" to={adminEcaPhoto} target="_blank" download>Download</Link>
+                                    <Link className="btn btn-error btn-xs md:btn-sm" to={adminEcaPhoto} target="_blank" download>Download</Link>
                                 </div>
                                 <p><span className="font-semibold">LMIA Verification :</span> Unverified </p>
                                 <p><span className="font-semibold">Visa Verification :</span> Unverified </p>
@@ -103,7 +103,7 @@ const Profile = () => {
                                         <p className="font-semibold">ECA Verification : <span className="text-blue-600">Approved</span></p>
                                         <BsPatchCheckFill className="text-blue-600"></BsPatchCheckFill>
                                     </div>
-                                    <Link className="btn btn-error btn-sm" to={adminEcaPhoto} target="_blank" download>Download</Link>
+                                    <Link className="btn btn-error btn-xs md:btn-sm" to={adminEcaPhoto} target="_blank" download>Download</Link>
                                 </div>
                                 <p><span className="font-semibold">LMIA Verification :</span> Pending </p>
                                 <p><span className="font-semibold">Visa Verification :</span> Unverified </p>
@@ -118,7 +118,7 @@ const Profile = () => {
                                         <p className="font-semibold">ECA Verification : <span className="text-blue-600">Approved</span></p>
                                         <BsPatchCheckFill className="text-blue-600"></BsPatchCheckFill>
                                     </div>
-                                    <Link className="btn btn-error btn-sm" to={adminEcaPhoto} target="_blank" download>Download</Link>
+                                    <Link className="btn btn-error btn-xs md:btn-sm" to={adminEcaPhoto} target="_blank" download>Download</Link>
                                 </div>
 
                                 <div className="flex justify-between">
@@ -126,7 +126,7 @@ const Profile = () => {
                                         <p className="font-semibold">LMIA Verification : <span className="text-blue-600">Approved</span></p>
                                         <BsPatchCheckFill className="text-blue-600"></BsPatchCheckFill>
                                     </div>
-                                    <Link className="btn btn-error btn-sm" to={adminLmiaPhoto} target="_blank" download>Download</Link>
+                                    <Link className="btn btn-error btn-xs md:btn-sm" to={adminLmiaPhoto} target="_blank" download>Download</Link>
                                 </div>
                                 <p><span className="font-semibold">Visa Verification :</span> Unverified </p>
                             </>
@@ -141,7 +141,7 @@ const Profile = () => {
                                         <p className="font-semibold">ECA Verification : <span className="text-blue-600">Approved</span></p>
                                         <BsPatchCheckFill className="text-blue-600"></BsPatchCheckFill>
                                     </div>
-                                    <Link className="btn btn-error btn-sm" to={adminEcaPhoto} target="_blank" download>Download</Link>
+                                    <Link className="btn btn-error btn-xs md:btn-sm" to={adminEcaPhoto} target="_blank" download>Download</Link>
                                 </div>
 
                                 <div className="flex justify-between">
@@ -149,7 +149,7 @@ const Profile = () => {
                                         <p className="font-semibold">LMIA Verification : <span className="text-blue-600">Approved</span></p>
                                         <BsPatchCheckFill className="text-blue-600"></BsPatchCheckFill>
                                     </div>
-                                    <Link className="btn btn-error btn-sm" to={adminLmiaPhoto} target="_blank" download>Download</Link>
+                                    <Link className="btn btn-error btn-xs md:btn-sm" to={adminLmiaPhoto} target="_blank" download>Download</Link>
                                 </div>
                                 <p><span className="font-semibold">Visa Verification :</span> Pending </p>
                             </>
@@ -164,7 +164,7 @@ const Profile = () => {
                                         <p className="font-semibold">ECA Verification : <span className="text-blue-600">Approved</span></p>
                                         <BsPatchCheckFill className="text-blue-600"></BsPatchCheckFill>
                                     </div>
-                                    <Link className="btn btn-error btn-sm" to={adminEcaPhoto} target="_blank" download>Download</Link>
+                                    <Link className="btn btn-error btn-xs md:btn-sm" to={adminEcaPhoto} target="_blank" download>Download</Link>
                                 </div>
 
                                 <div className="flex justify-between">
@@ -172,14 +172,14 @@ const Profile = () => {
                                         <p className="font-semibold">LMIA Verification : <span className="text-blue-600">Approved</span></p>
                                         <BsPatchCheckFill className="text-blue-600"></BsPatchCheckFill>
                                     </div>
-                                    <Link className="btn btn-error btn-sm" to={adminLmiaPhoto} target="_blank" download>Download</Link>
+                                    <Link className="btn btn-error btn-xs md:btn-sm" to={adminLmiaPhoto} target="_blank" download>Download</Link>
                                 </div>
                                 <div className="flex justify-between">
                                     <div className="flex gap-1 justify-center items-center ">
                                         <p className="font-semibold">Visa Verification : <span className="text-blue-600">Approved</span></p>
                                         <BsPatchCheckFill className="text-blue-600"></BsPatchCheckFill>
                                     </div>
-                                    <Link className="btn btn-error btn-sm" to={adminVisaPhoto} target="_blank" download>Download</Link>
+                                    <Link className="btn btn-error btn-xs md:btn-sm" to={adminVisaPhoto} target="_blank" download>Download</Link>
                                 </div>
                                 <p className="font-semibold">Biometric Submission Date : <span className="">{biometric}</span></p>
 

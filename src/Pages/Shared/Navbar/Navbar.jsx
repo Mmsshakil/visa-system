@@ -1,12 +1,14 @@
 import { Link } from 'react-router-dom';
 import flag from '../../../assets/flag.jpg'
-import { useContext } from 'react';
+import { useContext, useState } from 'react';
 import { AuthContext } from '../../../providers/AuthProvider';
 import Swal from 'sweetalert2';
 
 const Navbar = () => {
 
     const { user, logOut } = useContext(AuthContext);
+
+    console.log(user);
 
     const handleLogout = () => {
 
@@ -54,6 +56,7 @@ const Navbar = () => {
     </>
 
 
+
     return (
         <div className="navbar py-1 bg-base-100 mx-auto max-w-7xl font-semibold ">
             <div className="navbar-start">
@@ -67,7 +70,7 @@ const Navbar = () => {
                     </ul>
                 </div>
                 {/* <a className="btn btn-ghost text-xl">daisy</a> */}
-                <div className='flex gap-5'>
+                <div className='flex justify-center items-center gap-2 md:gap-5'>
                     <Link to="/">
                         <img src={flag} alt="canada flag" className='w-12 md:w-20' />
                     </Link>
@@ -85,7 +88,15 @@ const Navbar = () => {
             </div>
             <div className="navbar-end">
                 {user ?
-                    <button onClick={handleLogout} className="btn btn-error">Logout</button>
+                    <div className='flex gap-1 md:gap-2 justify-center items-center'>
+                        <div className="avatar ">
+                            <div className="w-9 md:w-10 rounded-full">
+                                <img src={user?.photoURL} />
+                                {/* <img className="w-10 rounded-full" src={user.photoURL} /> */}
+                            </div>
+                        </div>
+                        <button onClick={handleLogout} className="btn btn-error">Logout</button>
+                    </div>
                     :
                     <Link className="btn btn-outline btn-error" to="/login">Login</Link>
                 }
