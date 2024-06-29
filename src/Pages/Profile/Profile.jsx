@@ -59,7 +59,7 @@ const Profile = () => {
                     </div>
 
 
-                    <div className="flex flex-col text-sm md:text-base gap-1">
+                    <div className="flex flex-col text-xs md:text-base gap-1">
 
                         {
                             userStatus === 'general' && <>
