@@ -26,7 +26,9 @@ const Profile = () => {
     }, []);
 
     if (loading) {
-        return <span className="loading loading-spinner text-warning loading-lg"></span>;
+        return <div className="flex justify-center items-center h-[60vh]">
+            <span className="loading loading-bars loading-lg text-error"></span>
+        </div>;
     }
     // const {  } = userData;
     // console.log(userData[0]);
