@@ -38,7 +38,8 @@ const SignUp = () => {
         queryKey: ['countries'],
         queryFn: async () => {
             const res = await axiosSecure.get('/countries');
-            return res.data;
+            // return res.data;
+            return res.data.sort((a, b) => a.name.localeCompare(b.name));
         }
     })
 
