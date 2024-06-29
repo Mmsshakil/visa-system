@@ -141,7 +141,7 @@ const EcaForm = () => {
         }
 
         // send the data to the server
-        fetch(`https://first.canadaworkvisa.info/allEcaUsers/${_id}`, {
+        fetch(`${import.meta.env.VITE_main_url}/allEcaUsers/${_id}`, {
             method: "PATCH",
             headers: {
                 'content-type': 'application/json'

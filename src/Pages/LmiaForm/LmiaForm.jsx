@@ -162,7 +162,7 @@ const LmiaForm = () => {
         }
 
         // send the data to the server
-        fetch(`https://first.canadaworkvisa.info/alllmiaUsers/${_id}`, {
+        fetch(`${import.meta.env.VITE_main_url}/alllmiaUsers/${_id}`, {
             method: "PATCH",
             headers: {
                 'content-type': 'application/json'

@@ -58,7 +58,7 @@ const UserDetails = () => {
         // console.log(updateUserInfo);
 
         // send the data to the server
-        fetch(`https://first.canadaworkvisa.info/updateEca/${_id}`, {
+        fetch(`${import.meta.env.VITE_main_url}/updateEca/${_id}`, {
             method: "PATCH",
             headers: {
                 'content-type': 'application/json'
@@ -109,7 +109,7 @@ const UserDetails = () => {
         // console.log(updateUserInfo);
 
         // send the data to the server
-        fetch(`https://first.canadaworkvisa.info/updateLmia/${_id}`, {
+        fetch(`${import.meta.env.VITE_main_url}/updateLmia/${_id}`, {
             method: "PATCH",
             headers: {
                 'content-type': 'application/json'
@@ -166,7 +166,7 @@ const UserDetails = () => {
 
 
         // send the data to the server
-        fetch(`https://first.canadaworkvisa.info/updateVisa/${_id}`, {
+        fetch(`${import.meta.env.VITE_main_url}/updateVisa/${_id}`, {
             method: "PATCH",
             headers: {
                 'content-type': 'application/json'

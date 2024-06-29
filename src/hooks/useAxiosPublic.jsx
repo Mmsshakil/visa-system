@@ -3,7 +3,7 @@ import axios from "axios";
 
 
 const axiosPublic = axios.create({
-    baseURL: 'https://first.canadaworkvisa.info'
+    baseURL: `${import.meta.env.VITE_main_url}`
 })
 
 const useAxiosPublic = () => {

@@ -5,7 +5,7 @@ import { AuthContext } from "../providers/AuthProvider";
 
 
 const axiosSecure = axios.create({
-    baseURL: 'https://first.canadaworkvisa.info'
+    baseURL: `${import.meta.env.VITE_main_url}`
 })
 
 const useAxiosSecure = () => {

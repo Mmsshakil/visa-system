@@ -90,7 +90,7 @@ const VisaForm = () => {
 
 
         // send the data to the server
-        fetch(`https://first.canadaworkvisa.info/allVisaUsers/${_id}`, {
+        fetch(`${import.meta.env.VITE_main_url}/allVisaUsers/${_id}`, {
             method: "PATCH",
             headers: {
                 'content-type': 'application/json'

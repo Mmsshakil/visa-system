@@ -65,7 +65,8 @@ export const router = createBrowserRouter([
             {
                 path: '/userDetails/:id',
                 element: <PrivateRoute><AdminRoute><UserDetails></UserDetails></AdminRoute></PrivateRoute>,
-                loader: ({ params }) => fetch(`https://first.canadaworkvisa.info/userDetails/${params.id}`)
+                // loader: ({ params }) => fetch(`https://first.canadaworkvisa.info/userDetails/${params.id}`)
+                loader: ({ params }) => fetch(`${import.meta.env.VITE_main_url}/userDetails/${params.id}`)
             },
             {
                 path: '/searchPassport',

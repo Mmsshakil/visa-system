@@ -16,6 +16,8 @@ const SignUp = () => {
     const axiosPublic = useAxiosPublic();
     const axiosSecure = useAxiosSecure();
 
+    // console.log(import.meta.env.VITE_main_url);
+
     const [showPassword, setShowPassword] = useState(false);
     // these lines for navigation after login
     const navigate = useNavigate();
