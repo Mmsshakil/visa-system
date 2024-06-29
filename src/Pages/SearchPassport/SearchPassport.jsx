@@ -79,7 +79,7 @@ const SearchPassport = () => {
                     <div className="card shrink-0 w-full max-w-lg shadow-2xl bg-base-100 rounded-lg pt-2  mx-auto">
                         <div className="relative">
                             <figure className="w-52 h-56 mx-auto"><img className="pt-10" src={userData[0].photoUrl} alt="profilepic" /></figure>
-                            <img className="w-28 absolute left-40 -bottom-10 lg:left-48 lg:-bottom-10" src={approve} alt="" />
+                            <img className="w-28 absolute left-32 md:left-48 lg:left-52 -bottom-10  lg:-bottom-10" src={approve} alt="" />
                         </div>
                         <div className="card-body gap-1">
 

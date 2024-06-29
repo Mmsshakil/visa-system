@@ -13,7 +13,7 @@ const Main = () => {
             </div>
 
             <div className="relative">
-                <div className="fixed bottom-10 lg:bottom-20 right-5 md:right-14 lg:right-44 z-50 " >
+                <div className="fixed bottom-10 lg:bottom-8 right-5 md:right-14 lg:right-44 z-50 " >
 
                     <a href="https://wa.me/+15012290016?text=Hello How can I help you?" target="_blank">
                         <div className="flex gap-1 justify-center items-center">
