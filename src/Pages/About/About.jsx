@@ -1,9 +1,10 @@
+import { BsPatchCheckFill } from "react-icons/bs";
 
 const About = () => {
     return (
         <div className="max-w-3xl mx-auto my-7 md:my-10 px-3">
             <div className="">
-                <h1 className="font-bold text-2xl text-red-600 mb-3">Why Workers Should Move to Canada?</h1>
+                <h1 className="font-bold text-lg md:text-2xl text-red-600 mb-3">Why Workers Should Move to Canada?</h1>
                 <p className="font-semibold text-center md:text-left">
                     Workers may need to go to Canada for various reasons, including the short visa processing time, better employment opportunities, and higher salaries. Canada is known for its efficient immigration process, enabling workers to start their new jobs quickly. The country boasts a strong economy with a diverse job market, offering numerous opportunities across various sectors. High salaries and competitive benefits make Canada an attractive destination for skilled workers. Additionally, Canada provides a welcoming and multicultural environment, allowing workers to integrate into a diverse society while enjoying benefits such as quality healthcare, education, and social services. Moving to Canada can offer long-term career growth, stability, and an improved quality of life for themselves and their families.
                 </p>
@@ -71,11 +72,84 @@ const About = () => {
                         <li>Please attend the visa office on the specified date.</li>
                         <li>Please bring four passport-sized photos of yourself.</li>
                         <li>You need to wait one to two weeks for the confirmation email and passport collection date.</li>
-                        <li>After biometric verification, you will receive your passport with a 2-year Work Permit Visa.</li>
+                        <li>After biometric verification, you will receive your medical test date, and on this date, you need to submit your passport also for the visa.</li>
+                    </ol>
+                </div>
+
+                <div className="my-5">
+                    <h1 className="text-lg font-semibold text-black">Medical Test</h1>
+                    <ol className="list-decimal">
+                        <li>Ensure you have authentic identification documents: Passport, National Identification Document.</li>
+                        <li>Bring eyeglasses if you use them.</li>
+                        <li>Gather any previous medical reports.</li>
+                        <li>Prepare to answer a detailed medical history questionnaire.</li>
+                        <li>Undergo checks for weight, height, hearing, vision, blood pressure, pulse, heartbeat, lungs, abdomen, limbs, and skin.</li>
+                        <li>After passing the medical test, the embassy will provide a passport collection date along with your work permit visa.</li>
+                    </ol>
+                </div>
+                <div className="my-5">
+                    <h1 className="text-lg font-semibold text-black">Passport Collection</h1>
+                    <ol className="list-decimal">
+                        <li>Collect the passport from the embassy on the specified date and time.</li>
+                        <li>If all documents are correct and processed properly, you will receive the visa.</li>
+                        <li>The visa will be valid for 2 years, and you can also extend it after this period.</li>
+                        <li>Congratulations! Take a flight and enjoy your life in Canada.</li>
                     </ol>
                 </div>
 
 
+            </div>
+
+            <div className="px-10 md:px-5">
+                <h1 className="font-bold text-xs md:text-lg text-red-600 mb-3 text-center md:text-left">N.B. : If you need more information or assistance, you can contact a verified lawyer.</h1>
+                <h1 className="font-bold text-2xl text-red-600 my-5 text-center md:text-left">List of Lawyers</h1>
+                <ol className="list-decimal flex flex-col gap-5 font-medium">
+                    <li>
+                        <div>
+                            <div className="flex items-center gap-2 font-bold">
+                                <h1>Adv. Md. Robel Chowdhury</h1>
+                                <BsPatchCheckFill className="text-blue-600"></BsPatchCheckFill>
+                            </div>
+                            <h1>Whats App: +12345678</h1>
+                            <h1>imo: +12345678</h1>
+                            <h1>Email: robelchowdury@visa.com</h1>
+                        </div>
+                    </li>
+                    <li>
+                        <div>
+                            <div className="flex items-center gap-2 font-bold">
+                                <h1>Adv. Md. Robel Chowdhury</h1>
+                                <BsPatchCheckFill className="text-blue-600"></BsPatchCheckFill>
+                            </div>
+                            <h1>Whats App: +12345678</h1>
+                            <h1>imo: +12345678</h1>
+                            <h1>Email: robelchowdury@visa.com</h1>
+                        </div>
+                    </li>
+                    <li>
+                        <div>
+                            <div className="flex items-center gap-2 font-bold">
+                                <h1>Adv. Md. Robel Chowdhury</h1>
+                                <BsPatchCheckFill className="text-blue-600"></BsPatchCheckFill>
+                            </div>
+                            <h1>Whats App: +12345678</h1>
+                            <h1>imo: +12345678</h1>
+                            <h1>Email: robelchowdury@visa.com</h1>
+                        </div>
+                    </li>
+                    <li>
+                        <div>
+                            <div className="flex items-center gap-2 font-bold">
+                                <h1>Adv. Md. Robel Chowdhury</h1>
+                                <BsPatchCheckFill className="text-blue-600"></BsPatchCheckFill>
+                            </div>
+                            <h1>Whats App: +12345678</h1>
+                            <h1>imo: +12345678</h1>
+                            <h1>Email: robelchowdury@visa.com</h1>
+                        </div>
+                    </li>
+
+                </ol>
             </div>
 
 

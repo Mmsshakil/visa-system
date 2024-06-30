@@ -40,6 +40,7 @@ const LmiaForm = () => {
         queryFn: async () => {
             const res = await axiosSecure.get('/jobs');
             return res.data;
+            // return res.data.sort((a, b) => a.name.localeCompare(b.name));
         }
     })
 
