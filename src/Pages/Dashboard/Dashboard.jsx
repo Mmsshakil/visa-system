@@ -72,6 +72,7 @@ const Dashboard = () => {
                                 <tr>
                                     <th></th>
                                     <th>Name</th>
+                                    <th>Passport</th>
                                     <th>Mail</th>
                                     <th>Status</th>
 
@@ -97,6 +98,10 @@ const Dashboard = () => {
                                             <Link to={`/userDetails/${user?._id}`}>
                                                 <button className="btn btn-outline btn-info">{user.name}</button>
                                             </Link>
+                                        </td>
+
+                                        <td className="font-bold">
+                                            {user?.passport}
                                         </td>
 
                                         <td>
