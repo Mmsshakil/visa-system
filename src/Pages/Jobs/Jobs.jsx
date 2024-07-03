@@ -40,6 +40,7 @@ const Jobs = () => {
                     <h1>5. You will have either Saturday or Sunday off every week.</h1>
                     <h1>6. The salary will range from approximately $2700 to $3300 per month.</h1>
                     <h1>7. After the LMIA application is approved, the company will provide you with your joining date and necessary documents.</h1>
+                    <h1>8. You can change your job after working for one year in your first job.</h1>
                 </div>
             </div>
 

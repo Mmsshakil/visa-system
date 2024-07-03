@@ -4,6 +4,8 @@ import canadaSearch from "../../assets/Banners/canadasearch.jpg"
 import { useState } from "react";
 import useAxiosPublic from "../../hooks/useAxiosPublic";
 import approve from "../../assets/icons/approve.png"
+import pendingimg from "../../assets/icons/pending.png"
+import generalImg from "../../assets/icons/generalImg.png"
 import { Link } from "react-router-dom";
 
 const SearchPassport = () => {
@@ -52,6 +54,7 @@ const SearchPassport = () => {
         // console.log(passport);
         // console.log(userData);
 
+        console.log(userData[0].userStatus);
 
 
     }
@@ -79,7 +82,30 @@ const SearchPassport = () => {
                     <div className="card shrink-0 w-full max-w-lg shadow-2xl bg-base-100 rounded-lg pt-2  mx-auto">
                         <div className="relative">
                             <figure className="w-52 h-56 mx-auto"><img className="pt-10" src={userData[0].photoUrl} alt="profilepic" /></figure>
-                            <img className="w-28 absolute left-32 md:left-48 lg:left-52 -bottom-10  lg:-bottom-10" src={approve} alt="" />
+
+                            {
+                                userData[0].userStatus === "general" &&
+                                <img className="w-40 absolute left-28 md:left-44 lg:left-44 -bottom-14  lg:-bottom-14" src={generalImg} alt="" />
+                            }
+
+                            {
+                                (userData[0].userStatus === "ecaComplete" || userData[0]?.userStatus === "lmiaComplete" || userData[0]?.userStatus === "visaComplete")
+                                &&
+                                <img className="w-28 absolute left-32 md:left-48 lg:left-52 -bottom-10  lg:-bottom-10" src={approve} alt="" />
+
+                            }
+
+                            {
+                                (userData[0].userStatus === "ecaPending" || userData[0]?.userStatus === "lmiaPending" || userData[0]?.userStatus === "visaPending")
+                                &&
+                                <img className="w-32 absolute left-32 md:left-48 lg:left-48 -bottom-14  lg:-bottom-14" src={pendingimg} alt="" />
+                            }
+
+                            {/* <img className="w-28 absolute left-32 md:left-48 lg:left-52 -bottom-10  lg:-bottom-10" src={approve} alt="" /> */}
+
+
+
+
                         </div>
                         <div className="card-body gap-1">
 
