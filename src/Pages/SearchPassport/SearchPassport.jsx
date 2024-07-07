@@ -163,37 +163,40 @@ const SearchPassport = () => {
                     </div>
 
                     <h1 className="text-center text-2xl font-bold my-4 text-red-600">Documents</h1>
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-5 justify-center items-center mx-auto text-center font-semibold text-blue-600">
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-5 justify-center items-center mx-auto text-center font-semibold text-blue-600 px-1">
 
                         {
-                            userData[0]?.adminEcaPhoto ? <>
+                            userData[0]?.adminEcaPhoto ? <div>
+                                <h1>1. ECA Approved</h1>
                                 <img className="border-2 border-black p-2" src={userData[0]?.adminEcaPhoto} alt="ECA Verification" />
-                            </> : <>
-                                <h1>1. Please Apply for ECA Certificate</h1>
+                            </div> : <>
+                                <h1>1. ECA Certificate is not available</h1>
                             </>
                         }
 
-                        {
+                        {/* {
                             userData[0]?.cvPhoto ? <>
                                 <img className="border-2 border-black p-2" src={userData[0]?.cvPhoto} alt="" />
                             </> : <>
                                 <h1>2. Upload Your CV for Job Offer</h1>
                             </>
-                        }
+                        } */}
 
                         {
-                            userData[0]?.adminLmiaPhoto ? <>
+                            userData[0]?.adminLmiaPhoto ? <div>
+                                <h1>2. Job Offer/LMIA Approved</h1>
                                 <img className="border-2 border-black p-2" src={userData[0]?.adminLmiaPhoto} alt="" />
-                            </> : <>
-                                <h1>3. Apply for Job Offer / LMIA</h1>
+                            </div> : <>
+                                <h1>2. Job Offer/LMIA not available</h1>
                             </>
                         }
 
                         {
-                            userData[0]?.adminVisaPhoto ? <>
+                            userData[0]?.adminVisaPhoto ? <div>
+                                <h1>3. Visa Approved</h1>
                                 <img className="border-2 border-black p-2" src={userData[0]?.adminVisaPhoto} alt="" />
-                            </> : <>
-                                <h1>4. Finally Apply for Visa</h1>
+                            </div> : <>
+                                <h1>3. Visa is not approved</h1>
                             </>
                         }
 

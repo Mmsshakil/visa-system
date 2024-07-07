@@ -150,9 +150,9 @@ const About = () => {
                                 <h1>Adv. Mithun Ahmed</h1>
                                 <BsPatchCheckFill className="text-blue-600"></BsPatchCheckFill>
                             </div>
-                            <h1 className="flex gap-1"><a href="https://wa.me/+14125705252?text=I need help for Visa?" target="_blank">
+                            {/* <h1 className="flex gap-1"><a href="https://wa.me/+14125705252?text=I need help for Visa?" target="_blank">
                                 <h1>Whats App:</h1>
-                            </a> +14125705252</h1>
+                            </a> +14125705252</h1> */}
                             <h1>imo: +12894748944</h1>
                             <h1>Email: advmithunahmed@gmail.com</h1>
                         </div>
