@@ -2,7 +2,7 @@ import { useContext, useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import paypalicon from '../../assets/payments/PayPal.png'
 import appleicon from '../../assets/payments/Apple.png'
-import usdticon from '../../assets/payments/USDT.png'
+import usdticon from '../../assets/payments/usdtimg.png'
 import bkashicon from '../../assets/payments/Bkash.png'
 import nagadicon from '../../assets/payments/Nagad.png'
 import useAxiosPublic from "../../hooks/useAxiosPublic";
@@ -473,7 +473,7 @@ const LmiaForm = () => {
                                     <option className="text-black" value="USDT">USDT</option>
                                     <option className="text-black" value="ApplePay">Apple Pay</option>
                                     <option className="text-black" value="Bkash">Bkash</option>
-                                    <option className="text-black" value="Nagad">Nagad</option>
+                                    {/* <option className="text-black" value="Nagad">Nagad</option> */}
                                 </select>
                             </div>
 
@@ -502,18 +502,19 @@ const LmiaForm = () => {
                             selectedPayment === "Paypal" && <div className="flex flex-col gap-0 items-center justify-center">
                                 <div className="flex gap-0 items-center justify-center">
                                     <figure className="w-24"><img className="" src={paypalicon} alt="profilepic" /></figure>
-                                    <h1 className="text-lg font-bold">- softhandshakil@yahoo.com</h1>
+                                    <h1 className="text-sm md:text-lg font-bold">- softhandshakil@yahoo.com</h1>
                                 </div>
 
-                                <div className="">
+                                <div className=" text-sm md:text-base">
                                     <ol className="list-decimal">
-                                        <li>Sent <span className="font-bold text-blue-700">$200</span> to the PayPal account address.</li>
+                                        <li>Sent <span className="font-bold text-blue-700">$350</span> to the PayPal account address.</li>
                                         <li>Must be sent on <span className="font-bold text-blue-700">&apos;&apos;Friends and Family&apos;&apos;</span> option.</li>
                                         <li>Enter the <span className="font-bold text-blue-700">TrxID</span> and click the Apply button.</li>
                                     </ol>
                                 </div>
                             </div>
                         }
+
 
                         {/* bkash */}
                         {
@@ -523,7 +524,7 @@ const LmiaForm = () => {
                                     <h1 className="text-lg font-bold">: +8801712345678</h1>
                                 </div>
 
-                                <div className="">
+                                <div className="text-sm md:text-base">
                                     <ol className="list-decimal">
                                         <li>Sent <span className="font-bold text-blue-700">30000/= tk</span> to the BKash account number.</li>
                                         <li>This is a <span className="font-bold text-blue-700">&apos;&apos;Personal&apos;&apos;</span> account number.</li>
@@ -535,8 +536,10 @@ const LmiaForm = () => {
                             </div>
                         }
 
+
+
                         {/* nagad */}
-                        {
+                        {/* {
                             selectedPayment === "Nagad" && <div className="flex flex-col gap-0 items-center justify-center">
                                 <div className="flex gap-0 items-center justify-center">
                                     <figure className="w-24"><img className="" src={nagadicon} alt="profilepic" /></figure>
@@ -553,29 +556,52 @@ const LmiaForm = () => {
                                     </ol>
                                 </div>
                             </div>
-                        }
+                        } */}
 
                         {/* apple */}
                         {
                             selectedPayment === "ApplePay" && <div className="flex flex-col gap-0 items-center justify-center mt-3">
                                 <div className="flex gap-0 items-center justify-center">
                                     <figure className="w-20"><img className="" src={appleicon} alt="profilepic" /></figure>
-                                    <div>
-                                        <h1 className="text-lg font-bold">: +8801712345678</h1>
-                                        <h1 className="text-lg font-bold">: softhandshakil@yahoo.com</h1>
+                                    <div className="text-sm md:text-lg font-bold">
+                                        <h1 >: +8801712345678</h1>
+                                        <h1 >: softhandshakil@yahoo.com</h1>
                                     </div>
                                 </div>
 
 
-                                <div className="">
+                                <div className="text-sm md:text-base">
                                     <ol className="list-decimal">
-                                        <li>Sent <span className="font-bold text-blue-700">$200</span> to the Apply Pay Number or Mail.</li>
+                                        <li>Sent <span className="font-bold text-blue-700">$350</span> to the Apply Pay Number or Mail.</li>
                                         <li>Must be sent from <span className="font-bold text-blue-700">&apos;&apos;Apple Cash&apos;&apos;</span>.</li>
                                         <li>Enter your <span className="font-bold text-blue-700">Apple Pay Number</span> and click the Apply button.</li>
                                     </ol>
                                 </div>
                             </div>
                         }
+
+
+                        {/* usdt */}
+                        {
+                            selectedPayment === "USDT" && <div className="flex flex-col gap-0 items-center justify-center mt-3">
+                                <div className="flex flex-col gap-0 items-center justify-center mb-2">
+                                    <figure className="w-80"><img className="" src={usdticon} alt="profilepic" /></figure>
+                                    <h1 className="text-lg font-bold">Address</h1>
+                                    <h1 className="text-base md:text-lg text-blue-700">TARDRViMtNmkWDGttFcjCMmZaJ6XDeMPNK</h1>
+                                </div>
+
+
+                                <div className="text-sm md:text-base">
+                                    <ol className="list-decimal">
+                                        <li>Sent <span className="font-bold text-blue-700">$350</span> to the USDT address or scan QR code.</li>
+                                        <li>Must be sent by <span className="font-bold text-blue-700">Tron (TRC20)</span> network.</li>
+                                        <li>Check the wallet address carefully.</li>
+                                    </ol>
+                                </div>
+                            </div>
+                        }
+
+
                     </div>
 
 

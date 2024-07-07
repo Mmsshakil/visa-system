@@ -54,7 +54,7 @@ const SearchPassport = () => {
         // console.log(passport);
         // console.log(userData);
 
-        console.log(userData[0].userStatus);
+        // console.log(userData[0].userStatus);
 
 
     }
