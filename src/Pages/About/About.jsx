@@ -102,7 +102,7 @@ const About = () => {
 
             <div className="px-10 md:px-5">
                 <h1 className="font-bold text-xs md:text-lg text-red-600 mb-3 text-center md:text-left">N.B. : If you need more information or assistance, you can contact a verified lawyer.</h1>
-                <h1 className="font-bold text-2xl text-red-600 my-5 text-center md:text-left">List of Lawyers</h1>
+                <h1 className="font-bold text-lg md:text-2xl text-red-600 my-5 text-center md:text-left">List of Lawyers</h1>
                 <ol className="list-decimal flex flex-col gap-5 font-medium">
                     <li>
                         <div className="text-sm md:text-base">
@@ -119,7 +119,7 @@ const About = () => {
                     </li>
                     <li>
                         <div className="text-sm md:text-base">
-                            <div className="flex items-center gap-2 font-bold">
+                            <div className="flex items-center gap-2 font-bold text-base">
                                 <h1>Barr. Badol Rahman</h1>
                                 <BsPatchCheckFill className="text-blue-600"></BsPatchCheckFill>
                             </div>
@@ -133,7 +133,7 @@ const About = () => {
 
                     <li>
                         <div className="text-sm md:text-base">
-                            <div className="flex items-center gap-2 font-bold">
+                            <div className="flex items-center gap-2 font-bold text-base">
                                 <h1>Adv. Saddam Hosain</h1>
                                 <BsPatchCheckFill className="text-blue-600"></BsPatchCheckFill>
                             </div>
@@ -146,7 +146,7 @@ const About = () => {
                     </li>
                     <li>
                         <div className="text-sm md:text-base">
-                            <div className="flex items-center gap-2 font-bold">
+                            <div className="flex items-center gap-2 font-bold text-base">
                                 <h1>Adv. Mithun Ahmed</h1>
                                 <BsPatchCheckFill className="text-blue-600"></BsPatchCheckFill>
                             </div>
