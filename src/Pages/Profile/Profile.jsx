@@ -42,7 +42,7 @@ const Profile = () => {
     return (
         <div className="hero-content gap-10 md:gap-16 lg:gap-32 flex-col lg:flex-row mt-1 md:mt-5">
             <div className="card shrink-0 w-full max-w-lg shadow-2xl bg-base-100 rounded-lg pt-6 ">
-                <figure className="w-60 h-64 mx-auto"><img className="pt-10" src={photoUrl} alt="profilepic" /></figure>
+                <figure className="w-60 h-64 mx-auto rounded-md"><img className="pt-10" src={photoUrl} alt="profilepic" /></figure>
                 <div className="card-body gap-0">
                     <h2 className="text-center text-xl font-bold pb-3">{name}</h2>
                     <p><span className="font-semibold">Father&apos; Name:</span> {fatherName}</p>

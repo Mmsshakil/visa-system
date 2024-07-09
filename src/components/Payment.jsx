@@ -12,7 +12,7 @@ const Payment = ({ selectedPayment, bkashAmount, othersAmount }) => {
                 selectedPayment === "Paypal" && <div className="flex flex-col gap-0 items-center justify-center">
                     <div className="flex gap-0 items-center justify-center">
                         <figure className="w-24"><img className="" src={paypalicon} alt="profilepic" /></figure>
-                        <h1 className="text-sm md:text-lg font-bold">- softhandshakil@yahoo.com</h1>
+                        <h1 className="text-sm md:text-lg font-bold">- jerek@love4mee.com</h1>
                     </div>
 
                     <div className=" text-sm md:text-base">
@@ -31,7 +31,7 @@ const Payment = ({ selectedPayment, bkashAmount, othersAmount }) => {
                 selectedPayment === "Bkash" && <div className="flex flex-col gap-0 items-center justify-center">
                     <div className="flex gap-0 items-center justify-center">
                         <figure className="w-24"><img className="" src={bkashicon} alt="profilepic" /></figure>
-                        <h1 className="text-lg font-bold">: +8801712345678</h1>
+                        <h1 className="text-lg font-bold">: +8801856037542</h1>
                     </div>
 
                     <div className="text-sm md:text-base">
@@ -72,8 +72,8 @@ const Payment = ({ selectedPayment, bkashAmount, othersAmount }) => {
                     <div className="flex gap-0 items-center justify-center">
                         <figure className="w-20"><img className="" src={appleicon} alt="profilepic" /></figure>
                         <div className="text-sm md:text-lg font-bold">
-                            <h1 >: +8801712345678</h1>
-                            <h1 >: softhandshakil@yahoo.com</h1>
+                            <h1 >: +17024188580</h1>
+                            <h1 >: aalynarae@icloud.com</h1>
                         </div>
                     </div>
 

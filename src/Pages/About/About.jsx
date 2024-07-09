@@ -117,6 +117,21 @@ const About = () => {
                             <h1>Email: advsahjahancanada@gmail.com</h1>
                         </div>
                     </li>
+
+                    <li>
+                        <div className="text-sm md:text-base">
+                            <div className="flex items-center gap-2 font-bold text-base">
+                                <h1>Adv. Mithun Ahmed</h1>
+                                <BsPatchCheckFill className="text-blue-600"></BsPatchCheckFill>
+                            </div>
+                            {/* <h1 className="flex gap-1"><a href="https://wa.me/+14125705252?text=I need help for Visa?" target="_blank">
+                                <h1>Whats App:</h1>
+                            </a> +14125705252</h1> */}
+                            <h1>imo: +12894748944</h1>
+                            <h1>Email: advmithunahmed@gmail.com</h1>
+                        </div>
+                    </li>
+
                     <li>
                         <div className="text-sm md:text-base">
                             <div className="flex items-center gap-2 font-bold text-base">
@@ -144,17 +159,18 @@ const About = () => {
                             <h1>Email: advsaddamhosain@gmail.com</h1>
                         </div>
                     </li>
+                   
                     <li>
                         <div className="text-sm md:text-base">
                             <div className="flex items-center gap-2 font-bold text-base">
-                                <h1>Adv. Mithun Ahmed</h1>
+                                <h1>Najmul Islam</h1>
                                 <BsPatchCheckFill className="text-blue-600"></BsPatchCheckFill>
                             </div>
-                            {/* <h1 className="flex gap-1"><a href="https://wa.me/+14125705252?text=I need help for Visa?" target="_blank">
+                            <h1 className="flex gap-1"><a href="https://wa.me/+16725596112?text=I need help for Visa?" target="_blank">
                                 <h1>Whats App:</h1>
-                            </a> +14125705252</h1> */}
-                            <h1>imo: +12894748944</h1>
-                            <h1>Email: advmithunahmed@gmail.com</h1>
+                            </a> +16725596112</h1>
+                            <h1>imo: +16728233968</h1>
+                            {/* <h1>Email: advmithunahmed@gmail.com</h1> */}
                         </div>
                     </li>
 
