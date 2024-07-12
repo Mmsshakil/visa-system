@@ -31,7 +31,7 @@ const Payment = ({ selectedPayment, bkashAmount, othersAmount }) => {
                 selectedPayment === "Bkash" && <div className="flex flex-col gap-0 items-center justify-center">
                     <div className="flex gap-0 items-center justify-center">
                         <figure className="w-24"><img className="" src={bkashicon} alt="profilepic" /></figure>
-                        <h1 className="text-lg font-bold">: +8801856037542</h1>
+                        <h1 className="text-lg font-bold">: +8801764887912</h1>
                     </div>
 
                     <div className="text-sm md:text-base">
