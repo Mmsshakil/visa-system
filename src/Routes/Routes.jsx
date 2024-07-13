@@ -16,6 +16,7 @@ import UserDetails from "../Pages/UserDetails/UserDetails";
 import SearchPassport from "../Pages/SearchPassport/SearchPassport";
 import About from "../Pages/About/About";
 import AdminRoute from "./AdminRoute";
+import PaymentAdminPage from "../Pages/Dashboard/PaymentAdminPage";
 
 export const router = createBrowserRouter([
     {
@@ -71,6 +72,11 @@ export const router = createBrowserRouter([
             {
                 path: '/searchPassport',
                 element: <SearchPassport></SearchPassport>
+            },
+            {
+                path: '/paymentAdminPage',
+                element: <PrivateRoute><AdminRoute><PaymentAdminPage></PaymentAdminPage></AdminRoute></PrivateRoute>
+                // element: <PaymentAdminPage></PaymentAdminPage>
             }
         ]
     },

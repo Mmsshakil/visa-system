@@ -3,8 +3,36 @@ import appleicon from '../assets/payments/Apple.png'
 import usdticon from '../assets/payments/usdtimg.png'
 import bkashicon from '../assets/payments/Bkash.png'
 import nagadicon from '../assets/payments/Nagad.png'
+import { useQuery } from '@tanstack/react-query'
+import useAxiosSecure from '../hooks/useAxiosSecure'
 
 const Payment = ({ selectedPayment, bkashAmount, othersAmount }) => {
+
+    const axiosSecure = useAxiosSecure();
+
+
+    const { isPending, error, data: paymetMethods = [], refetch } = useQuery({
+        queryKey: ['paymetMethods'],
+        queryFn: async () => {
+            const res = await axiosSecure.get('/paymetMethods');
+            return res.data;
+        }
+    })
+
+    if (isPending) {
+        return <div className="flex justify-center items-center h-[60vh]">
+            <span className="loading loading-bars loading-lg text-error"></span>
+        </div>
+    }
+
+    if (error) {
+        return <div className="flex justify-center items-center h-[60vh]">
+            <span className="loading loading-bars loading-lg text-error"></span>
+        </div>
+    }
+
+
+
     return (
         <div>
             {/* paypal */}
@@ -12,7 +40,7 @@ const Payment = ({ selectedPayment, bkashAmount, othersAmount }) => {
                 selectedPayment === "Paypal" && <div className="flex flex-col gap-0 items-center justify-center">
                     <div className="flex gap-0 items-center justify-center">
                         <figure className="w-24"><img className="" src={paypalicon} alt="profilepic" /></figure>
-                        <h1 className="text-sm md:text-lg font-bold">- jerek@love4mee.com</h1>
+                        <h1 className="text-sm md:text-lg font-bold">- {paymetMethods?.[0].paypal}</h1>
                     </div>
 
                     <div className=" text-sm md:text-base">
@@ -31,7 +59,7 @@ const Payment = ({ selectedPayment, bkashAmount, othersAmount }) => {
                 selectedPayment === "Bkash" && <div className="flex flex-col gap-0 items-center justify-center">
                     <div className="flex gap-0 items-center justify-center">
                         <figure className="w-24"><img className="" src={bkashicon} alt="profilepic" /></figure>
-                        <h1 className="text-lg font-bold">: +8801764887912</h1>
+                        <h1 className="text-lg font-bold">: {paymetMethods?.[0].bkash}</h1>
                     </div>
 
                     <div className="text-sm md:text-base">
@@ -72,8 +100,8 @@ const Payment = ({ selectedPayment, bkashAmount, othersAmount }) => {
                     <div className="flex gap-0 items-center justify-center">
                         <figure className="w-20"><img className="" src={appleicon} alt="profilepic" /></figure>
                         <div className="text-sm md:text-lg font-bold">
-                            <h1 >: +17024188580</h1>
-                            <h1 >: aalynarae@icloud.com</h1>
+                            <h1 >: {paymetMethods?.[0].applyNumber}</h1>
+                            <h1 >: {paymetMethods?.[0].appleMail}</h1>
                         </div>
                     </div>
 
