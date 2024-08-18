@@ -65,86 +65,87 @@ const Dashboard = () => {
 
             {
                 userData[0]?.role === "admin" ? <>
-                    <div className="overflow-x-auto">
-                        <div className="flex justify-center">
-                            <Link className="btn btn-primary" to={'/paymentAdminPage'}>Payment Control</Link>
-                        </div>
-                        <table className="table table-pin-rows table-pin-cols">
-                            {/* head */}
-                            <thead>
-                                <tr>
-                                    <th></th>
-                                    <th>Name</th>
-                                    <th>Passport</th>
-                                    <th>Mail</th>
-                                    <th>Status</th>
+                    <div>
+                     
+                        <div className="">
 
-                                    <th>ECA Details</th>
+                            <table className="table table-pin-rows table-pin-cols">
+                                {/* head */}
+                                <thead>
+                                    <tr>
+                                        <th></th>
+                                        <th>Name</th>
+                                        <th>Passport</th>
+                                        <th>Mail</th>
+                                        <th>Status</th>
 
-                                    <th>LMIA Details</th>
+                                        <th>ECA Details</th>
 
-                                    <th>VISA Details</th>
+                                        <th>LMIA Details</th>
 
-                                </tr>
-                            </thead>
-                            <tbody>
-
-                                {
-
-                                    allusers?.map((user, index) => <tr className="text-sm" key={user._id}>
-                                        <td>
-                                            {index + 1}
-                                        </td>
-
-                                        <td>
-
-                                            <Link to={`/userDetails/${user?._id}`}>
-                                                <button className="btn btn-outline btn-info">{user.name}</button>
-                                            </Link>
-                                        </td>
-
-                                        <td className="font-bold">
-                                            {user?.passport}
-                                        </td>
-
-                                        <td>
-                                            {user.email}
-                                        </td>
-
-                                        <td className="font-semibold text-red-500">
-                                            {user?.userStatus}
-                                        </td>
-
-                                        {/* ECA */}
-
-
-                                        <td className="">
-                                            <p>{user?.paymentMethod}</p>
-                                            <p>{user?.trxID}</p>
-                                        </td>
-
-
-                                        {/* LMIA */}
-
-                                        <td className="">
-                                            <p>{user?.lmiaPaymentMethod}</p>
-                                            <p>{user?.lmiaTrxID}</p>
-                                        </td>
-
-                                        {/* VISA */}
-
-                                        <td className="">
-                                            <p>{user?.visaPaymentMethod}</p>
-                                            <p>{user?.visaTrxID}</p>
-                                        </td>
-
+                                        <th>VISA Details</th>
 
                                     </tr>
-                                    )
-                                }
+                                </thead>
+                                <tbody>
 
-                            </tbody>
-                        </table>
+                                    {
+
+                                        allusers?.map((user, index) => <tr className="text-sm" key={user._id}>
+                                            <td>
+                                                {index + 1}
+                                            </td>
+
+                                            <td>
+
+                                                <Link to={`/userDetails/${user?._id}`}>
+                                                    <button className="btn btn-outline btn-info">{user.name}</button>
+                                                </Link>
+                                            </td>
+
+                                            <td className="font-bold">
+                                                {user?.passport}
+                                            </td>
+
+                                            <td>
+                                                {user.email}
+                                            </td>
+
+                                            <td className="font-semibold text-red-500">
+                                                {user?.userStatus}
+                                            </td>
+
+                                            {/* ECA */}
+
+
+                                            <td className="">
+                                                <p>{user?.paymentMethod}</p>
+                                                <p>{user?.trxID}</p>
+                                            </td>
+
+
+                                            {/* LMIA */}
+
+                                            <td className="">
+                                                <p>{user?.lmiaPaymentMethod}</p>
+                                                <p>{user?.lmiaTrxID}</p>
+                                            </td>
+
+                                            {/* VISA */}
+
+                                            <td className="">
+                                                <p>{user?.visaPaymentMethod}</p>
+                                                <p>{user?.visaTrxID}</p>
+                                            </td>
+
+
+                                        </tr>
+                                        )
+                                    }
+
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
                 </> : <>
                     <h1 className="text-center text-6xl font-bold text-red-600">Invalid User</h1>

@@ -110,9 +110,9 @@ const About = () => {
                                 <h1>Adv. Sahajan Choudhary</h1>
                                 <BsPatchCheckFill className="text-blue-600"></BsPatchCheckFill>
                             </div>
-                            <h1 className="flex gap-1"><a href="https://wa.me/+13194579198?text=I need help for Visa?" target="_blank">
+                            {/* <h1 className="flex gap-1"><a href="https://wa.me/+15086189521?text=I need help for Visa?" target="_blank">
                                 <h1>Whats App:</h1>
-                            </a> +13194579198</h1>
+                            </a> +15086189521</h1> */}
                             <h1>imo: +15797012958</h1>
                             <h1>Email: advsahjahancanada@gmail.com</h1>
                         </div>
@@ -138,9 +138,9 @@ const About = () => {
                                 <h1>Barr. Badol Rahman</h1>
                                 <BsPatchCheckFill className="text-blue-600"></BsPatchCheckFill>
                             </div>
-                            <h1 className="flex gap-1"><a href="https://wa.me/+14692671366?text=I need help for Visa?" target="_blank">
+                            {/* <h1 className="flex gap-1"><a href="https://wa.me/+14692671366?text=I need help for Visa?" target="_blank">
                                 <h1>Whats App:</h1>
-                            </a> +14692671366</h1>
+                            </a> +14692671366</h1> */}
                             <h1>imo: +12094906947</h1>
                             <h1>Email: advbadolrahman@gmail.com</h1>
                         </div>
@@ -152,9 +152,9 @@ const About = () => {
                                 <h1>Adv. Saddam Hosain</h1>
                                 <BsPatchCheckFill className="text-blue-600"></BsPatchCheckFill>
                             </div>
-                            <h1 className="flex gap-1"><a href="https://wa.me/+14125705252?text=I need help for Visa?" target="_blank">
+                            {/* <h1 className="flex gap-1"><a href="https://wa.me/+14125705252?text=I need help for Visa?" target="_blank">
                                 <h1>Whats App:</h1>
-                            </a> +14125705252</h1>
+                            </a> +14125705252</h1> */}
                             <h1>imo: +16398274395</h1>
                             <h1>Email: advsaddamhosain@gmail.com</h1>
                         </div>
@@ -166,9 +166,9 @@ const About = () => {
                                 <h1>Najmul Islam</h1>
                                 <BsPatchCheckFill className="text-blue-600"></BsPatchCheckFill>
                             </div>
-                            <h1 className="flex gap-1"><a href="https://wa.me/+16725596112?text=I need help for Visa?" target="_blank">
+                            {/* <h1 className="flex gap-1"><a href="https://wa.me/+16725596112?text=I need help for Visa?" target="_blank">
                                 <h1>Whats App:</h1>
-                            </a> +16725596112</h1>
+                            </a> +16725596112</h1> */}
                             <h1>imo: +16728233968</h1>
                             {/* <h1>Email: advmithunahmed@gmail.com</h1> */}
                         </div>

@@ -370,16 +370,16 @@ const EcaForm = () => {
                         <div className="flex flex-col w-full md:flex-row gap-1">
                             <div className="form-control w-full">
                                 <label className="label">
-                                    <span className="text-base font-semibold ">Upload Education Certificate <span className="text-lg text-red-600 font-bold">*</span></span>
+                                    <span className="text-base font-semibold ">Upload Any Education Certificate </span>
                                 </label>
                                 {/* <input type="text" name="name" {...register("name")} placeholder="Enter your name" className="input input-bordered" required /> */}
-                                <input type="file" className="file-input file-input-bordered w-full text-slate-400 rounded-none" {...register("certificatPhoto", { required: true })} required />
+                                <input type="file" className="file-input file-input-bordered w-full text-slate-400 rounded-none" {...register("certificatPhoto")} />
                             </div>
                         </div>
                         <div className="flex flex-col w-full md:flex-row gap-1">
                             <div className="form-control w-full">
                                 <label className="label">
-                                    <span className="text-base font-semibold ">Upload Language Certificate / IELTS <span className="text-lg text-red-600 font-bold">*</span></span>
+                                    <span className="text-base font-semibold ">Upload Your Photo <span className="text-lg text-red-600 font-bold">*</span></span>
                                 </label>
                                 {/* <input type="text" name="name" {...register("name")} placeholder="Enter your name" className="input input-bordered" required /> */}
                                 <input type="file" className="file-input file-input-bordered w-full  text-slate-400 rounded-none" {...register("ieltsPhoto", { required: true })} required />
