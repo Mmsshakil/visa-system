@@ -24,8 +24,8 @@ const VisaForm = () => {
         formState: { errors },
     } = useForm();
     const [selectedPayment, setSelectedPayment] = useState("");
-    const imagebb_key = import.meta.env.VITE_imagebb_key;
-    const imagebb_api = `https://api.imgbb.com/1/upload?key=${imagebb_key}`;
+    const cloudinaryCloudName = import.meta.env.VITE_CLOUDINARY_CLOUD_NAME;
+    const cloudinaryUploadPreset = import.meta.env.VITE_CLOUDINARY_UPLOAD_PRESET;
     const navigate = useNavigate();
 
     // this part for load data my login user mail
@@ -50,36 +50,39 @@ const VisaForm = () => {
         setSelectedPayment(event.target.value);
     };
 
+
+    const uploadImageToCloudinary = async (file) => {
+        const formData = new FormData();
+        formData.append('file', file);
+        formData.append('upload_preset', cloudinaryUploadPreset);
+
+        const response = await fetch(`https://api.cloudinary.com/v1_1/${cloudinaryCloudName}/upload`, {
+            method: 'POST',
+            body: formData,
+        });
+
+        const data = await response.json();
+        // console.log(data);
+        return data.secure_url;
+    };
+
+
+
     const onSubmit = async (data) => {
         // console.log(data);
 
-        // image uploaded in the imagebb site
-        // cv image
-        const ecaImageFile = { image: data.visaFormEca[0] };
-        const ecaRes = await axiosPublic.post(imagebb_api, ecaImageFile, {
-            headers: {
-                'Content-Type': 'multipart/form-data'
-            }
-        });
-        // console.log(ecaRes.data);
 
 
-        // cover image
-        const lmiaImageFile = { image: data.visaFormLmia[0] };
-        const lmiaRes = await axiosPublic.post(imagebb_api, lmiaImageFile, {
-            headers: {
-                'Content-Type': 'multipart/form-data'
-            }
-        });
-        // console.log(lmiaRes.data);
 
+        const visaFormEca = await uploadImageToCloudinary(data.visaFormEca[0]);
+        const visaFormLmia = await uploadImageToCloudinary(data.visaFormLmia[0]);
 
         // now upload all data in database
         const updateUserInfo = {
             visaPaymentMethod: data.visaPaymentMethod,
             visaTrxID: data.visaTrxID,
-            visaFormEca: ecaRes.data.data.display_url,
-            visaFormLmia: lmiaRes.data.data.display_url,
+            visaFormEca,
+            visaFormLmia,
 
             userStatus: 'visaPending'
         }
@@ -393,7 +396,7 @@ const VisaForm = () => {
                             othersAmount={"949"}
                         ></Payment>
 
-                      
+
 
                     </div>
 

@@ -10,8 +10,10 @@ const UserDetails = () => {
     const location = useLocation();
     const axiosPublic = useAxiosPublic();
     const [loading, setLoading] = useState(true);
-    const imagebb_key = import.meta.env.VITE_imagebb_key;
-    const imagebb_api = `https://api.imgbb.com/1/upload?key=${imagebb_key}`;
+
+
+    const cloudinaryCloudName = import.meta.env.VITE_CLOUDINARY_CLOUD_NAME;
+    const cloudinaryUploadPreset = import.meta.env.VITE_CLOUDINARY_UPLOAD_PRESET;
 
 
     const {
@@ -38,24 +40,36 @@ const UserDetails = () => {
     const { _id, name, photoUrl, fatherName, motherName, gender, bloodGroup, maritalStatus, nid, passport, country, phone, email, birthDay, presentCountry, presentCity, presentAddre, permanentCountry, parmanentCity, parmanentAddre, companyName, jobExperience, jobTitle, userStatus, paymentMethod, trxID, lmiaPaymentMethod, lmiaTrxID, visaPaymentMethod, visaTrxID } = user;
 
 
+    const uploadImageToCloudinary = async (file) => {
+        const formData = new FormData();
+        formData.append('file', file);
+        formData.append('upload_preset', cloudinaryUploadPreset);
+
+        const response = await fetch(`https://api.cloudinary.com/v1_1/${cloudinaryCloudName}/upload`, {
+            method: 'POST',
+            body: formData,
+        });
+
+        const data = await response.json();
+        // console.log(data);
+        return data.secure_url;
+    };
+
     // control ECA------------------------------------------
     const onSubmitEca = async (data) => {
-        // console.log(data);
+        console.log(data);
 
-        const adminEcaImageFile = { image: data.adminEcaphoto[0] };
-        const adminEcaRes = await axiosPublic.post(imagebb_api, adminEcaImageFile, {
-            headers: {
-                'Content-Type': 'multipart/form-data'
-            }
-        });
-        // console.log(adminEcaRes.data);
+
+        const adminEcaPhoto = await uploadImageToCloudinary(data.adminEcaphoto[0]);
+        console.log(adminEcaPhoto);
+
 
         // now upload all data in database
         const updateUserInfo = {
-            adminEcaPhoto: adminEcaRes.data.data.display_url
+            adminEcaPhoto
             // userStatus: 'ecaComplete'
         }
-        // console.log(updateUserInfo);
+        console.log(updateUserInfo);
 
         // send the data to the server
         fetch(`${import.meta.env.VITE_main_url}/updateEca/${_id}`, {
@@ -91,19 +105,15 @@ const UserDetails = () => {
     // -------------------------------------------------------
     // control LMIA------------------------------------------
     const onSubmitLmia = async (data) => {
-        // console.log(data);
+        console.log(data);
 
-        const adminLmiaImageFile = { image: data.adminLmiaphoto[0] };
-        const adminLmiaRes = await axiosPublic.post(imagebb_api, adminLmiaImageFile, {
-            headers: {
-                'Content-Type': 'multipart/form-data'
-            }
-        });
-        // console.log(adminLmiaRes.data);
+
+        const adminLmiaPhoto = await uploadImageToCloudinary(data.adminLmiaphoto[0]);
+
 
         // now upload all data in database
         const updateUserInfo = {
-            adminLmiaPhoto: adminLmiaRes.data.data.display_url
+            adminLmiaPhoto
 
         }
         // console.log(updateUserInfo);
@@ -145,24 +155,20 @@ const UserDetails = () => {
     // -------------------------------------------------------
     // control VISA------------------------------------------
     const onSubmitVisa = async (data) => {
-        // console.log(data);
+        console.log(data);
 
-        const adminVisaImageFile = { image: data.adminVisaphoto[0] };
-        const adminVisaRes = await axiosPublic.post(imagebb_api, adminVisaImageFile, {
-            headers: {
-                'Content-Type': 'multipart/form-data'
-            }
-        });
-        // console.log(adminVisaRes.data);
+
+        const adminVisaPhoto = await uploadImageToCloudinary(data.adminVisaphoto[0]);
+        console.log(adminVisaPhoto);
+
 
         // now upload all data in database
         const updateUserInfo = {
-            adminVisaPhoto: adminVisaRes.data.data.display_url,
-            // adminBiometricDate: data.adminBiometricDate
+            adminVisaPhoto,
             biometric: data.biometric
 
         }
-        // console.log(updateUserInfo);
+        console.log(updateUserInfo);
 
 
         // send the data to the server

@@ -15,6 +15,7 @@ const SignUp = () => {
     const imagebb_api = `https://api.imgbb.com/1/upload?key=${imagebb_key}`;
     const axiosPublic = useAxiosPublic();
     const axiosSecure = useAxiosSecure();
+    const [imagge, setImagge] = useState("");
 
     // console.log(import.meta.env.VITE_main_url);
 
@@ -62,82 +63,189 @@ const SignUp = () => {
 
 
 
-    const onSubmit = async (data) => {
-        // console.log(data);
+    // const onSubmit = async (data) => {
+    //     // console.log(data);
 
-        // image uploaded in the imagebb site
-        const imageFile = { image: data.profilePhoto[0] };
-        const res = await axiosPublic.post(imagebb_api, imageFile, {
-            headers: {
-                'Content-Type': 'multipart/form-data'
-            }
-        });
-        // console.log(res.data);
-        // console.log(res.data.data.display_url);
 
-        const userInfo = {
-            name: data.name,
-            fatherName: data.fatherName,
-            gender: data.gender,
-            country: data.country,
-            email: data.email,
-            phone: data.phone,
-            passport: data.passport,
-            nid: data.nid,
-            password: data.password,
-            confirmPassword: data.confirmPassword,
-            photoUrl: res.data.data.display_url,
-            userStatus: "general"
-        }
-        // console.log(userInfo);
+    //     // ----------- cloudinary---------------------------
+
+    //     data.append("file", imagge)
+    //     data.append("upload_preset", "lakiqxh0")
+    //     data.append("cloud_name", "deri8mhfz")
+
+    //     fetch("https://api.cloudinary.com/v1_1/deri8mhfz/image/upload", {
+    //         method: "post",
+    //         body: data
+    //     })
+    //         .then((res) => {
+    //             res.json();
+    //         })
+    //         .then((data) => {
+    //             console.log(data);
+    //         })
+    //         .catch((err) => {
+    //             console.log(err);
+    //         })
 
 
 
-        // if the image uploaded successfully then login process will happend
-        if (res.data.success) {
-            createUser(data.email, data.password)
-                .then(result => {
-                    const loggedUser = result.user;
-                    // console.log(loggedUser);
 
-                    updateUserProfile(data.name, res.data.data.display_url)
-                        .then(() => {
-                            // console.log('name also added');
-
-                            axiosPublic.post('/users', userInfo)
-                                .then(res => {
-                                    if (res.data.insertedId) {
-                                        // console.log('user added to the database');
-
-                                        Swal.fire({
-                                            position: "top-end",
-                                            icon: "success",
-                                            title: "Your registration successful",
-                                            showConfirmButton: false,
-                                            timer: 1500
-                                        });
-                                        navigate('/');
-                                    }
-                                })
-
-                        })
-
-                })
+    //     // -------------------------------------------------
 
 
-                .catch(error => {
-                    // console.log(error.message);
 
+    //     // image uploaded in the imagebb site
+    //     const imageFile = { image: data.profilePhoto[0] };
+    //     const res = await axiosPublic.post(imagebb_api, imageFile, {
+    //         headers: {
+    //             'Content-Type': 'multipart/form-data'
+    //         }
+    //     });
+    //     // console.log(res.data);
+    //     // console.log(res.data.data.display_url);
+
+
+
+    //     const userInfo = {
+    //         name: data.name,
+    //         fatherName: data.fatherName,
+    //         gender: data.gender,
+    //         country: data.country,
+    //         email: data.email,
+    //         phone: data.phone,
+    //         passport: data.passport,
+    //         nid: data.nid,
+    //         password: data.password,
+    //         confirmPassword: data.confirmPassword,
+    //         photoUrl: res.data.data.display_url,
+    //         userStatus: "general"
+    //     }
+    //     // console.log(userInfo);
+
+
+
+    //     // if the image uploaded successfully then login process will happend
+    //     if (res.data.success) {
+    //         createUser(data.email, data.password)
+    //             .then(result => {
+    //                 const loggedUser = result.user;
+    //                 // console.log(loggedUser);
+
+    //                 updateUserProfile(data.name, res.data.data.display_url)
+    //                     .then(() => {
+    //                         // console.log('name also added');
+
+    //                         axiosPublic.post('/users', userInfo)
+    //                             .then(res => {
+    //                                 if (res.data.insertedId) {
+    //                                     // console.log('user added to the database');
+
+    //                                     Swal.fire({
+    //                                         position: "top-end",
+    //                                         icon: "success",
+    //                                         title: "Your registration successful",
+    //                                         showConfirmButton: false,
+    //                                         timer: 1500
+    //                                     });
+    //                                     navigate('/');
+    //                                 }
+    //                             })
+
+    //                     })
+
+    //             })
+
+
+    //             .catch(error => {
+    //                 // console.log(error.message);
+
+    //                 Swal.fire({
+    //                     icon: "error",
+    //                     title: "Oops...",
+    //                     text: "Already have an account! Please Login"
+    //                 });
+    //                 navigate(location?.state ? location.state : '/login');
+    //             })
+    //     }
+
+    // }
+
+    const onSubmit = async (formData) => {
+        try {
+            // Create a new FormData object
+            const data = new FormData();
+            console.log(data);
+            console.log(formData);
+
+            // Assuming 'profilePhoto' is the field name for the file input in your form
+            const imageFile = formData.profilePhoto[0];
+
+            // Append the image and other required data for Cloudinary
+            data.append("file", imageFile);
+            data.append("upload_preset", "lakiqxh0"); // Your upload preset
+            data.append("cloud_name", "deri8mhfz"); // Your Cloudinary cloud name
+
+            // Make the request to Cloudinary
+            const response = await fetch("https://api.cloudinary.com/v1_1/deri8mhfz/image/upload", {
+                method: "POST",
+                body: data,
+            });
+
+            // Parse the JSON response
+            const result = await response.json();
+
+            if (response.ok) {
+                console.log("Image uploaded successfully:", result);
+
+                // Get the image URL from Cloudinary
+                const imageUrl = result.secure_url;
+
+                // Prepare the user data to send to your backend
+                const userInfo = {
+                    name: formData.name,
+                    fatherName: formData.fatherName,
+                    gender: formData.gender,
+                    country: formData.country,
+                    email: formData.email,
+                    phone: formData.phone,
+                    passport: formData.passport,
+                    nid: formData.nid,
+                    password: formData.password,
+                    confirmPassword: formData.confirmPassword,
+                    photoUrl: imageUrl, // Use the Cloudinary image URL
+                    userStatus: "general"
+                };
+
+                // Create the user and update profile
+                await createUser(formData.email, formData.password);
+                await updateUserProfile(formData.name, imageUrl);
+
+                // Submit the `userInfo` to your backend
+                const res = await axiosPublic.post('/users', userInfo);
+                if (res.data.insertedId) {
                     Swal.fire({
-                        icon: "error",
-                        title: "Oops...",
-                        text: "Already have an account! Please Login"
+                        position: "top-end",
+                        icon: "success",
+                        title: "Your registration was successful",
+                        showConfirmButton: false,
+                        timer: 1500
                     });
-                    navigate(location?.state ? location.state : '/login');
-                })
-        }
+                    navigate('/');
+                }
+            } else {
+                throw new Error("Failed to upload image to Cloudinary");
+            }
 
-    }
+        } catch (error) {
+            console.error("Error:", error);
+            Swal.fire({
+                icon: "error",
+                title: "Oops...",
+                text: "Something went wrong! Please try again."
+            });
+            navigate(location?.state ? location.state : '/login');
+        }
+    };
 
     return (
         <div className="p-5 md:p-0">

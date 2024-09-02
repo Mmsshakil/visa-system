@@ -14,8 +14,8 @@ import { useQuery } from "@tanstack/react-query";
 import Payment from "../../components/Payment";
 
 const LmiaForm = () => {
-    const imagebb_key = import.meta.env.VITE_imagebb_key;
-    const imagebb_api = `https://api.imgbb.com/1/upload?key=${imagebb_key}`;
+    const cloudinaryCloudName = import.meta.env.VITE_CLOUDINARY_CLOUD_NAME;
+    const cloudinaryUploadPreset = import.meta.env.VITE_CLOUDINARY_UPLOAD_PRESET;
     const navigate = useNavigate();
 
     const [selectedPayment, setSelectedPayment] = useState("");
@@ -103,6 +103,20 @@ const LmiaForm = () => {
     };
 
 
+    const uploadImageToCloudinary = async (file) => {
+        const formData = new FormData();
+        formData.append('file', file);
+        formData.append('upload_preset', cloudinaryUploadPreset);
+
+        const response = await fetch(`https://api.cloudinary.com/v1_1/${cloudinaryCloudName}/upload`, {
+            method: 'POST',
+            body: formData,
+        });
+
+        const data = await response.json();
+        // console.log(data);
+        return data.secure_url;
+    };
 
 
 
@@ -112,25 +126,10 @@ const LmiaForm = () => {
     const onSubmit = async (data) => {
         // console.log(data);
 
-        // image uploaded in the imagebb site
-        // cv image
-        const cvImageFile = { image: data.cvPhoto[0] };
-        const cvRes = await axiosPublic.post(imagebb_api, cvImageFile, {
-            headers: {
-                'Content-Type': 'multipart/form-data'
-            }
-        });
-        // console.log(cvRes.data);
+     
 
-
-        // cover image
-        const coverImageFile = { image: data.coverPhoto[0] };
-        const coverRes = await axiosPublic.post(imagebb_api, coverImageFile, {
-            headers: {
-                'Content-Type': 'multipart/form-data'
-            }
-        });
-        // console.log(coverRes.data);
+        const cvPhoto = await uploadImageToCloudinary(data.cvPhoto[0]);
+        const coverPhoto = await uploadImageToCloudinary(data.coverPhoto[0]);
 
 
 
@@ -152,9 +151,8 @@ const LmiaForm = () => {
             presentAddre: data.presentAddre,
             presentCity: data.presentCity,
             presentCountry: data.presentCountry,
-
-            coverPhoto: coverRes.data.data.display_url,
-            cvPhoto: cvRes.data.data.display_url,
+            cvPhoto,
+            coverPhoto,
 
 
             userStatus: 'lmiaPending'

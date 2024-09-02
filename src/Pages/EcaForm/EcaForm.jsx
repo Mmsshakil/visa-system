@@ -4,19 +4,17 @@ import useAxiosPublic from "../../hooks/useAxiosPublic";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
-import paypalicon from '../../assets/payments/PayPal.png'
-import appleicon from '../../assets/payments/Apple.png'
-import usdticon from '../../assets/payments/usdtimg.png'
-import bkashicon from '../../assets/payments/Bkash.png'
-import nagadicon from '../../assets/payments/Nagad.png'
 import Payment from "../../components/Payment";
 
 const EcaForm = () => {
 
-    const imagebb_key = import.meta.env.VITE_imagebb_key;
-    const imagebb_api = `https://api.imgbb.com/1/upload?key=${imagebb_key}`;
+    const cloudinaryCloudName = import.meta.env.VITE_CLOUDINARY_CLOUD_NAME;
+    const cloudinaryUploadPreset = import.meta.env.VITE_CLOUDINARY_UPLOAD_PRESET;
+
+   
     const navigate = useNavigate();
     const [selectedPayment, setSelectedPayment] = useState("");
+
 
     const {
         register,
@@ -62,50 +60,33 @@ const EcaForm = () => {
     };
 
 
+    const uploadImageToCloudinary = async (file) => {
+        const formData = new FormData();
+        formData.append('file', file);
+        formData.append('upload_preset', cloudinaryUploadPreset);
+
+        const response = await fetch(`https://api.cloudinary.com/v1_1/${cloudinaryCloudName}/upload`, {
+            method: 'POST',
+            body: formData,
+        });
+
+        const data = await response.json();
+        // console.log(data);
+        return data.secure_url;
+    };
+
+
+
     const onSubmit = async (data) => {
         // console.log(data);
 
-        // now first of all upload the image on imgbb site
-
-        // nid photo upload
-        const nidimageFile = { image: data.nidPhoto[0] };
-        const nidRes = await axiosPublic.post(imagebb_api, nidimageFile, {
-            headers: {
-                'Content-Type': 'multipart/form-data'
-            }
-        });
-        // console.log(nidRes.data.data.display_url);
-
-        // passport photo upload
-        const passportimageFile = { image: data.passportPhoto[0] };
-        const passportRes = await axiosPublic.post(imagebb_api, passportimageFile, {
-            headers: {
-                'Content-Type': 'multipart/form-data'
-            }
-        });
-        // console.log(passportRes.data.data.display_url);
 
 
-        // certificate photo upload
-        const certificatimageFile = { image: data.certificatPhoto[0] };
-        const certificatRes = await axiosPublic.post(imagebb_api, certificatimageFile, {
-            headers: {
-                'Content-Type': 'multipart/form-data'
-            }
-        });
-        // console.log(certificatRes.data.data.display_url);
 
-
-        // ielts photo upload
-        const ieltsimageFile = { image: data.ieltsPhoto[0] };
-        const ieltsRes = await axiosPublic.post(imagebb_api, ieltsimageFile, {
-            headers: {
-                'Content-Type': 'multipart/form-data'
-            }
-        });
-        // console.log(ieltsRes.data.data.display_url);
-
-
+        const nidUrl = await uploadImageToCloudinary(data.nidPhoto[0]);
+        const passportUrl = await uploadImageToCloudinary(data.passportPhoto[0]);
+        const certificatUrl = data.certificatPhoto[0] ? await uploadImageToCloudinary(data.certificatPhoto[0]) : null;
+        const ieltsUrl = await uploadImageToCloudinary(data.ieltsPhoto[0]);
 
 
         // now upload all data in database
@@ -126,10 +107,16 @@ const EcaForm = () => {
             sscRoll: data.sscRoll,
             sscYear: data.sscYear,
 
-            nidUrl: nidRes.data.data.display_url,
-            passportUrl: passportRes.data.data.display_url,
-            certificatUrl: certificatRes.data.data.display_url,
-            ieltsUrl: ieltsRes.data.data.display_url,
+            // nidUrl: nidRes.data.data.display_url,
+            // passportUrl: passportRes.data.data.display_url,
+            // certificatUrl: certificatRes.data.data.display_url,
+            // ieltsUrl: ieltsRes.data.data.display_url,
+
+            nidUrl,
+            passportUrl,
+            certificatUrl,
+            ieltsUrl,
+
             paymentMethod: data.paymentMethod,
             trxID: data.trxID,
 
