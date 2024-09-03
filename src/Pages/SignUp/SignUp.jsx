@@ -370,7 +370,7 @@ const SignUp = () => {
                                         name="password" {...register("password", {
                                             minLength: 4,
                                             maxLength: 25,
-                                            // pattern: /(?=.*[A-Z])(?=.*[!@#$&*])(?=.*[0-9])(?=.*[a-z])/
+                                            pattern: /(?=.*[A-Z])(?=.*[!@#$&*])(?=.*[0-9])(?=.*[a-z])/
                                         })} placeholder="Enter your password" className="input input-bordered w-full" required />
 
                                     <span
@@ -386,7 +386,7 @@ const SignUp = () => {
 
                                 {errors.password?.type === 'maxLength' && <span className="text-sm text-red-500">Password must be less than 25 characters</span>}
 
-                                {/* {errors.password?.type === 'pattern' && <span className="text-sm text-red-500">Password must be one upper, lower case and number character</span>} */}
+                                {errors.password?.type === 'pattern' && <span className="text-sm text-red-500">Password must be one upper, lower case and number character</span>}
 
                             </div>
 

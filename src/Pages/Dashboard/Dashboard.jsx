@@ -66,8 +66,14 @@ const Dashboard = () => {
             {
                 userData[0]?.role === "admin" ? <>
                     <div>
-                     
-                        <div className="">
+
+                        <div className="flex justify-center items-center my-5">
+                            <Link to={`/paymentAdminPage`}>
+                                <button className="btn btn-outline btn-info">Payment Methods</button>
+                            </Link>
+                        </div>
+
+                        <div className="overflow-x-auto">
 
                             <table className="table table-pin-rows table-pin-cols">
                                 {/* head */}
