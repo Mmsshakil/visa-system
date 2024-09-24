@@ -43,12 +43,12 @@ const StepsCard = () => {
         {
             id: 8,
             title: "8th - Biometrics",
-            content: "Biometrics include your fingerprints and photo. We collect your biometrics to confirm your identity and to help assess your application. Please bring all necessary documents on your biometric submission date, such as your passport, national identification card, ECA certificate, LMIA certificate, and education certificates. The biometric submission cost is CAN$85. Please pay this amount to your agent before the biometric date."
+            content: "Biometrics include your fingerprints and photo. We collect your biometrics to confirm your identity and to help assess your application. Please bring all necessary documents on your biometric submission date, such as your passport, national identification card, ECA certificate, LMIA certificate, and education certificates. The biometric submission cost is CAN$200 to CAN$350. Please pay this amount to your agent before the biometric date."
         },
         {
             id: 9,
             title: "9th - Congratulations",
-            content: "After your biometric submission, we will verify your biometrics and all your documents. This process takes a maximum of 7 working days. After that, you will receive your passport with your Canada Work Permit Visa. You can then buy a ticket and start a new journey in Canada. You are most welcome in Canada."
+            content: "After your biometric submission, we will verify your biometrics and all your documents. This process takes a maximum of 7 working days. After that, you will receive your passport with your Canada Work Permit Visa. Then you must need buy a ticket and start a new journey in Canada. You are most welcome in Canada."
         }
         // Add the rest of the steps similarly...
     ];

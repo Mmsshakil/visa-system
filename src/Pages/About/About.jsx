@@ -10,7 +10,7 @@ const About = () => {
                 </p>
             </div>
 
-            <div className="px-10 md:px-5">
+            {/* <div className="px-10 md:px-5">
                 <h1 className="font-bold text-2xl text-red-600 mb-3 mt-10">Visa application process</h1>
                 <div>
                     <h1 className="text-lg font-semibold text-black">Basic Registration</h1>
@@ -98,7 +98,7 @@ const About = () => {
                 </div>
 
 
-            </div>
+            </div> */}
 
             <div className="px-10 md:px-5">
                 <h1 className="font-bold text-xs md:text-lg text-red-600 mb-3 text-center md:text-left">N.B. : If you need more information or assistance, you can contact a verified lawyer.</h1>
@@ -160,19 +160,7 @@ const About = () => {
                         </div>
                     </li>
                    
-                    <li>
-                        <div className="text-sm md:text-base">
-                            <div className="flex items-center gap-2 font-bold text-base">
-                                <h1>Najmul Islam</h1>
-                                <BsPatchCheckFill className="text-blue-600"></BsPatchCheckFill>
-                            </div>
-                            {/* <h1 className="flex gap-1"><a href="https://wa.me/+16725596112?text=I need help for Visa?" target="_blank">
-                                <h1>Whats App:</h1>
-                            </a> +16725596112</h1> */}
-                            <h1>imo: +16728233968</h1>
-                            {/* <h1>Email: advmithunahmed@gmail.com</h1> */}
-                        </div>
-                    </li>
+                
 
 
                 </ol>

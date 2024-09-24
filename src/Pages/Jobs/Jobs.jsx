@@ -34,13 +34,14 @@ const Jobs = () => {
                 <h1 className="font-bold text-2xl text-red-600 mb-3 text-center">Employment Details</h1>
                 <div className="font-semibold text-left flex flex-col gap-2">
                     <h1>1. Below is the job position currently available.</h1>
-                    <h1>2. The company will provide health insurance, travel tax, and a block sum of $5,310 CAD.</h1>
+                    <h1>2. The company will provide health insurance, travel tax, and a lump sum of $5,310 CAD. However, some companies may not pay the full amount, and you might need to contribute between 14% and 45% of the total lump sum for the block money.</h1>
                     <h1>3. The company will cover your food and living expenses.</h1>
-                    <h1>4. You are required to work 8 hours per day.</h1>
-                    <h1>5. You will have either Saturday or Sunday off every week.</h1>
-                    <h1>6. The salary will range from approximately $2700 to $3300 per month.</h1>
-                    <h1>7. After the LMIA application is approved, the company will provide you with your joining date and necessary documents.</h1>
-                    <h1>8. You can change your job after working for one year in your first job.</h1>
+                    <h1>4. The company will not cover your flight costs.</h1>
+                    <h1>5. You are required to work 8 hours per day.</h1>
+                    <h1>6. You will have either Saturday or Sunday off every week.</h1>
+                    <h1>7. The salary will range from approximately $2700 to $3300 per month.</h1>
+                    <h1>8. After the LMIA application is approved, the company will provide you with your joining date and necessary documents.</h1>
+                    <h1>9. You can change your job after working for one year in your first job.</h1>
                 </div>
             </div>
 
