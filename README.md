@@ -1,3 +1,5 @@
+# The site simplifies the entire visa application process, making it easy, safe, and secure for users to manage their visa applications.
+
 # 🌟 Features:
 1. 📄 Find detailed information about Canadian work visas.
 2. 📝 Create an account and easily apply for ECA, LMIA, or a visa.
