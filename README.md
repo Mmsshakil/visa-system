@@ -1,8 +1,6 @@
-# React + Vite
-
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
-
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+🌟 Features:
+📄 Find detailed information about Canadian work visas.
+📝 Create an account and easily apply for ECA, LMIA, or a visa.
+💼 Browse through numerous job postings, offering a variety of opportunities.
+🔍 Search feature: Track your visa process by entering your passport number and viewing the current status.
+🔐 Admin-only secure dashboard for full control over the application process.
