@@ -75,7 +75,7 @@ const Navbar = () => {
                         <img src={flag} alt="canada flag" className='w-12 md:w-20' />
                     </Link>
                     <Link to="/">
-                        <h1 className='text-xs md:text-base font-bold'>Government <br />of Canada</h1>
+                        <h1 className='text-xs md:text-base font-bold'>Visa System</h1>
                     </Link>
 
                 </div>

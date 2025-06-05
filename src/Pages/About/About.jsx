@@ -10,7 +10,7 @@ const About = () => {
                 </p>
             </div>
 
-            {/* <div className="px-10 md:px-5">
+            <div className="px-10 md:px-5">
                 <h1 className="font-bold text-2xl text-red-600 mb-3 mt-10">Visa application process</h1>
                 <div>
                     <h1 className="text-lg font-semibold text-black">Basic Registration</h1>
@@ -98,7 +98,7 @@ const About = () => {
                 </div>
 
 
-            </div> */}
+            </div>
 
             <div className="px-10 md:px-5">
                 <h1 className="font-bold text-xs md:text-lg text-red-600 mb-3 text-center md:text-left">N.B. : If you need more information or assistance, you can contact a verified lawyer.</h1>
