@@ -9,3 +9,6 @@
 
 # client side live link
 http://canadaworkvisa.info/
+
+# dashboard link - admin access
+http://canadaworkvisa.info/dashboard
