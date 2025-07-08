@@ -7,8 +7,12 @@
 4. 🔍 Search feature: Track your visa process by entering your passport number and viewing the current status.
 5. 🔐 Admin-only secure dashboard for full control over the application process.
 
-# client side live link
-http://canadaworkvisa.info/
+# live link
+https://gorgeous-speculoos-97e475.netlify.app/
+
+# server side github link
+https://github.com/Mmsshakil/visa-system-server
+
 
 # dashboard link - admin access
-http://canadaworkvisa.info/dashboard
+https://gorgeous-speculoos-97e475.netlify.app/dashboard
