@@ -15,15 +15,15 @@ const Footer = () => {
                     <p>325 Milner Ave 2nd Floor, Scarborough, ON M1B 5N1, Canada</p>
                     <div className='flex justify-center items-center gap-1 font-semibold'>
                         <IoCallOutline></IoCallOutline>
-                        <p>Phone: +1 (843)396-7587</p>
+                        <p>Phone: +1 (843)123-0000</p>
                     </div>
                     <div className='flex justify-center items-center gap-1 font-semibold'>
                         <FaWhatsapp></FaWhatsapp>
-                        <p>WhatsApp: +1 (501)229-0016</p>
+                        <p>WhatsApp: +1 (501)123-0000</p>
                     </div>
                     <div className='flex justify-center items-center gap-1 font-semibold'>
                         <IoMailOutline></IoMailOutline>
-                        <p>Email: canadaworkvisa0@gmail.com</p>
+                        <p>Email: canadavisaxxx@gmail.com</p>
                     </div>
                 </aside>
                 <nav>

@@ -113,8 +113,8 @@ const About = () => {
                             {/* <h1 className="flex gap-1"><a href="https://wa.me/+15086189521?text=I need help for Visa?" target="_blank">
                                 <h1>Whats App:</h1>
                             </a> +15086189521</h1> */}
-                            <h1>imo: +15797012958</h1>
-                            <h1>Email: advsahjahancanada@gmail.com</h1>
+                            <h1>Number: +15797000000</h1>
+                            <h1>Email: advsahjahanxxxx@gmail.com</h1>
                         </div>
                     </li>
 
@@ -127,8 +127,8 @@ const About = () => {
                             {/* <h1 className="flex gap-1"><a href="https://wa.me/+14125705252?text=I need help for Visa?" target="_blank">
                                 <h1>Whats App:</h1>
                             </a> +14125705252</h1> */}
-                            <h1>imo: +12894748944</h1>
-                            <h1>Email: advmithunahmed@gmail.com</h1>
+                            <h1>Number: +12894700000</h1>
+                            <h1>Email: advmithunaxxxx@gmail.com</h1>
                         </div>
                     </li>
 
@@ -141,8 +141,8 @@ const About = () => {
                             {/* <h1 className="flex gap-1"><a href="https://wa.me/+14692671366?text=I need help for Visa?" target="_blank">
                                 <h1>Whats App:</h1>
                             </a> +14692671366</h1> */}
-                            <h1>imo: +12094906947</h1>
-                            <h1>Email: advbadolrahman@gmail.com</h1>
+                            <h1>Number: +12094900000</h1>
+                            <h1>Email: advbadolraxxxx@gmail.com</h1>
                         </div>
                     </li>
 
@@ -155,8 +155,8 @@ const About = () => {
                             {/* <h1 className="flex gap-1"><a href="https://wa.me/+14125705252?text=I need help for Visa?" target="_blank">
                                 <h1>Whats App:</h1>
                             </a> +14125705252</h1> */}
-                            <h1>imo: +16398274395</h1>
-                            <h1>Email: advsaddamhosain@gmail.com</h1>
+                            <h1>Number: +16398200000</h1>
+                            <h1>Email: advsaddamhxxxxx@gmail.com</h1>
                         </div>
                     </li>
                    
